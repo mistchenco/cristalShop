@@ -5,9 +5,10 @@ class compra
     private $compraFecha;
     private $objUsuario;
     private $coleccionItems;
-
+    private $mensajeOperacion;
     public function __construct()
     {
+        $this->mensajeOperacion="";
         $this->idCompra = 0;
         $this->compraFecha = '';
         $this->objUsuario = '';
@@ -62,6 +63,9 @@ class compra
     {
         $this->coleccionItems = $coleccionItems;
     }
+    public  function setmensajeOperacion($mensajeOperacion){
+        $this->mensajeOperacion=$mensajeOperacion;
+    }
 
     public function cargar()
     {
@@ -83,7 +87,7 @@ class compra
                 }
             }
         } else {
-            $this->setmensajeoperacion("UsuarioRol->listar: " . $base->getError());
+            $this->setmensajeOperacion("compra->listar: " . $base->getError());
         }
         return $resp;
     }
@@ -117,7 +121,7 @@ class compra
                 }
             }
         } else {
-            $this->setMensajeOperacion("usuario->listar: " . $base->getError());
+            $this->setMensajeOperacion("Usuario->insertar: " . $base->getError());
         }
 
         return $arreglo;
@@ -186,10 +190,10 @@ class compra
             if ($base->Ejecutar($sql)) {
                 $resp =  true;
             } else {
-                $this->setmensajeoperacion("UsuarioRol->eliminar: " . $base->getError());
+                $this->setmensajeoperacion("compra->eliminar: " . $base->getError());
             }
         } else {
-            $this->setmensajeoperacion("UsuarioRol->eliminar: " . $base->getError());
+            $this->setmensajeoperacion("compra->eliminar: " . $base->getError());
         }
         return $resp;
     }
