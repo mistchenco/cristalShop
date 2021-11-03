@@ -16,7 +16,7 @@ class BaseDatos extends PDO
     {
         $this->engine = 'mysql';
         $this->host = 'localhost';
-        $this->database = 'autenticacion';
+        $this->database = 'cristalshop';
         $this->user = 'root';
         $this->pass = '';
         $this->debug = true;
