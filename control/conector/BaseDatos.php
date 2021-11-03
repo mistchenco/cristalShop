@@ -1,7 +1,7 @@
 <?php
 class BaseDatos extends PDO
 {
-    
+
     private $engine;
     private $host;
     private $database;
@@ -16,7 +16,7 @@ class BaseDatos extends PDO
     {
         $this->engine = 'mysql';
         $this->host = 'localhost';
-        $this->database = 'cristalshop';
+        $this->database = 'autenticacion';
         $this->user = 'root';
         $this->pass = '';
         $this->debug = true;
