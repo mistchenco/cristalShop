@@ -105,7 +105,7 @@ class menu
                 }
             }
         } else {
-            $this->setMensajeOperacion("usuario->listar: " . $base->getError());
+            $this->setMensajeOperacion("menu->listar: " . $base->getError());
         }
         return $resp;
     }
@@ -136,7 +136,7 @@ class menu
                 }
             }
         } else {
-            $this->setMensajeOperacion("usuario->listar: " . $base->getError());
+            $this->setMensajeOperacion("menu->listar: " . $base->getError());
         }
 
         return $arreglo;
@@ -160,10 +160,10 @@ class menu
                 $this->setIdMenu($elid);
                 $resp = true;
             } else {
-                $this->setMensajeOperacion("Usuario->insertar: " . $base->getError());
+                $this->setMensajeOperacion("menu->insertar: " . $base->getError());
             }
         } else {
-            $this->setMensajeOperacion("Usuario->insertar: " . $base->getError());
+            $this->setMensajeOperacion("menu->insertar: " . $base->getError());
         }
 
         return $resp;
