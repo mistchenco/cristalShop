@@ -24,11 +24,7 @@ class compra
     }
 
     //METODOS GETTERS
-    public function getColeccionItems()
-    {
-
-        return $this->coleccionItems;
-    }
+    
     public function getObjUsuario()
     {
         return $this->objUsuario;
@@ -42,6 +38,14 @@ class compra
     public function getIdCompra()
     {
         return $this->idCompra;
+    }
+    public function getColeccionItems()
+    {
+        $idCompra=getIdCompra();
+        $objCompraItem= new compraItem();
+        $coleccionCompraItems=$objCompraItem->listar($idCompra);
+        
+        return $this->coleccionItems;
     }
     //METODOS SETERS
     public function setIdCompra($idCompra)
@@ -82,7 +86,9 @@ class compra
                     $usuario = new usuario();
                     $usuario->setIdUsuario($row["idUsuario"]);
                     $usuario->cargar();
-                    //Preguntar como setear la coleccion de Items
+                    $idCompra=$this->setIdCompra($row['idCompra']);
+                    $coleccionItems=$this->getColeccionItems();
+                    
                     $this->setear(['idCompra'=>$row['idCompra'],'compraFecha'=>$row['compraFecha'],'objUsuario' => $usuario]);
                 }
             }
@@ -156,8 +162,7 @@ class compra
     }
 
 
-    public function modificar()
-    {
+    public function modificar(){
         $base = new BaseDatos();
         $resp = false;
         $idCompra=$this->getIdCompra();

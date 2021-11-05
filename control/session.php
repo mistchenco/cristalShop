@@ -1,7 +1,8 @@
 <?php
-class session
-{
-
+class session{
+    private $objUsuario;
+    private $coleccionRol;
+  
     //CONSTRUCTOR
     public function __construct()
     {
@@ -28,6 +29,8 @@ class session
      */
     public function validar($usNombre, $usPass)
     {
+        $coleccionRol=[];
+        $objUsuario='';
         $exito = false;
         $abmUs = new abmUsuario();
         $listaUsuario = $abmUs->buscar(['usNombre' => $usNombre, 'usPass' => $usPass]);
@@ -37,8 +40,14 @@ class session
                 $_SESSION['idUsuario'] = $listaUsuario[0]->getIdUsuario();
 
                 $exito = true;
+                //invocar funcion que calcule los atributos
+                $coleccionRol=$this->buscarRol();
+                $objUsuario=$this->buscarUsuario();
+                
             }
         }
+        $this->setColeccionRol($coleccionRol);
+        $this->setObjUsuario($objUsuario);
         return $exito;
     }
 
@@ -57,7 +66,7 @@ class session
     /**
      * Devuelve el usuario logeado
      */
-    public function getUsuario(){
+    public function buscarUsuario(){
 
         $usuario = null;
         $abmUs = new abmUsuario();
@@ -70,7 +79,7 @@ class session
     /**
      * Devuelve el rol del usuario logeado
      */
-    public function getRol()
+    public function buscarRol()
     {
         $roles = array();
         $abmUR = new abmUsuarioRol();
@@ -83,8 +92,10 @@ class session
                 $objRol = $abmR->buscar(['idRol' => $UR->getObjRol()->getIdRol()]);
 
                 array_push($roles, $objRol[0]);
+
             }
         }
+        
         return $roles;
     }
 
@@ -98,5 +109,30 @@ class session
             $close = true;
         }
         return $close;
+    }
+
+  
+    public function getColeccionRol()
+    {
+        return $this->coleccionRol;
+    }
+
+   
+    public function setColeccionRol($coleccionRol)
+    {
+        $this->coleccionRol = $coleccionRol;
+
+    }
+
+    
+    public function getObjUsuario()
+    {
+        return $this->objUsuario;
+    }
+
+    
+    public function setObjUsuario($objUsuario)
+    {
+        $this->objUsuario = $objUsuario;
     }
 }
