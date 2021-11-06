@@ -9,9 +9,9 @@
         <!-- Masthead-->
         <header class="masthead">
             <div class="container">
-                <div class="masthead-subheading">Bienvenido a Cristal Shop!</div>
-                <div class="masthead-heading text-uppercase">Un gusto conocerte</div>
-                <a class="btn btn-primary btn-xl text-uppercase" href="#services">VER PRODUCTOS</a>
+                <div class="masthead-subheading">Bienvenido a Piedras, Cristales y Cactus</div>
+                <div class="masthead-heading text-uppercase">Te damos la bienvenida a nuestro Sitio</div>
+                <a class="btn btn-primary btn-xl text-uppercase" href="#services">CONOCE NUESTROS PRODUCTOS</a>
             </div>
         </header>
         <!-- Portfolio Grid-->
