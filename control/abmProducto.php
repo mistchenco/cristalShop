@@ -9,7 +9,8 @@ class abmProducto{
             array_key_exists('productoStock', $param) and 
             array_key_exists('productoPrecio', $param)){
             $obj = new producto();
-            $obj->setear($param['idRol'], $param['rolDescripcion']);
+            $obj->setear($param['idProducto'], $param['productoNombre'] , 
+            $param['productoDetalle'] , $param['productoStock'] , $param['productoPrecio']);
         }
         return $obj;
     }
