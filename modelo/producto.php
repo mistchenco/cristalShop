@@ -16,7 +16,7 @@ class producto{
         $this->productoPrecio = '';
         $this->productoStock = ''; 
         $this->mensajeOperacion = '';
-      
+    
     }
     public function setear($datos){
         $this->setIdProducto($datos['idProducto']);
