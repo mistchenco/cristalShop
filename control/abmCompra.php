@@ -86,8 +86,8 @@ class abmCompra{
                 $where .= ' and idCompra = ' ."'". $param['idCompra']."'";
             if (isset($param['compraFecha']))
                 $where .= ' and compraFecha =' . $param['compraFecha'] . "'";
-            if (isset($param['objUsuario']))
-                $where .= ' and objUsuario =' . $param['objUsuario'] . "'";
+            if (isset($param['idUsuario']))
+                $where .= ' and idUsuario =' . $param['idUsuario'] . "'";
         }
         $arreglo = compra::listar($where);
         return $arreglo;
