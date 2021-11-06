@@ -14,7 +14,7 @@ class compraItem
         $this->objProducto;
         $this->idCompra;
         $this->compraItemCantidad;
-        $this->mensajeOperacion = ''; 
+        $this->mensajeOperacion = '';
     }
     public function setear($datos)
     {
