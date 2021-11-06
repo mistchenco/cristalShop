@@ -5,12 +5,16 @@ class compraItem
     private $objProducto;
     private $idCompra;
     private $compraItemCantidad;
+    private $mensajeOperacion; 
+
+
     public function __construct()
     {
         $this->idCompraItem;
         $this->objProducto;
         $this->idCompra;
         $this->compraItemCantidad;
+        $this->mensajeOperacion = ''; 
     }
     public function setear($datos)
     {
@@ -68,6 +72,13 @@ class compraItem
 
         return $this;
     }
+    public function getMensajeOperacion(){
+        return $this->mensajeOperacion;
+    }
+    public function setMensajeOperacion($mensajeOperacion){
+        $this->mensajeOperacion = $mensajeOperacion;
+    }
+
 
     public function cargar()
     {
@@ -191,4 +202,6 @@ class compraItem
         }
         return $resp;
     }
+
+    
 }
