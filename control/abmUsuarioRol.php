@@ -16,7 +16,7 @@ class abmUsuarioRol {
              $abmRol=new abmRol();
             $objRol=$abmRol->buscar(['idRol'=>$param['idRol']]);
 
-            $objUsuarioRol->setear($objUsuario[0],$objRol[0]);
+            $objUsuarioRol->setear(['objUsuario'=>$objUsuario[0],'objRol'=>$objRol[0]]);
         }
         return $objUsuarioRol;
     }
@@ -45,7 +45,7 @@ class abmUsuarioRol {
     private function seteadosCamposClaves($param){
 
     	$resp = false;
-    	if (isset($param['objUsuario']) && isset($param['objRol']));
+    	if (isset($param['idUsuario']) && isset($param['idRol']));
 
     	$resp = true;
     	return $resp;
@@ -116,7 +116,7 @@ class abmUsuarioRol {
     	if ($param<>NULL){
     		if  (isset($param['idUsuario']))
     			$where.=" and idUsuario='".$param['idUsuario']."'";
-    		if  (isset($param['idrol']))
+    		if  (isset($param['idRol']))
     			$where.=" and idRol ='".$param['idRol']."'";
     	}
         $objUsuarioRol= new usuarioRol();

@@ -1,16 +1,16 @@
 <?php
 
-class abmProducto{
+class abmCompra{
     public function cargarObjeto($param){
         $obj = null;
-        if (array_key_exists('idProducto', $param) and 
-            array_key_exists('productoNombre', $param) and 
-            array_key_exists('productoDetalle', $param) and 
-            array_key_exists('productoStock', $param) and 
-            array_key_exists('productoPrecio', $param)){
-            $obj = new producto();
-            $obj->setear($param['idProducto'], $param['productoNombre'] , 
-            $param['productoDetalle'] , $param['productoStock'] , $param['productoPrecio']);
+        if (array_key_exists('idCompra', $param) and 
+            array_key_exists('compraFecha', $param) and 
+            array_key_exists('objUsuario', $param)){
+            $objUsuario = new usuario();
+            $objUsuario->setIdUsuario($param['idUsuario']);
+            $objUsuario->cargar();
+            $obj = new compra();
+            $obj->setear($param['idCompra'], $param['compraFecha'] , $objUsuario);
         }
         return $obj;
     }
@@ -82,18 +82,16 @@ class abmProducto{
     public function buscar($param){
         $where = " true ";
         if ($param <> NULL) {
-            if (isset($param['idProducto']))
-                $where .= ' and idProducto = ' ."'". $param['idProducto']."'";
-            if (isset($param['productoNombre']))
-                $where .= ' and productoNombre =' . $param['productoNombre'] . "'";
-            if (isset($param['productoDetalle']))
-                $where .= ' and productoDetalle =' . $param['productoDetalle'] . "'";
-            if (isset($param['productoStock']))
-                $where .= ' and productoStock =' . $param['productoStock'] . "'";
-            if (isset($param['productoPrecio']))
-                $where .= ' and productoPrecio =' . $param['productoPrecio'] . "'";
+            if (isset($param['idCompra']))
+                $where .= ' and idCompra = ' ."'". $param['idCompra']."'";
+            if (isset($param['compraFecha']))
+                $where .= ' and compraFecha =' . $param['compraFecha'] . "'";
+            if (isset($param['idUsuario']))
+                $where .= ' and idUsuario =' . $param['idUsuario'] . "'";
         }
-        $arreglo = producto::listar($where);
+        $arreglo = compra::listar($where);
         return $arreglo;
     }
 }
+
+?>
