@@ -1,6 +1,4 @@
-<?php
-include_once '../../configuracion.php';
-?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -39,3 +37,11 @@ include_once '../../configuracion.php';
                 </div>
             </div>
 </nav>
+<body id="page-top">
+<header class="masthead">
+            <div class="container">
+                <div class="masthead-subheading">Bienvenido a Piedras, Cristales y Cactus</div>
+               
+                <a class="btn btn-primary btn-xl text-uppercase" href="#services">CONOCE NUESTROS PRODUCTOS</a>
+            </div>
+</header>

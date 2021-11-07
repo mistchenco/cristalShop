@@ -1,18 +1,13 @@
 <?php
-    include_once '../estructura/cabecera.php'; 
+
+    include_once '../vista/estructura/cabecera.php'; 
 ?>
 
-    <body id="page-top">
+   
         <!-- Navigation-->
         
         <!-- Masthead-->
-        <header class="masthead">
-            <div class="container">
-                <div class="masthead-subheading">Bienvenido a Piedras, Cristales y Cactus</div>
-               
-                <a class="btn btn-primary btn-xl text-uppercase" href="#services">CONOCE NUESTROS PRODUCTOS</a>
-            </div>
-        </header>
+      
         <!-- Portfolio Grid-->
         <section class="page-section bg-light" id="proximosEventos">
             <div class="container">
@@ -322,5 +317,5 @@
        
         <!-- Footer-->
         <?php
-    include_once '../estructura/footer.php'; 
+    include_once '../vista/estructura/footer.php'; 
 ?>
