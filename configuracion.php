@@ -22,8 +22,4 @@ $PRINCIPAL = "Location:http://".$_SERVER['HTTP_HOST']."/$PROYECTO/principal.php"
 
 $GLOBALS['ROOT']=$ROOT;
 
-
-
-
-
 ?>
