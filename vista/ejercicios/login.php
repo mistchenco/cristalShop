@@ -12,10 +12,8 @@ if (isset($_GET['Message'])) {
 ?>
 
 
-<div class="container ">
-    <h3>Implementar en la capa de la vista: un script Vista/login.php que invoque al script accion/verificarLogin.php el cual redirecciona al
-        script Vista/paginaSegura.php si los datos ingresados se corresponden con un usuario/pass
-        registrados. Caso contrario se redirecciona nuevamente al script Vista/login.php</h3>
+<div class="container " style="background-color:#000";>
+    
     <div class="p-3 mt-3 m-auto bg-secondary row" style="width: 390px; height:390px; overflow:hidden">
         <div class="card m-auto row  justify-content-center align-items-center shadow-lg rounded position-relative" style="width: 360px; height:360px;">
 

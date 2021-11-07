@@ -1,4 +1,6 @@
-
+<?php
+include_once '../../configuracion.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,7 +16,7 @@
         <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
         <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700" rel="stylesheet" type="text/css" />
         <!-- Core theme CSS (includes Bootstrap)-->
-        <link href="css/styles.css" rel="stylesheet" />
+        <link href="../css/styles.css" rel="stylesheet" />
 </head>
 
 <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
@@ -31,17 +33,10 @@
                         <li class="nav-item"><a class="nav-link" href="#productos">Productos</a></li>
                         <li class="nav-item"><a class="nav-link" href="#quienesSomos">¿Quienes Somos?</a></li>
                         <li class="nav-item"><a class="nav-link" href="#contact">Contacto</a></li>
-                        <li> <a class="nav-item btn btn-info"> <i class="fas fa-user-plus"></i> Crear Cuenta</a></li>
-                        <li> <a href="../vista/ejercicios/login.php" class="nav-item btn btn-success" > <i class="fas fa-sign-in-alt"></i>  Log In</a></li>
+                        <li  class="nav-item btn btn-info"> <i class="fas fa-user-plus"></i> Crear Cuenta</a></li>
+                        <a href="../ejercicios/login.php" class="nav-item btn btn-success">  <i class="fas fa-sign-in-alt"></i>Log In </a>
                     </ul>
                 </div>
             </div>
 </nav>
 <body id="page-top">
-<header class="masthead">
-            <div class="container">
-                <div class="masthead-subheading">Bienvenido a Piedras, Cristales y Cactus</div>
-               
-                <a class="btn btn-primary btn-xl text-uppercase" href="#services">CONOCE NUESTROS PRODUCTOS</a>
-            </div>
-</header>

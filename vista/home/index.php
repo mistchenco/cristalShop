@@ -1,8 +1,14 @@
 <?php
 
-    include_once '../vista/estructura/cabecera.php'; 
+    include_once '../estructura/cabecera.php'; 
 ?>
-
+<header class="masthead">
+            <div class="container">
+                <div class="masthead-subheading">Bienvenido a Piedras, Cristales y Cactus</div>
+               
+                <a class="btn btn-primary btn-xl text-uppercase" href="#services">CONOCE NUESTROS PRODUCTOS</a>
+            </div>
+</header>
    
         <!-- Navigation-->
         
@@ -25,7 +31,7 @@
                                 <div class="portfolio-hover">
                                     <div class="portfolio-hover-content"><i class="fas fa-plus-square"></i></div>
                                 </div>
-                                <img class="img-fluid" src="assets/img/proximosEventos/1.jpeg" alt="..." />
+                                <img class="img-fluid" src="../assets/img/proximosEventos/1.jpeg" alt="..." />
                             </a>
                             <div class="portfolio-caption">
                                 <div class="portfolio-caption-heading">Talleres Municipales</div>
@@ -40,7 +46,7 @@
                                 <div class="portfolio-hover">
                                     <div class="portfolio-hover-content"><i class="fas fa-plus-square"></i></i></div>
                                 </div>
-                                <img class="img-fluid" src="assets/img/proximosEventos/2.jpeg" alt="..." />
+                                <img class="img-fluid" src="../assets/img/proximosEventos/2.jpeg" alt="..." />
                             </a>
                             <div class="portfolio-caption">
                                 <div class="portfolio-caption-heading">Feria Municipal</div>
@@ -55,7 +61,7 @@
                                 <div class="portfolio-hover">
                                     <div class="portfolio-hover-content"><i class="fas fa-plus-square"></i></i></div>
                                 </div>
-                                <img class="img-fluid" src="assets/img/proximosEventos/3.jpeg" alt="..." />
+                                <img class="img-fluid" src="../assets/img/proximosEventos/3.jpeg" alt="..." />
                             </a>
                             <div class="portfolio-caption">
                                 <div class="portfolio-caption-heading">Neuquen Emprende</div>
@@ -74,7 +80,7 @@
                 </div>
                 <ul class="timeline">
                     <li>
-                        <div class="timeline-image"><img class="rounded-circle img-fluid" src="assets/img/about/1.jpg" alt="..." /></div>
+                        <div class="timeline-image"><img class="rounded-circle img-fluid" src="../assets/img/about/1.jpg" alt="..." /></div>
                         <div class="timeline-panel">
                             
                             <div class="timeline-body"><p class="text-muted">
@@ -83,7 +89,7 @@
                         </div>
                     </li>
                     <li class="timeline-inverted">
-                        <div class="timeline-image"><img class="rounded-circle img-fluid" src="assets/img/about/2.jpg" alt="..." /></div>
+                        <div class="timeline-image"><img class="rounded-circle img-fluid" src="../assets/img/about/2.jpg" alt="..." /></div>
                         <div class="timeline-panel">
                             <div class="timeline-body"><p class="text-muted">
                             Comenzamos hace nueve años primero al conocernos y contarnos sobre la pasión que a cada uno le generaba el uso de los cristales. Nuestras charlas se profundizaban en diferentes dimensiones de aplicación: energética, sanación, belleza, propiedades e incluso su uso doméstico e industrial.
@@ -91,7 +97,7 @@
                         </div>
                     </li>
                     <li>
-                        <div class="timeline-image"><img class="rounded-circle img-fluid" src="assets/img/about/3.jpg" alt="..." /></div>
+                        <div class="timeline-image"><img class="rounded-circle img-fluid" src="../assets/img/about/3.jpg" alt="..." /></div>
                         <div class="timeline-panel">
                             <div class="timeline-body"><p class="text-muted">
                             Si bien nos agradan todos aquellos que nos ofrece la naturaleza inicialmente nos centramos en la búsqueda de la obsidiana, luego de un año de transitar diferentes caminos dimos con ella y nos atrapó:
@@ -99,7 +105,7 @@
                         </div>
                     </li>
                     <li class="timeline-inverted">
-                        <div class="timeline-image"><img class="rounded-circle img-fluid" src="assets/img/about/4.jpg" alt="..." /></div>
+                        <div class="timeline-image"><img class="rounded-circle img-fluid" src="../assets/img/about/4.jpg" alt="..." /></div>
                         <div class="timeline-panel">
                             <div class="timeline-body"><p class="text-muted">
                             Establecimos una conexión particular con su belleza, simpleza, misterio, historia y poderosa energía, ella nos guio en el camino, nos brindó su abundancia y conocimiento a través de sus usos milenarios, ancestrales, medicinales y terapéuticos usados por los diferentes pueblos originarios de Latinoamérica que nos hizo conocer e internalizar para poder hablar con propiedad de ella
@@ -317,5 +323,5 @@
        
         <!-- Footer-->
         <?php
-    include_once '../vista/estructura/footer.php'; 
+    include_once '../estructura/footer.php'; 
 ?>
