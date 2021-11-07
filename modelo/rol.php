@@ -62,7 +62,7 @@ class rol{
         return $resp;
     }
 
-    public function listar($parametro = "")
+    public static function listar($parametro = "")
     {
         $arreglo = array();
         $base = new BaseDatos();
@@ -70,10 +70,10 @@ class rol{
         if ($parametro != "") {
             $sql .= 'WHERE ' . $parametro;
         }
+
         $res = $base->Ejecutar($sql);
         if ($res > -1) {
             if ($res > 0) {
-
                 while ($row = $base->Registro()) {
                     $obj = new rol();
                     $obj->setear(['idRol'=>$row['idRol'], 'rolDescripcion'=>$row['rolDescripcion']]);
@@ -94,7 +94,7 @@ class rol{
         $base = new BaseDatos();
         $idRol=$this->getIdRol();
         $rolDescripcion=$this->getRolDescripcion();
-        $sql = "INSERT INTO rol(idRol, rolDescripcion) VALUES('$idRol','$rolDescripcion')";
+        $sql = "INSERT INTO rol(rolDescripcion) VALUES('$rolDescripcion')";
         if ($base->Iniciar()) {
             if ($idRol = $base->Ejecutar($sql)) {
                 $this->setIdRol($idRol);

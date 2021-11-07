@@ -20,7 +20,7 @@ if (isset($_GET['Message'])) {
                     <h3 class="">Creacion de Usuario</h3>
                 </div>
                 <div class="row card">
-                    <form action='../accion/accionCrearUsuario.php' method="post" id="tp5ejercicio2" data-toggle="validator">
+                    <form action='../accion/accionCrearUsuario.php' method="post" id="crearUsuarioFormulario" noovalidate>
                         <!-- NOMBRE DEL USUARIO -->
                         <div class="row mb-3 form-group">
                             <div class="input-group mb-2 m-auto">
@@ -60,11 +60,11 @@ if (isset($_GET['Message'])) {
                                 <div class="invalid-feedback">Este campo no puede estar vacio!</div>
                             </div>
                             <!-- Validacion -->
-                            <div class="invalid-feedback">
+                            <div id="invalido">
                             </div>
                         </div>
                         <div class="m-auto">
-                            <input type="submit" class="btn btn-primary col-12" value="Crear Cuenta" style="background-color:#00ce81; border:none" />
+                            <input type="submit" class="btn btn-primary col-12" id="submitButton" value="Crear Cuenta" style="background-color:#00ce81; border:none" />
                         </div>
                     </form>
                 </div>
@@ -74,7 +74,7 @@ if (isset($_GET['Message'])) {
 
 </div>
 
-
+<script src="../js/validacionCrearUsuario.js" ></script>
 
 <?php
 include_once '../estructura/footer.php';

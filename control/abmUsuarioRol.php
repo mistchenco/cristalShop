@@ -11,10 +11,10 @@ class abmUsuarioRol {
         //print_r($param);
 	 	if( array_key_exists('idRol',$param) and array_key_exists('idUsuario',$param)){
 	 		$objUsuarioRol = new usuarioRol();
-             $abmUsuario=new abmUsuario();
-             $objUsuario=$abmUsuario->buscar(['idUsuario'=>$param['idUsuario']]);
+             $abmUsuario = new abmUsuario();
+             $objUsuario = $abmUsuario->buscar(['idUsuario'=>$param['idUsuario']]);
              $abmRol=new abmRol();
-            $objRol=$abmRol->buscar(['idRol'=>$param['idRol']]);
+            $objRol = $abmRol->buscar(['idRol'=>$param['idRol']]);
 
             $objUsuarioRol->setear(['objUsuario'=>$objUsuario[0],'objRol'=>$objRol[0]]);
         }

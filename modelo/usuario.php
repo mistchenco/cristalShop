@@ -132,23 +132,17 @@ class usuario
 
         $arreglo = array();
         $base = new BaseDatos();
-
-
         $sql = "SELECT * FROM usuario ";
         if ($parametro != "") {
             $sql = $sql . 'WHERE ' . $parametro;
         }
-
         $res = $base->Ejecutar($sql);
-
         if ($res > -1) {
             if ($res >= 0) {
                 //Aca no llega, no tengo ni idea
                 while ($row = $base->Registro()) {
                     $obj = new usuario();
                     $obj->setear(['idUsuario' => $row['idUsuario'], 'usNombre' => $row['usNombre'], 'usPass' => $row['usPass'], 'usMail' => $row['usMail'], 'usDesabilitado' => $row['usDesabilitado']]);
-
-
                     array_push($arreglo, $obj);
                 }
             }
@@ -162,15 +156,13 @@ class usuario
     {
         $base = new BaseDatos();
         $resp = false;
-
-        $idUsuario = $this->getIdUsuario();
         $usNombre = $this->getUsNombre();
         $usPass = $this->getUsPass();
         $usMail = $this->getUsMail();
         $usDesabilitado = $this->getUsDesabilitado();
         //Preguntar si ponemos el id del usuario
-        $sql = "INSERT INTO usuario(idUsuario,usNombre, usPass, usMail, usDesabilitado)
-    VALUES ('$idUsuario','$usNombre', '$usPass', '$usMail', '$usDesabilitado')";
+        $sql = "INSERT INTO usuario(usNombre, usPass, usMail, usDesabilitado)
+                VALUES ('$usNombre', '$usPass', '$usMail', '$usDesabilitado')";
 
         if ($base->Iniciar()) {
             if ($elid = $base->Ejecutar($sql)) {

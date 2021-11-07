@@ -16,9 +16,7 @@ class session{
     {
         $exito = false;
         $usPass = md5($usPass);
-
         if ($this->validar($usNombre, $usPass)) {
-
             $exito = true;
         }
         return $exito;
@@ -34,15 +32,16 @@ class session{
         $exito = false;
         $abmUs = new abmUsuario();
         $listaUsuario = $abmUs->buscar(['usNombre' => $usNombre, 'usPass' => $usPass]);
-
+        print_r($listaUsuario);
         if (count($listaUsuario) > 0) {
             if ($listaUsuario[0]->getUsDesabilitado() == NULL || $listaUsuario[0]->getUsDesabilitado() == "0000-00-00 00:00:00") {
                 $_SESSION['idUsuario'] = $listaUsuario[0]->getIdUsuario();
-
                 $exito = true;
+                print_r($listaUsuario);
+                print_r($_SESSION);
                 //invocar funcion que calcule los atributos
-                $coleccionRol=$this->buscarRol();
-                $objUsuario=$this->buscarUsuario();
+                $coleccionRol = $this->buscarRol();
+                $objUsuario = $this->buscarUsuario();
                 
             }
         }
@@ -84,15 +83,15 @@ class session{
         $roles = array();
         $abmUR = new abmUsuarioRol();
         $abmR = new abmRol();
-        $uss = $this->getUsuario();
+        $uss = $this->getObjUsuario();
         $list = $abmUR->buscar(['idUsuario' => $uss->getIdUsuario()]);
-
+        print_r($list);
+        echo '\n';
+        echo 'buscar Rol session';
         if (count($list) > 0) {
             foreach ($list as $UR) {
                 $objRol = $abmR->buscar(['idRol' => $UR->getObjRol()->getIdRol()]);
-
                 array_push($roles, $objRol[0]);
-
             }
         }
         

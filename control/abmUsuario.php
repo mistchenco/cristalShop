@@ -8,10 +8,10 @@ class abmUsuario
 
         $obj = null;
 
-        if (array_key_exists('idUsuario', $param) and array_key_exists('usNombre', $param) and array_key_exists('usPass', $param) and array_key_exists('usMail', $param) and array_key_exists('usDesabilitado', $param)) {
+        if (array_key_exists('usNombre', $param) and array_key_exists('usPass', $param) and array_key_exists('usMail', $param) and array_key_exists('usDesabilitado', $param)) {
 
             $obj = new usuario();
-            $obj->setear(["idUsuario" => $param["idUsuario"], "usNombre" => $param["usNombre"], "usPass" => $param["usPass"], "usMail" => $param["usMail"], "usDesabilitado" => $param["usDesabilitado"]]);
+            $obj->setear(["usNombre" => $param["usNombre"], "usPass" => $param["usPass"], "usMail" => $param["usMail"], "usDesabilitado" => $param["usDesabilitado"]]);
         }
         return $obj;
     }
