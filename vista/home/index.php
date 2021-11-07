@@ -173,16 +173,16 @@
                    
                     <div class="d-none" id="submitSuccessMessage">
                         <div class="text-center text-white mb-3">
-                            <div class="fw-bolder">Form submission successful!</div>
+                            <div class="fw-bolder">su consulta ha sido enviada!</div>
                             To activate this form, sign up at
                             <br />
                             <a href="https://startbootstrap.com/solution/contact-forms">https://startbootstrap.com/solution/contact-forms</a>
                         </div>
                     </div>
                     
-                    <div class="d-none" id="submitErrorMessage"><div class="text-center text-danger mb-3">Error sending message!</div></div>
+                    <div class="d-none" id="submitErrorMessage"><div class="text-center text-danger mb-3">Error al enviar mensaje!</div></div>
                   
-                    <div class="text-center"><button class="btn btn-primary btn-xl text-uppercase disabled" id="submitButton" type="submit">Send Message</button></div>
+                    <div class="text-center"><button class="btn btn-primary btn-xl text-uppercase disabled" id="submitButton" type="submit">Enviar Mensaje</button></div>
                 </form>
             </div>
         </section>

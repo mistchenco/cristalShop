@@ -3,7 +3,7 @@
 class menuRol
 {
 
-    //Atributos (Politica un usuario puede tener un solo rol, por eso se implementa el objRol y no coleccion de Roles)
+    //Atributos 
     private $objMenu;
     private $objRol;
     private $mensajeOperacion;
