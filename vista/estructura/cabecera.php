@@ -19,7 +19,7 @@ include_once '../../configuracion.php';
         <link href="../css/styles.css" rel="stylesheet" />
 </head>
 
-<nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top bg-dark" id="mainNav">
             <div class="container">
                 <a class="navbar-brand" href="#page-top"><img src="assets/img/logos/logo.png" alt="..." /></a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
@@ -33,7 +33,7 @@ include_once '../../configuracion.php';
                         <li class="nav-item"><a class="nav-link" href="#productos">Productos</a></li>
                         <li class="nav-item"><a class="nav-link" href="#quienesSomos">¿Quienes Somos?</a></li>
                         <li class="nav-item"><a class="nav-link" href="#contact">Contacto</a></li>
-                        <li  class="nav-item btn btn-info"> <i class="fas fa-user-plus"></i> Crear Cuenta</a></li>
+                        <a href="../ejercicios/crearUsuario.php" class="nav-item btn btn-info" ><i class="fas fa-user-plus"></i> Crear Cuenta</a>
                         <a href="../ejercicios/login.php" class="nav-item btn btn-success">  <i class="fas fa-sign-in-alt"></i>Log In </a>
                     </ul>
                 </div>

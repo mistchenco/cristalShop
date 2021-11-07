@@ -1,12 +1,12 @@
 <?php
 include_once '../../configuracion.php';
 $sesion= new session();
-$objUsuario=$sesion->getUsuario();
+$objUsuario = $sesion->getUsuario();
 
 $datos=data_submitted();
 if (!$sesion->activa()) {
     echo "no hay sesion activa";
-     header('Location: login.php');
+    header('Location: login.php');
 }else{
     
 include_once '../estructura/cabecera.php';

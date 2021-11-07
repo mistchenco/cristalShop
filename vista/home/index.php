@@ -190,7 +190,7 @@
          <div class="portfolio-modal modal fade" id="portfolioModal3" tabindex="-1" role="dialog" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
-                    <div class="close-modal" data-bs-dismiss="modal"><img src="assets/img/close-icon.svg" alt="Close modal" /></div>
+                    <div class="close-modal" data-bs-dismiss="modal"><img src="../assets/img/close-icon.svg" alt="Close modal" /></div>
                     <div class="container">
                         <div class="row justify-content-center">
                             <div class="col-lg-8">
@@ -198,7 +198,7 @@
                                     <!-- Project details-->
                                     <h2 class="text-uppercase">Feria Neuquen Emprende</h2>
                                     <p class="item-intro text-muted">Veni y disfruta de la feria en Neuquen</p>
-                                    <img class="img-fluid d-block mx-auto" src="assets/img/proximosEventos/3.jpeg" alt="..." />
+                                    <img class="img-fluid d-block mx-auto" src="../assets/img/proximosEventos/3.jpeg" alt="..." />
                                     <p>
                                     "Neuquén Emprende” se trata de una iniciativa impulsada por la Legislatura de Neuquén en conjunto con los municipios de Neuquén capital, Zapala y San Martín de los Andes, cuenta con el apoyo del BPN, y tiene como objetivo seguir impulsando el desarrollo de los emprendedores de la provincia. Estas capacitaciones se suman a los diversos espacios de comercialización de productos, actividades y encuentros que se vienen llevando adelante, lo que permite acercar nuevas instancias de formación gratuitas y acompañamiento de calidad. 
                                     </p>
@@ -228,7 +228,7 @@
         <div class="portfolio-modal modal fade" id="portfolioModal1" tabindex="-1" role="dialog" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
-                    <div class="close-modal" data-bs-dismiss="modal"><img src="assets/img/close-icon.svg" alt="Close modal" /></div>
+                    <div class="close-modal" data-bs-dismiss="modal"><img src="../assets/img/close-icon.svg" alt="Close modal" /></div>
                     <div class="container">
                         <div class="row justify-content-center">
                             <div class="col-lg-8">
@@ -236,7 +236,7 @@
                                     <!-- Project details-->
                                     <h2 class="text-uppercase">Talleres Culturales</h2>
                                     <p class="item-intro text-muted">Segunda Etapa</p>
-                                    <img class="img-fluid d-block mx-auto" src="assets/img/proximosEventos/1.jpeg" alt="..." />
+                                    <img class="img-fluid d-block mx-auto" src="../assets/img/proximosEventos/1.jpeg" alt="..." />
                                     <p>Mediante los talleres culturales barriales la Municipalidad de Neuquén contribuye a  descentralizar la propuesta cultural de la ciudad, garantizar el desarrollo artístico, favorecer la equidad territorial y  la ampliación del acceso de bienes y servicios artísticos y culturales a la mayor cantidad de habitantes de la ciudad, respetando y haciendo valer el derecho que toda persona tiene de formar parte libremente de la vida cultural de su comunidad.
                                         Para más información: Teodoro Planas 155/  tel 4491216 – Mail: talleresculturales@muninqn.gov.ar</p>
                                     <ul class="list-inline">
@@ -264,7 +264,7 @@
         <div class="portfolio-modal modal fade" id="portfolioModal2" tabindex="-1" role="dialog" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
-                    <div class="close-modal" data-bs-dismiss="modal"><img src="assets/img/close-icon.svg" alt="Close modal" /></div>
+                    <div class="close-modal" data-bs-dismiss="modal"><img src="../assets/img/close-icon.svg" alt="Close modal" /></div>
                     <div class="container">
                         <div class="row justify-content-center">
                             <div class="col-lg-8">
@@ -272,7 +272,7 @@
                                     <!-- Project details-->
                                     <h2 class="text-uppercase">Feria Municipal</h2>
                                     <p class="item-intro text-muted">Veni al paseo de diseño y difruta de un dia unico.</p>
-                                    <img class="img-fluid d-block mx-auto" src="assets/img/proximosEventos/2.jpeg" alt="..." />
+                                    <img class="img-fluid d-block mx-auto" src="../assets/img/proximosEventos/2.jpeg" alt="..." />
                                     <p>
                                     Este sábado de 9 a 14hs podés visitar tu feria de proximidad respetando todos los protocolos sanitarios⁣
                                     • Parque Central⁣
