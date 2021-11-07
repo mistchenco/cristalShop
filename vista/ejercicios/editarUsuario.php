@@ -1,17 +1,15 @@
 <?php
-include_once '../estructura/cabecera.php';
+include_once '../../configuracion.php';
 $sesion = new session();
-$objUsuario = $sesion->getUsuario();
-// $objRol=$sesion->getRol();
-// $descripcion=$objRol->getRolDescripcion();
-// print_r($descripcion);
+$objUsuario = $sesion->getObjUsuario();
+
 $datos = data_submitted();
-$arrayRoles=array();
+$arrayRoles = array();
 
 if ($sesion->activa()) {
-
-   echo "<h4>Usted esta Logueado como: {$objUsuario->getUsNombre()}</h4>";
+   include_once '../estructura/cabeceraSegura.php';
 } else {
+
 }
 
 $descripcion = "";
@@ -32,7 +30,7 @@ if (count($listaRoles) > 0) {
 
 
 ?>
-<div class="container">
+<div class="container mt-5">
 
    <div class="card card-info">
       <form class="needs-validation" novalidate id="editarUsuario" name="editarUsuario" action="../accion/accionEditarUsuario.php" method="post">

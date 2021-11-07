@@ -188,10 +188,9 @@ class usuario
         $usPass = $this->getUsPass();
         $usMail = $this->getUsMail();
         $usDesabilitado = $this->getUsDesabilitado();
-
-        $sql = "UPDATE usuario SET usNombre = '$usNombre', usPass = '$usPass', usMail = '$usMail', usDesabilitado = '$usDesabilitado' WHERE idUsuario = '$idUsuario'";
-
-        
+        $sql = "UPDATE usuario 
+                SET usNombre = '$usNombre', usPass = '$usPass', usMail = '$usMail', usDesabilitado = '$usDesabilitado' 
+                WHERE idUsuario = '$idUsuario'";
         if ($base->Iniciar()) {
             if ($base->Ejecutar($sql)) {
                 $resp =  true;

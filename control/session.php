@@ -37,16 +37,15 @@ class session{
             if ($listaUsuario[0]->getUsDesabilitado() == NULL || $listaUsuario[0]->getUsDesabilitado() == "0000-00-00 00:00:00") {
                 $_SESSION['idUsuario'] = $listaUsuario[0]->getIdUsuario();
                 $exito = true;
-                print_r($listaUsuario);
-                print_r($_SESSION);
                 //invocar funcion que calcule los atributos
-                $coleccionRol = $this->buscarRol();
-                $objUsuario = $this->buscarUsuario();
-                
+                // $objUsuario = $this->buscarUsuario();
+                // $this->setObjUsuario($objUsuario);
+                // $coleccionRol = $this->buscarRol();
+                // $this->setColeccionRol($coleccionRol);
             }
         }
-        $this->setColeccionRol($coleccionRol);
-        $this->setObjUsuario($objUsuario);
+        
+        
         return $exito;
     }
 
@@ -65,7 +64,7 @@ class session{
     /**
      * Devuelve el usuario logeado
      */
-    public function buscarUsuario(){
+    public function getObjUsuario(){
 
         $usuario = null;
         $abmUs = new abmUsuario();
@@ -78,16 +77,13 @@ class session{
     /**
      * Devuelve el rol del usuario logeado
      */
-    public function buscarRol()
+    public function getColeccionRol()
     {
         $roles = array();
         $abmUR = new abmUsuarioRol();
         $abmR = new abmRol();
         $uss = $this->getObjUsuario();
         $list = $abmUR->buscar(['idUsuario' => $uss->getIdUsuario()]);
-        print_r($list);
-        echo '\n';
-        echo 'buscar Rol session';
         if (count($list) > 0) {
             foreach ($list as $UR) {
                 $objRol = $abmR->buscar(['idRol' => $UR->getObjRol()->getIdRol()]);
@@ -110,23 +106,11 @@ class session{
         return $close;
     }
 
-  
-    public function getColeccionRol()
-    {
-        return $this->coleccionRol;
-    }
 
-   
     public function setColeccionRol($coleccionRol)
     {
         $this->coleccionRol = $coleccionRol;
 
-    }
-
-    
-    public function getObjUsuario()
-    {
-        return $this->objUsuario;
     }
 
     

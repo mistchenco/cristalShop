@@ -41,8 +41,8 @@ if($modificoUsuario || isset($datos['roles'])){
 if($modificoUsuario || $respRol){
     
     // $mail=$enviarMail->newEmail("","",$datos['usMail'],$datos['usNombre'],"MODIFICACION USUARIO","Sus Datos Fueron modificados correctamente");
-    // $mensaje="El usuario se modifico con exito, Revise su casilla".$mail;
-header("Location: ../ejercicios/listarUsuarios.php?Message=" . urlencode($mensaje));
+    $mensaje = "El usuario se modifico con exito, Revise su casilla";
+    header("Location: ../ejercicios/listarUsuarios.php?Message=" . urlencode($mensaje));
 }else{
     echo "<h1>ERROR de modificacion,Debe cambiar al menos un valor y no debe tener campos vacios</h1>";
 }

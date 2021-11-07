@@ -3,29 +3,26 @@ include_once '../../configuracion.php';
 $sesion = new session();
 
 $datos = data_submitted();
-$rolSesion = $sesion->getRol();
-$objUsuario=$sesion->getUsuario();
+$rolSesion = $sesion->getColeccionRol();
+$objUsuario=$sesion->getObjUsuario();
 
 if (!$sesion->activa()) {
-  header('Location: index.php');
+    header('Location: index.php');
 } else {
-  include_once '../estructura/cabecera.php';
+    include_once '../estructura/cabeceraSegura.php';
 }
 
 echo "<h4>Usted esta Logueado como: {$objUsuario->getUsNombre()}</h4>";
 
-include_once "../estructura/cabecera.php";
+// include_once "../estructura/cabecera.php";
 $abmUsuario = new abmUsuario();
 $abmRol = new abmUsuarioRol();
 $listaUsuario = $abmUsuario->buscar(null);
 
 ?>
 
-<div class="container mt-3">
-  <h4>Implementar en la capa de la vista:
-    un script Vista/listarUsuario.php que liste los usuario registrados y permita actualizar sus datos o
-    realizar un borrado lógico. Las acciones que se van a poder invocar son:
-    accion/actualizarLogin.php y accion/eliminarLogin.php</h4>
+<div class="container mt-5">
+  <h1>Panel de administracion de usuarios</h1>
   <table class="table table-bordered">
     <thead>
       <tr>

@@ -1,10 +1,10 @@
 <?php
 include_once '../../configuracion.php';
+include_once '../estructura/cabecera.php';
 $sesion = new session();
 if ($sesion->activa()) {
     header('Location: paginaSegura.php');
-} else {
-    include_once '../estructura/cabecera.php';
+    exit();
 }
 if (isset($_GET['Message'])) {
     print '<script type="text/javascript">alert("' . $_GET['Message'] . '");</script>';

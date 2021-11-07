@@ -1,6 +1,13 @@
 <?php
-
-    include_once '../estructura/cabecera.php'; 
+    include_once '../../configuracion.php';
+    $sesion = new session;
+    $objUsuario = $sesion->getObjUsuario();
+    if($sesion->activa()){
+        include_once '../estructura/cabeceraSegura.php'; 
+        
+    }else{
+        include_once '../estructura/cabecera.php'; 
+    }
 ?>
 <header class="masthead">
             <div class="container">
