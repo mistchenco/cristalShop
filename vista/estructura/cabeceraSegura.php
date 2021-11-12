@@ -4,6 +4,8 @@ $sesion = new session();
 include_once '../../configuracion.php';
 if (!$sesion->activa()) {
     header('location:../ejercicios/login.php');
+}else{
+    $objUsuario = $sesion->getObjUsuario();
 }
 
 ?>
@@ -42,11 +44,11 @@ if (!$sesion->activa()) {
                     </a>
                     <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
                         <li><a class="dropdown-item" href="#proximosEventos">Proximos Eventos</a></li>
-
                         <li><a class="dropdown-item" href="#quienesSomos">¿Quienes Somos?</a></li>
                         <li><a class="dropdown-item" href="#contact">Contacto</a></li>
                     </ul>
                 </li>
+                <li class="nav-item"><a class="nav-link" href="../ejercicios/crearProducto.php">Crear Productos</a></li>
                 <li class="nav-item"><a class="nav-link" href="#productos">Productos</a></li>
                 <li class="nav-item"><a class="nav-link" href="../ejercicios/listarUsuarios.php">Usuarios</a></li>
             </ul>

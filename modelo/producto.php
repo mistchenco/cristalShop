@@ -95,6 +95,7 @@ class producto{
         if ($parametro != "") {
             $sql .= 'WHERE ' . $parametro;
         }
+        echo  "ESTAMOS EN PRODUCTO/MODELO" . $sql; 
         $res = $base->Ejecutar($sql);
         if ($res > -1) {
             if ($res > 0) {
@@ -119,6 +120,7 @@ class producto{
         $productoNombre = $this->getProductoNombre();
         $productoPrecio = $this->getProductoPrecio();
         $productoStock = $this->getProductoStock();
+
         $sql = "INSERT INTO producto(productoNombre, productoDetalle , productoStock , productoPrecio) 
                 VALUES('$productoNombre','$productoDetalle' , '$productoStock' , $productoPrecio)";
         if ($base->Iniciar()) {

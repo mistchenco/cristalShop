@@ -3,14 +3,23 @@
 class abmProducto{
     public function cargarObjeto($param){
         $obj = null;
+        $param = ['idProducto' => '', 
+        'productoNombre' => $param['productoNombre'] ,
+        'productoDetalle' => $param['productoDetalle'], 
+        'productoStock' => $param['productoStock'], 
+        'productoPrecio' => $param['productoPrecio']];
+
         if (array_key_exists('idProducto', $param) and 
             array_key_exists('productoNombre', $param) and 
             array_key_exists('productoDetalle', $param) and 
             array_key_exists('productoStock', $param) and 
             array_key_exists('productoPrecio', $param)){
             $obj = new producto();
-            $obj->setear($param['idProducto'], $param['productoNombre'] , 
-            $param['productoDetalle'] , $param['productoStock'] , $param['productoPrecio']);
+            $obj->setear(['idProducto' => $param['idProducto'], 
+                        'productoNombre' => $param['productoNombre'] ,
+                        'productoDetalle' => $param['productoDetalle'] , 
+                        'productoStock' => $param['productoStock'] , 
+                        'productoPrecio' => $param['productoPrecio']]);
         }
         return $obj;
     }
@@ -56,7 +65,11 @@ class abmProducto{
         return $resp;
     }
 
+    public function altaImagen($objProducto , $param){
+        $directorio = md5($objProducto->getIdProducto());
 
+        mkdir( $GLOBALS['IMAGENES'] . $directorio , 0777);
+    }
 
     /**
      * permite modificar un objeto
@@ -85,13 +98,13 @@ class abmProducto{
             if (isset($param['idProducto']))
                 $where .= ' and idProducto = ' ."'". $param['idProducto']."'";
             if (isset($param['productoNombre']))
-                $where .= ' and productoNombre =' . $param['productoNombre'] . "'";
+                $where .= ' and productoNombre = ' . "'" . $param['productoNombre'] . "'";
             if (isset($param['productoDetalle']))
-                $where .= ' and productoDetalle =' . $param['productoDetalle'] . "'";
+                $where .= ' and productoDetalle =' . "'" . $param['productoDetalle'] . "'";
             if (isset($param['productoStock']))
-                $where .= ' and productoStock =' . $param['productoStock'] . "'";
+                $where .= ' and productoStock =' . "'" . $param['productoStock'] . "'";
             if (isset($param['productoPrecio']))
-                $where .= ' and productoPrecio =' . $param['productoPrecio'] . "'";
+                $where .= ' and productoPrecio =' . "'" . $param['productoPrecio'] . "'";
         }
         $arreglo = producto::listar($where);
         return $arreglo;
