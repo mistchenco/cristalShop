@@ -95,7 +95,6 @@ class producto{
         if ($parametro != "") {
             $sql .= 'WHERE ' . $parametro;
         }
-        echo  "ESTAMOS EN PRODUCTO/MODELO" . $sql; 
         $res = $base->Ejecutar($sql);
         if ($res > -1) {
             if ($res > 0) {

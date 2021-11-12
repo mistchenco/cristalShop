@@ -92,7 +92,7 @@ class abmProducto{
      * @param array $param
      * @return boolean
      */
-    public function buscar($param){
+    public function buscar($param = ''){
         $where = " true ";
         if ($param <> NULL) {
             if (isset($param['idProducto']))
