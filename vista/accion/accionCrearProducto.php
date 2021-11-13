@@ -27,7 +27,7 @@ if ($sesion->activa()) {
         //     "productoNombre" => $datos['productoNombre']
         // ];
         // $objProducto = $abmProducto->buscar($busqueda);
-        // $idProductoImagen = md5($objProducto[0]->getIdUsuario());
+        // $idProductoImagen = md5($objProducto[0]->getIdProducto());
         
         if ($producto) {
             $mensaje = "El producto se creó con exito, Revise su casilla";

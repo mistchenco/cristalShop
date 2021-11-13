@@ -3,9 +3,9 @@
 
 $sesion = new session(); 
 if ($sesion->activa()) {
-    // include_once '../estructura/cabeceraSegura.php'; 
+    include_once '../estructura/cabeceraSegura.php'; 
 }else{
-    // include_once '../estructura/cabecera.php'; 
+    include_once '../estructura/cabecera.php'; 
 }
 ?>
 
@@ -22,6 +22,7 @@ if ($sesion->activa()) {
                                 continue;
                             }
                     ?>
+                   
                         <div class="col-sm-3">
 							<div class="thumb-wrapper">
 								<div class="img-box">
