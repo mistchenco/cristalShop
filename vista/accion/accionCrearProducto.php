@@ -24,14 +24,6 @@ if ($sesion->activa()) {
 
 
         $producto = $abmProducto->alta($datos);
-<<<<<<< HEAD
-        // $busqueda = [
-        //     "productoNombre" => $datos['productoNombre']
-        // ];
-        // $objProducto = $abmProducto->buscar($busqueda);
-        // $idProductoImagen = md5($objProducto[0]->getIdUsuario());
-        
-=======
         $busqueda = [
             "productoNombre" => $datos['productoNombre']
         ];
@@ -40,7 +32,6 @@ if ($sesion->activa()) {
         if($cargarImagen=$abmProducto->subirArchivo($idProductoImagen)){
             echo "cargo imagen";
         }
->>>>>>> 468c3991ce0c869f90c6efba730c4cafd1bbae99
         if ($producto) {
             $mensaje = "El producto se creó con exito, Revise su casilla";
             // header("Location: ../ejercicios/mostrarProductos.php?Message=" . urlencode($mensaje));
