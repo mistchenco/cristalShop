@@ -21,12 +21,19 @@ form.addEventListener('submit', e => {
         e3 = '',
         e4 = ''
     
-    
+    console.log('buenass')
+    numeroNegativo(inputNombre)
+
     if (cadenaVacia(inputNombre)) {
-        if (longitudCadena(inputNombre)) {
-            b1 = true
+        if (!tipoNumero(inputNombre)) {
+            if (longitudCadena(inputNombre)) {
+                b1 = true
+            }else{
+                e1 += ' -Longitud de nombre corta- '
+                b1 = false
+            }
         }else{
-            e1 += ' -Longitud de nombre corta- '
+            e1 += ' -El nombre del producto no puede ser solamente numeros- '
             b1 = false
         }
     }else{
@@ -35,7 +42,12 @@ form.addEventListener('submit', e => {
     }
 
     if (cadenaVacia(inputDetalle)) {
-        b2 = true
+        if (!tipoNumero(inputDetalle)) {
+            b2 = true
+        }else{
+            e2 = ' -Detalle es puro numero- '
+        b2 = false
+        }
     }else{
         e2 = ' -Detalle vacio- '
         b2 = false
@@ -43,7 +55,12 @@ form.addEventListener('submit', e => {
 
     if (cadenaVacia(inputStock)) {
             if (tipoNumero(inputStock)) {
-                b3 = true
+                if (numeroNegativo(inputStock)) {
+                    b3 = true
+                }else{
+                    e3 = '-Stock no puede ser un numero negativo o cero-'
+                    b3 = false
+                }
             }else{
                 e3 = '-Stock no es de tipo numero-'
                 b3 = false
@@ -55,7 +72,12 @@ form.addEventListener('submit', e => {
 
     if (cadenaVacia(inputPrecio)) {
             if (tipoNumero(inputPrecio)) {
-                b4 = true
+                if (numeroNegativo(inputPrecio)) {
+                    b4 = true
+                }else{
+                    e4 = '-Precio es un numero negativo-'
+                    b4 = false
+                }
             }else{
                 e4 = '-Precio no es de tipo numero-'
                 b4 = false
@@ -93,7 +115,7 @@ function cadenaVacia(input){
 
 function longitudCadena(input){
     let bandera = false 
-    if (input.value.length > 5) {
+    if (input.value.length >= 4) {
         bandera = true
     }
     return bandera
@@ -119,4 +141,12 @@ function tipoNumero(input){
 function caracteresRaros(input){
     const re = /[^a-zA-Z0-9 ]/
     return !re.test(input.value)
+}
+
+function numeroNegativo(input){
+    let bandera = false 
+    if (input <= 0) {
+        bandera = true
+    }
+    return bandera
 }
