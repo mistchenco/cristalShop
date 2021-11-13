@@ -55,8 +55,23 @@ if (!$sesion->activa()) {
                         <li><a class="dropdown-item" href="#contact">Contacto</a></li>
                     </ul>
                 </li>
-                <li class="nav-item"><a class="nav-link" href="../ejercicios/crearProducto.php">Crear Productos</a></li>
-                <li class="nav-item"><a class="nav-link" href="../ejercicios/">Productos</a></li>
+                <!-- <li class="nav-item"><a class="nav-link" href="../ejercicios/crearProducto.php">Crear Productos</a></li>
+                <ul class="nav-item"><a class="nav-link" href="../ejercicios/mostrarProductos.php">Productos</a>
+                <li><a class="dropdown-item" href="../ejercicios/crearProducto.php">Cargar Productos</a></li>
+                <li><a class="dropdown-item" href="">Modificar Productos</a></li>
+                <li><a class="dropdown-item" href="">Eliminar Productos</a></li>
+                </ul> -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      Productos
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
+                    <li><a class="dropdown-item" href="../ejercicios/mostrarProductos.php">Ver nuestros Productos</a></li>
+                    <li><a class="dropdown-item" href="../ejercicios/crearProducto.php">Cargar Productos</a></li>
+                    <li><a class="dropdown-item" href="../ejercicios/listarProductos.php">Administrar Productos</a></li>
+                    
+                    </ul>
+                </li>
                 <li class="nav-item"><a class="nav-link" href="../ejercicios/listarUsuarios.php">Usuarios</a></li>
             </ul>
         </div>

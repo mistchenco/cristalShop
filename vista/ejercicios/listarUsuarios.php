@@ -14,7 +14,7 @@ if (!$sesion->activa()) {
 
 echo "<h4>Usted esta Logueado como: {$objUsuario->getUsNombre()}</h4>";
 
-// include_once "../estructura/cabecera.php";
+
 $abmUsuario = new abmUsuario();
 $abmRol = new abmUsuarioRol();
 $listaUsuario = $abmUsuario->buscar(null);

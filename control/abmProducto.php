@@ -50,11 +50,6 @@ class abmProducto{
     }
     public function cargarObjeto($param){
         $obj = null;
-        $param = ['idProducto' => '', 
-        'productoNombre' => $param['productoNombre'] ,
-        'productoDetalle' => $param['productoDetalle'], 
-        'productoStock' => $param['productoStock'], 
-        'productoPrecio' => $param['productoPrecio']];
 
         if (array_key_exists('idProducto', $param) and 
             array_key_exists('productoNombre', $param) and 
@@ -68,7 +63,9 @@ class abmProducto{
                         'productoStock' => $param['productoStock'] , 
                         'productoPrecio' => $param['productoPrecio']]);
         }
+        
         return $obj;
+        
     }
 
     /**
