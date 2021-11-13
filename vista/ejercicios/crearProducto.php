@@ -12,7 +12,7 @@ if ($sesion->activa()) {
 
 <div class="container mt-5">
     <div class="card card-info">
-        <form class="" action='../accion/accionCrearProducto.php'  id="formularioCrearProducto" name="formularioCrearProducto" method="POST" enctype="multipart/form-data">
+        <form class="" action='../accion/accionCrearProducto.php' novalidate  id="formularioCrearProducto" name="formularioCrearProducto" method="POST" enctype="multipart/form-data">
             <div class="mb-3">
                 <label for="usuario" class="form-label">Nombre Producto</label>
                 <input class='form-control' id='productoNombre' name='productoNombre' type='text' placeholder='Nombre Producto' required>
