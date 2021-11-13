@@ -12,11 +12,7 @@ if ($sesion->activa()) {
 
 <div class="container mt-5">
     <div class="card card-info">
-<<<<<<< HEAD
-        <form class="" action='../accion/accionCrearProducto.php' id="formularioCrearProducto" name="formularioCrearProducto" method="post" enctype="multipart/form-data">
-=======
         <form class="" action='../accion/accionCrearProducto.php'  id="formularioCrearProducto" name="formularioCrearProducto" method="POST" enctype="multipart/form-data">
->>>>>>> 468c3991ce0c869f90c6efba730c4cafd1bbae99
             <div class="mb-3">
                 <label for="usuario" class="form-label">Nombre Producto</label>
                 <input class='form-control' id='productoNombre' name='productoNombre' type='text' placeholder='Nombre Producto' required>
