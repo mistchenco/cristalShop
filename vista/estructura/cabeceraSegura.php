@@ -49,7 +49,7 @@ if (!$sesion->activa()) {
                     </ul>
                 </li>
                 <li class="nav-item"><a class="nav-link" href="../ejercicios/crearProducto.php">Crear Productos</a></li>
-                <li class="nav-item"><a class="nav-link" href="#productos">Productos</a></li>
+                <li class="nav-item"><a class="nav-link" href="../ejercicios/">Productos</a></li>
                 <li class="nav-item"><a class="nav-link" href="../ejercicios/listarUsuarios.php">Usuarios</a></li>
             </ul>
         </div>

@@ -1,12 +1,11 @@
 <?php
     include_once '../../configuracion.php';
-
-$sesion = new session(); 
-if ($sesion->activa()) {
-    // include_once '../estructura/cabeceraSegura.php'; 
-}else{
-    // include_once '../estructura/cabecera.php'; 
-}
+    $sesion = new session(); 
+    if ($sesion->activa()) {
+        // include_once '../estructura/cabeceraSegura.php'; 
+    }else{
+        // include_once '../estructura/cabecera.php'; 
+    }
 ?>
 
         <div class="container-xl mt-5 pt-5">

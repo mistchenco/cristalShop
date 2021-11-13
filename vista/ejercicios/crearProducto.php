@@ -33,14 +33,16 @@ if ($sesion->activa()) {
                 <label for="exampleInputPassword1" class="form-label">Imagen</label>
                 <input class='form-control' id='productoImagen' name='productoImagen' type='file' accept="image/png, .jpeg, .jpg, image/gif"  placeholder='Precio Producto' value='' required>
             </div>
-
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <div class="mb-3">
+                <p id="invalido" ></p>
+            </div>
+            <button type="submit" id="submitButton" class="btn btn-primary">Submit</button>
         </form>
         <div id="validaciones"></div>
     </div>
 </div>
 
-
+<script src="../js/validacionCrearProducto.js" ></script>
 <?php
 include_once '../estructura/footer.php';
 ?>
