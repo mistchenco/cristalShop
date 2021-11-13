@@ -12,14 +12,14 @@ if ($sesion->activa()) {
 
 <div class="container mt-5">
     <div class="card card-info">
-        <form class="" action='../accion/accionCrearProducto.php' novalidate id="formularioCrearProducto" name="formularioCrearProducto" method="post" enctype="multipart/form-data">
+        <form class="" action='../accion/accionCrearProducto.php' id="formularioCrearProducto" name="formularioCrearProducto" method="post" enctype="multipart/form-data">
             <div class="mb-3">
                 <label for="usuario" class="form-label">Nombre Producto</label>
                 <input class='form-control' id='productoNombre' name='productoNombre' type='text' placeholder='Nombre Producto' required>
             </div>
             <div class="mb-3">
                 <label for="exampleInputEmail1" class="form-label">Detalle Producto</label>
-                <input type='email' class='form-control' id='productoDetalle' name='productoDetalle' placeholder='Detalle del producto' required>
+                <input type='text' class='form-control' id='productoDetalle' name='productoDetalle' placeholder='Detalle del producto' required>
             </div>
             <div class="mb-3">
                 <label for="exampleInputPassword1" class="form-label">Stock</label>

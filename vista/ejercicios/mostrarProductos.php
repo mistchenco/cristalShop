@@ -1,6 +1,5 @@
 <?php
     include_once '../../configuracion.php';
-<<<<<<< HEAD
 
 $sesion = new session(); 
 if ($sesion->activa()) {
@@ -8,14 +7,6 @@ if ($sesion->activa()) {
 }else{
     include_once '../estructura/cabecera.php'; 
 }
-=======
-    $sesion = new session(); 
-    if ($sesion->activa()) {
-        // include_once '../estructura/cabeceraSegura.php'; 
-    }else{
-        // include_once '../estructura/cabecera.php'; 
-    }
->>>>>>> db999b502ca30f5ca8f84b714b31af6552a7c83c
 ?>
 
         <div class="container-xl mt-5 pt-5">

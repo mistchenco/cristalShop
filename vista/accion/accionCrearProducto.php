@@ -22,12 +22,13 @@ if ($sesion->activa()) {
         header("Location: ../ejercicios/crearProducto.php?Message=" . urlencode($mensaje));
     }else{
 
+
         $producto = $abmProducto->alta($datos);
         // $busqueda = [
         //     "productoNombre" => $datos['productoNombre']
         // ];
         // $objProducto = $abmProducto->buscar($busqueda);
-        // $idProductoImagen = md5($objProducto[0]->getIdProducto());
+        // $idProductoImagen = md5($objProducto[0]->getIdUsuario());
         
         if ($producto) {
             $mensaje = "El producto se creó con exito, Revise su casilla";
