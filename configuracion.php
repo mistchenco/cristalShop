@@ -21,7 +21,7 @@ $PRINCIPAL = "Location:http://".$_SERVER['HTTP_HOST']."/$PROYECTO/principal.php"
 
 
 $GLOBALS['ROOT']=$ROOT;
-$GLOBLAS['IMAGENES'] = $ROOT . 'vista/assets/img/imagenesProductos/'; 
+$GLOBALS['IMAGENES'] = $ROOT . 'vista/assets/img/imagenesProductos/'; 
 
 
 ?>

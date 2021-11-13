@@ -12,7 +12,7 @@ if ($sesion->activa()) {
 <?php
     $datos = data_submitted();
     $abmProducto = new abmProducto();
-
+    print_r($datos);
     $busquedaNombreProducto = ['productoNombre' => $datos['productoNombre']];
     $respuesta1 = $abmProducto->buscar($busquedaNombreProducto);
 
@@ -23,15 +23,17 @@ if ($sesion->activa()) {
     }else{
 
         $producto = $abmProducto->alta($datos);
-        // $busqueda = [
-        //     "productoNombre" => $datos['productoNombre']
-        // ];
-        // $objProducto = $abmProducto->buscar($busqueda);
-        // $idProductoImagen = md5($objProducto[0]->getIdProducto());
-        
+        $busqueda = [
+            "productoNombre" => $datos['productoNombre']
+        ];
+        $objProducto = $abmProducto->buscar($busqueda);
+        $idProductoImagen = md5($objProducto[0]->getIdProducto());
+        if($cargarImagen=$abmProducto->subirArchivo($idProductoImagen)){
+            echo "cargo imagen";
+        }
         if ($producto) {
             $mensaje = "El producto se creó con exito, Revise su casilla";
-            header("Location: ../ejercicios/mostrarProductos.php?Message=" . urlencode($mensaje));
+            // header("Location: ../ejercicios/mostrarProductos.php?Message=" . urlencode($mensaje));
         }
     }
 
