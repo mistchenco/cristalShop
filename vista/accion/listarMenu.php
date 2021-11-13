@@ -6,6 +6,7 @@ $data = data_submitted();
 $objControl = new abmMenu();
 $list = $objControl->buscar($data);
 $arreglo_salida =  array();
+echo "entra a listamenu";
 foreach ($list as $elem ){
     
     $nuevoElem['idMenu'] = $elem->getIdMenu();
