@@ -1,6 +1,53 @@
 <?php
 
 class abmProducto{
+    public function subirArchivo($datos)
+    {
+        
+
+        // print_r($datos);
+        $nombreArchivoImagen=$datos.".jpg";
+        $dir = '../assets/img/imagenesProductos/';
+
+        $error="";
+        $todoOK=true;
+
+        /*Primero subamos la imagen*/
+        /*Veamos si se pudo subir a la carpeta temporal*/
+        if ($_FILES["productoImagen"]["error"] <= 0)
+        {
+            $todoOK=true;
+            $error="";
+        }
+        else
+        {
+            $todoOK=false;
+            $error= "ERROR: no se pudo cargar el archivo de imagen. No se pudo acceder al archivo Temporal";
+        }
+
+        //El control del tipo ya lo tengo en el formulario, asi que no lo voy a controlar acá.
+        //Si, voy a controlar el tema del tamaño
+
+        if ($todoOK && $_FILES['productoImagen']["size"] / 1024 >300)
+        {
+            $error= "ERROR: El archivo ".$nombreArchivoImagen." supera los 300 KB.";
+            $todoOK=false;
+        }
+        
+        if ($todoOK && !copy($_FILES['productoImagen']['tmp_name'], $dir.$nombreArchivoImagen))
+        {
+            $texto= "ERROR: no se pudo cargar el archivo de imagen.";
+            $todoOK=false;
+        }
+        return $todoOK;
+    }
+
+    public function obtenerArchivos($idProducto)
+    {
+        $directorio = '../assets/img/imagenesProductos/'.$idProducto.".jpg";
+       
+        return $directorio;
+    }
     public function cargarObjeto($param){
         $obj = null;
         $param = ['idProducto' => '', 

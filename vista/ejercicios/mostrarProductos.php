@@ -17,32 +17,44 @@ if ($sesion->activa()) {
                         $param = [];
                         $colObjProductos = $abmProducto->buscar(); 
                         // print_r($colObjProductos);
-                        foreach ($colObjProductos as $objProducto) {
-                            if ($objProducto->getProductoStock() == 0 ) {
+                        
+                        // print_r($arregloArchivos);
+                        for($i=0 ; count($colObjProductos)>$i; $i++) {
+                            if ($colObjProductos[$i]->getProductoStock() == 0 ) {
                                 continue;
+
                             }
+                            $arregloArchivos=$abmProducto->obtenerArchivos(md5($colObjProductos[$i]->getIdProducto()));
+                           
                     ?>
                    
                         <div class="col-sm-3">
 							<div class="thumb-wrapper">
 								<div class="img-box">
-									<img src="/examples/images/products/macbook-air.jpg" class="img-fluid" alt="Macbook">
-								</div>
+                                    
+									<?php
+                                   
+                                     echo "<img src='$arregloArchivos' class='img-fluid' alt='productos'>";
+								?>
+                                </div>
 								<div class="thumb-content">
                                         <?php 
-                                            echo "<h2>{$objProducto->getProductoNombre()}</h2>";
+                                            echo "<h2>{$colObjProductos[$i]->getProductoNombre()}</h2>";
+                                            echo "<h6>{$colObjProductos[$i]->getProductoDetalle()}</h6>";
                                         ?>								
 									<p class="item-price">
                                     <b>
                                         <?php 
-                                            echo 'Precio: ' . $objProducto->getProductoPrecio();
+                                            echo "<p>Precio $ {$colObjProductos[$i]->getProductoPrecio()}</p>";
+                                            echo "<p>Stock: {$colObjProductos[$i]->getProductoStock()}</p>";
                                         ?>
                                     </b></p>
 									<a href="#" class="btn btn-primary">Añadir al carrito</a>
 								</div>						
 							</div>
 						</div>
-                    <?php } ?>
+                        <?php } ?>
+                    
                 </div>
             </div>
         </div>

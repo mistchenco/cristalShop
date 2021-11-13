@@ -12,7 +12,11 @@ if ($sesion->activa()) {
 
 <div class="container mt-5">
     <div class="card card-info">
+<<<<<<< HEAD
         <form class="" action='../accion/accionCrearProducto.php' id="formularioCrearProducto" name="formularioCrearProducto" method="post" enctype="multipart/form-data">
+=======
+        <form class="" action='../accion/accionCrearProducto.php'  id="formularioCrearProducto" name="formularioCrearProducto" method="POST" enctype="multipart/form-data">
+>>>>>>> 468c3991ce0c869f90c6efba730c4cafd1bbae99
             <div class="mb-3">
                 <label for="usuario" class="form-label">Nombre Producto</label>
                 <input class='form-control' id='productoNombre' name='productoNombre' type='text' placeholder='Nombre Producto' required>
@@ -23,15 +27,15 @@ if ($sesion->activa()) {
             </div>
             <div class="mb-3">
                 <label for="exampleInputPassword1" class="form-label">Stock</label>
-                <input class='form-control' id='productoStock' name='productoStock' type='number' placeholder='Stock Producto' value='' required>
+                <input class='form-control' id='productoStock' name='productoStock' type='number' placeholder='Stock Producto'  required>
             </div>
             <div class="mb-3">
                 <label for="exampleInputPassword1" class="form-label">Precio</label>
-                <input class='form-control' id='productoPrecio' name='productoPrecio' type='number' placeholder='Precio Producto' value='' required>
+                <input class='form-control' id='productoPrecio' name='productoPrecio' type='number' placeholder='Precio Producto'  required>
             </div>
             <div class="mb-3">
                 <label for="exampleInputPassword1" class="form-label">Imagen</label>
-                <input class='form-control' id='productoImagen' name='productoImagen' type='file' accept="image/png, .jpeg, .jpg, image/gif"  placeholder='Precio Producto' value='' required>
+                <input class='form-control' id='productoImagen' name='productoImagen' type='file' accept="image/png, .jpeg, .jpg, image/gif"  placeholder='Precio Producto' required>
             </div>
             <div class="mb-3">
                 <p id="invalido" ></p>
