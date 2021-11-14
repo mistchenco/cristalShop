@@ -1,6 +1,6 @@
+
 <?php 
 include_once "../../configuracion.php";
-include_once "../estructura/cabeceraSegura.php";
 $objControl = new AbmMenu();
 $List_Menu = $objControl->buscar(null);
 $combo = '<select class="easyui-combobox"  id="idpadre"  name="idpadre" label="Submenu de?:" labelPosition="top" style="width:90%;">
@@ -11,11 +11,26 @@ foreach ($List_Menu as $objMenu){
 
 $combo .='</select>';
 ?>
+
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Basic CRUD Application - jQuery EasyUI CRUD Demo</title>
+<link rel="stylesheet" type="text/css" href="../js/jquery-easyui-1.6.6/themes/default/easyui.css">
+<link rel="stylesheet" type="text/css" href="../js/jquery-easyui-1.6.6/themes/icon.css">
+<link rel="stylesheet" type="text/css" href="../js/jquery-easyui-1.6.6/themes/color.css">
+<link rel="stylesheet" type="text/css" href="../js/jquery-easyui-1.6.6/demo/demo.css">
+<script type="text/javascript" src="../js/jquery-easyui-1.6.6/jquery.min.js"></script>
+<script type="text/javascript" src="../js/jquery-easyui-1.6.6/jquery.easyui.min.js"></script>
+</head>
+<body>
 <h2>ABM - Menu</h2>
 <p>Seleccione la acci&oacute;n que desea realizar.</p>
 
 <table id="dg" title="Administrador de item menu" class="easyui-datagrid" style="width:700px;height:250px"
-    url="../accion/listar_menu.php" toolbar="#toolbar" pagination="true"rownumbers="true" fitColumns="true" singleSelect="true">
+    url="accion/listar_menu.php" toolbar="#toolbar" pagination="true"rownumbers="true" fitColumns="true" singleSelect="true">
             <thead>
             <tr>
             <th field="idmenu" width="50">ID</th>
@@ -63,7 +78,7 @@ $combo .='</select>';
             function newMenu(){
                 $('#dlg').dialog('open').dialog('center').dialog('setTitle','Nuevo Menu');
                 $('#fm').form('clear');
-                url = '../accion/alta_menu.php';
+                url = 'accion/alta_menu.php';
             }
             function editMenu(){
                 var row = $('#dg').datagrid('getSelected');
@@ -74,7 +89,7 @@ $combo .='</select>';
                 }
             }
             function saveMenu(){
-            	alert(url);
+            	//alert(" Accion");
                 $('#fm').form('submit',{
                     url: url,
                     onSubmit: function(){
@@ -83,7 +98,7 @@ $combo .='</select>';
                     success: function(result){
                         var result = eval('('+result+')');
 
-                        alert("Volvio Serviodr");   
+                        alert("Volvio Servidor");   
                         if (!result.respuesta){
                             $.messager.show({
                                 title: 'Error',
@@ -102,7 +117,7 @@ $combo .='</select>';
                 if (row){
                     $.messager.confirm('Confirm','Seguro que desea eliminar el menu?', function(r){
                         if (r){
-                            $.post('../accion/eliminar_menu.php?idmenu='+row.idmenu,{idmenu:row.id},
+                            $.post('accion/eliminar_menu.php?idmenu='+row.idmenu,{idmenu:row.id},
                                function(result){
                                	 alert("Volvio Serviodr");   
                                  if (result.respuesta){
@@ -120,7 +135,5 @@ $combo .='</select>';
                 }
             }
             </script>
-
-<?php
-include_once '../estructura/footer.php';
-?>
+            </body>
+            </html>

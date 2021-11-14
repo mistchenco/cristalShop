@@ -1,12 +1,10 @@
 <?php 
-
-include_once '../estructura/cabecera.php';
-include_once '../../configuracion.php';
-
+include_once "../../configuracion.php";
+include_once "../estructura/cabeceraSegura.php";
 $data = data_submitted();
 $respuesta = false;
-if (isset($data['menuNombre'])){
-        $objC = new abmMenu();
+if (isset($data['menombre'])){
+        $objC = new AbmMenu();
         $respuesta = $objC->alta($data);
         if (!$respuesta){
             $mensaje = " La accion  ALTA No pudo concretarse";
