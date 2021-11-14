@@ -2,11 +2,12 @@
 class session{
     private $objUsuario;
     private $coleccionRol;
-  
+   
     //CONSTRUCTOR
     public function __construct()
     {
         session_start();
+        
     }
 
     /**
@@ -36,6 +37,7 @@ class session{
         if (count($listaUsuario) > 0) {
             if ($listaUsuario[0]->getUsDesabilitado() == NULL || $listaUsuario[0]->getUsDesabilitado() == "0000-00-00 00:00:00") {
                 $_SESSION['idUsuario'] = $listaUsuario[0]->getIdUsuario();
+                
                 $exito = true;
                 //invocar funcion que calcule los atributos
                 // $objUsuario = $this->buscarUsuario();
@@ -118,4 +120,7 @@ class session{
     {
         $this->objUsuario = $objUsuario;
     }
+
+  
+  
 }
