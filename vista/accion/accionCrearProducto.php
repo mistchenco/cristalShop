@@ -1,15 +1,6 @@
 <?php
 include_once '../../configuracion.php';
 
-$sesion = new session(); 
-if ($sesion->activa()) {
-    include_once '../estructura/cabeceraSegura.php'; 
-}else{
-    include_once '../estructura/cabecera.php'; 
-}
-?>
-
-<?php
     $datos = data_submitted();
     $abmProducto = new abmProducto();
     $busquedaNombreProducto = ['productoNombre' => $datos['productoNombre']];
@@ -32,19 +23,15 @@ if ($sesion->activa()) {
         
         $idProductoImagen = md5($objProducto[0]->getIdProducto());
         if($cargarImagen=$abmProducto->subirArchivo($idProductoImagen)){
-            
+            if ($producto) {
+                $mensaje = "El producto se creó con exito";
+                header("Location: ../ejercicios/mostrarProductos.php?Message=" . urlencode($mensaje));
+            } 
         }
-        if ($producto) {
-            $mensaje = "El producto se creó con exito";
-            header("Location: ../ejercicios/mostrarProductos.php?Message=" . urlencode($mensaje));
-        }
+        
     }
 
 ?>
-
-
-
-
 <?php
 include_once '../estructura/footer.php';
 ?>

@@ -4,23 +4,24 @@ include_once '../../configuracion.php';
 $data = data_submitted();
 
 $objControl = new abmMenu();
-$list = $objControl->buscar($data);
+$listaMenu = $objControl->buscar($data);
 $arreglo_salida =  array();
-echo "entra a listamenu";
-foreach ($list as $elem ){
+
+foreach ($listaMenu as $objMenu ){
     
-    $nuevoElem['idMenu'] = $elem->getIdMenu();
-    $nuevoElem["menuNombre"]=$elem->getMenuNombre();
-    $nuevoElem["menuDescripcion"]=$elem->getMenuDescripcion();
-    $nuevoElem["idPadre"]=$elem->getObjPadre();
-    if($elem->getObjMenu()!=null){
-        $nuevoElem["idpadre"]=$elem->getObjPadre()->getMenuNombre();
+    $nuevoElem['idMenu'] = $objMenu->getIdMenu();
+    $nuevoElem["menuNombre"]=$objMenu->getMenuNombre();
+    $nuevoElem["menuDescripcion"]=$objMenu->getMenuDescripcion();
+    $nuevoElem["idPadre"]=$objMenu->getObjPadre();
+    if($objMenu->getObjPadre()!=null){
+        $nuevoElem["idPadre"]=$objMenu->getObjPadre()->getMenuNombre();
     }
-    $nuevoElem["menuDeshabilitado"]=$elem->getMedeshabilitado();
+    $nuevoElem["menuDeshabilitado"]=$objMenu->getMenuDeshabilitado();
    
     array_push($arreglo_salida,$nuevoElem);
 }
 //verEstructura($arreglo_salida);
+
 echo json_encode($arreglo_salida,null,2);
 
 ?>

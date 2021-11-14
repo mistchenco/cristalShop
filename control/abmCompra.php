@@ -3,6 +3,7 @@
 class abmCompra{
     public function cargarObjeto($param){
         $obj = null;
+        print_r($param);
         if (array_key_exists('idCompra', $param) and 
             array_key_exists('compraFecha', $param) and 
             array_key_exists('objUsuario', $param)){
@@ -33,6 +34,7 @@ class abmCompra{
      * @param array $param
      */
     public function alta($param){
+        print_r($param);
         $resp = false;
         $elObjtTabla = $this->cargarObjeto($param);
         if ($elObjtTabla != null and $elObjtTabla->insertar()) {

@@ -11,21 +11,21 @@ class abmMenu{
     private function cargarObjeto($param){
         $obj = null;
            
-        if( array_key_exists('idmenu',$param) and array_key_exists('menuNombre',$param)){
+        if( array_key_exists('idMenu',$param) and array_key_exists('menuNombre',$param)){
             $obj = new menu();
             $objmenu = null;
-            if (isset($param['idpadre'])){
+            if (isset($param['idPadre'])){
                 $objmenu = new menu();
-                $objmenu->setIdmenu($param['idpadre']);
+                $objmenu->setIdmenu($param['idPadre']);
                 $objmenu->cargar();
                 
             }
-            if(!isset($param['menudeshabilitado'])){
+            if(!isset($param['menuDeshabilitado'])){
                 $param['menuDeshabilitado']=null;
             }else{
                 $param['menuDeshabilitado']= date("Y-m-d H:i:s");
             }
-            $obj->setear($param['idmenu'], $param['menuNombre'],$param['menuDescripcion'],$objmenu,$param['menuDeshabilitado']); 
+            $obj->setear($param['idMenu'], $param['menuNombre'],$param['menuDescripcion'],$objmenu,$param['menuDeshabilitado']); 
         }
         return $obj;
     }
@@ -38,9 +38,9 @@ class abmMenu{
     private function cargarObjetoConClave($param){
         $obj = null;
         
-        if( isset($param['idmenu']) ){
+        if( isset($param['idMenu']) ){
             $obj = new menu();
-            $obj->setIdmenu($param['idmenu']);
+            $obj->setIdMenu($param['idMenu']);
         }
         return $obj;
     }
@@ -54,7 +54,7 @@ class abmMenu{
     
     private function seteadosCamposClaves($param){
         $resp = false;
-        if (isset($param['idmenu']))
+        if (isset($param['idMenu']))
             $resp = true;
         return $resp;
     }
@@ -65,7 +65,7 @@ class abmMenu{
      */
     public function alta($param){
         $resp = false;
-        $param['idmenu'] =null;
+        $param['idMenu'] =null;
         $param['menuDeshabilitado'] = null;
         $elObjtTabla = $this->cargarObjeto($param);
 //        verEstructura($elObjtTabla);
