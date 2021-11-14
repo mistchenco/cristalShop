@@ -139,8 +139,9 @@ class menu
                         $objPadre->setIdmenu($row['idPadre']);
                         $objPadre->cargar();
                     }
-
+                    
                     $datos = ['idMenu' => $row['idMenu'], 'menuNombre' => $row['menuNombre'], 'menuDescripcion' => $row['menuDescripcion'],'objPadre'=> $objPadre, 'menuDeshabilitado' => $row['menuDeshabilitado']];
+                    
                     $obj->setear($datos);
                  
                     array_push($arreglo, $obj);
