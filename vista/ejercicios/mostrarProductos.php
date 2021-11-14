@@ -25,9 +25,9 @@ if ($sesion->activa()) {
 
                 ?>
                     <div class="card " style="width: 18rem;">
-                            <?php
-                                echo "<img src='$arregloArchivos' style='max-width: 400px; widht:400px; '  class='img-fluid' alt='productos'>";
-                            ?>
+                        <?php
+                        echo "<img src='$arregloArchivos' style='max-width: 400px; widht:400px; '  class='img-fluid' alt='productos'>";
+                        ?>
                         <div class="card-body">
                             <h5 class="card-title">
                                 <?php
@@ -45,7 +45,14 @@ if ($sesion->activa()) {
                                 echo "<p>Stock: {$colObjProductos[$i]->getProductoStock()}</p>";
                                 ?>
                             </p>
-                            <a href="#" class="btn btn-primary">Añadir al carrito</a>
+                            <?php
+                           echo "<form action='../accion/accionCargarCarrito.php' method='post'>
+                           <span>Cantidad: </span>
+                           <input type='number' id='compraItemCantidad' name='compraItemCantidad' min='1' max='{$colObjProductos[$i]->getProductoStock()}'>
+                           <input name='idProducto' id='idProducto' type='hidden' value='{$colObjProductos[$i]->getIdProducto()}'>
+                           <button class=' btn btn-warning'  type='submit'>Añadir al carrito </buttom>
+                           </form>";
+                           ?>
                         </div>
                     </div>
                 <?php } ?>

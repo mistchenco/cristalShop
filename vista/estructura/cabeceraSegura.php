@@ -6,6 +6,7 @@ if (!$sesion->activa()) {
     header('location:../ejercicios/login.php');
 }else{
     $objUsuario = $sesion->getObjUsuario();
+    
 }
 
 ?>

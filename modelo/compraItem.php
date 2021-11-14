@@ -21,7 +21,7 @@ class compraItem
         $this->setIdCompraItem($datos['idCompraItem']);
         $this->setObjProducto($datos['objProducto']);
         $this->setIdCompra($datos['idCompra']);
-        $this->setCompraItemCantidad($datos['compraItemCantida']);
+        $this->setCompraItemCantidad($datos['compraItemCantidad']);
     }
 
     //METODOS GETTERS
@@ -139,15 +139,15 @@ class compraItem
     {
         $base = new BaseDatos();
         $resp = false;
-        $idCompraItem=$this->getIdCompraItem();
+        // $idCompraItem=$this->getIdCompraItem();
         $idCompra=$this->getIdCompra();
         $objProducto=$this->getObjProducto();
         $idProducto=$objProducto->getIdProducto();
         $compraItemCantidad=$this->getCompraItemCantidad();
         
         
-        $sql = "INSERT INTO compraItem(idCompraItem,idProducto,idCompra,compraItemCantidad)
-            VALUES ('$idCompraItem','$idProducto', '$idCompra','$compraItemCantidad')";
+        $sql = "INSERT INTO compraItem(idProducto,idCompra,compraItemCantidad)
+            VALUES ('$idProducto', '$idCompra','$compraItemCantidad')";
 
         if ($base->Iniciar()) {
             if ($elid = $base->Ejecutar($sql)) {

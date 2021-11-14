@@ -2,7 +2,7 @@
 class session{
     private $objUsuario;
     private $coleccionRol;
-   
+    private $coleccionItems;
     //CONSTRUCTOR
     public function __construct()
     {
@@ -62,7 +62,29 @@ class session{
         }
         return $activa;
     }
-
+    public function obtenerCarrito(){
+        return $_SESSION['coleccionItems'];
+    }
+    public function getColeccionItems($param){
+        $abmProducto=new abmProducto();
+        // print_r($param['idProducto']);
+        $listaProductos=$abmProducto->buscar($param);
+        if(count($listaProductos)>0){
+            $objProducto=$listaProductos[0];
+            print_r($objProducto);
+            $datosCompra=[
+                'idProducto'=>$objProducto->getIdProducto(),
+                'productoNombre'=>$objProducto->getProductoNombre(),
+                'productoDetalle'=>$objProducto->getProductoDetalle(),
+                'productoPrecio'=>$objProducto->getProductoPrecio(),
+                'cantidadCompra'=>$param['compraItemCantidad']
+            ];
+            // print_r($objProducto);
+          $_SESSION['coleccionItems'][]=$datosCompra;
+            $this->setColeccionItems($_SESSION['coleccionItems']);
+        }
+        return $_SESSION['coleccionItems'];
+    }
     /**
      * Devuelve el usuario logeado
      */
@@ -122,5 +144,15 @@ class session{
     }
 
   
-  
+    /**
+     * Set the value of coleccionItems
+     *
+     * @return  self
+     */ 
+    public function setColeccionItems($coleccionItems)
+    {
+        $this->coleccionItems = $coleccionItems;
+
+        return $this;
+    }
 }
