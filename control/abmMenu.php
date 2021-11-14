@@ -1,5 +1,5 @@
 <?php
-class abmMenu{
+class AbmMenu{
     //Espera como parametro un arreglo asociativo donde las claves coinciden con los nombres de las variables instancias del objeto
 
     
@@ -11,21 +11,21 @@ class abmMenu{
     private function cargarObjeto($param){
         $obj = null;
            
-        if( array_key_exists('idmenu',$param) and array_key_exists('menuNombre',$param)){
-            $obj = new menu();
+        if( array_key_exists('idmenu',$param) and array_key_exists('menombre',$param)){
+            $obj = new Menu();
             $objmenu = null;
             if (isset($param['idpadre'])){
-                $objmenu = new menu();
+                $objmenu = new Menu();
                 $objmenu->setIdmenu($param['idpadre']);
                 $objmenu->cargar();
                 
             }
-            if(!isset($param['menudeshabilitado'])){
-                $param['menuDeshabilitado']=null;
+            if(!isset($param['medeshabilitado'])){
+                $param['medeshabilitado']=null;
             }else{
-                $param['menuDeshabilitado']= date("Y-m-d H:i:s");
+                $param['medeshabilitado']= date("Y-m-d H:i:s");
             }
-            $obj->setear($param['idmenu'], $param['menuNombre'],$param['menuDescripcion'],$objmenu,$param['menuDeshabilitado']); 
+            $obj->setear($param['idmenu'], $param['menombre'],$param['medescripcion'],$objmenu,$param['medeshabilitado']); 
         }
         return $obj;
     }
@@ -39,7 +39,7 @@ class abmMenu{
         $obj = null;
         
         if( isset($param['idmenu']) ){
-            $obj = new menu();
+            $obj = new Menu();
             $obj->setIdmenu($param['idmenu']);
         }
         return $obj;
@@ -66,7 +66,7 @@ class abmMenu{
     public function alta($param){
         $resp = false;
         $param['idmenu'] =null;
-        $param['menuDeshabilitado'] = null;
+        $param['medeshabilitado'] = null;
         $elObjtTabla = $this->cargarObjeto($param);
 //        verEstructura($elObjtTabla);
         if ($elObjtTabla!=null and $elObjtTabla->insertar()){
@@ -123,11 +123,11 @@ class abmMenu{
             if  (isset($param['descrip']))
                  $where.=" and descrip ='".$param['descrip']."'";
         }*/
-        $arreglo = menu::listar($where);  
+        $arreglo = Menu::listar($where);  
         return $arreglo;
             
             
-    
+      
         
     }
    
