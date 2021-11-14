@@ -55,7 +55,7 @@ form.addEventListener('submit', e => {
 
     if (cadenaVacia(inputStock)) {
             if (tipoNumero(inputStock)) {
-                if (numeroNegativo(inputStock)) {
+                if (!numeroNegativo(inputStock)) {
                     b3 = true
                 }else{
                     e3 = '-Stock no puede ser un numero negativo o cero-'
@@ -72,7 +72,7 @@ form.addEventListener('submit', e => {
 
     if (cadenaVacia(inputPrecio)) {
             if (tipoNumero(inputPrecio)) {
-                if (numeroNegativo(inputPrecio)) {
+                if (!numeroNegativo(inputPrecio)) {
                     b4 = true
                 }else{
                     e4 = '-Precio es un numero negativo-'
