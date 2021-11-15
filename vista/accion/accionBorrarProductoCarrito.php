@@ -4,14 +4,14 @@ include_once '../../configuracion.php';
 
     $datos = data_submitted();
     $arreglo = $sesion->getCarrito();
-
+    $arreglo = array_values($arreglo); 
     for ($i=0; $i < count($arreglo); $i++) { 
         if ($datos['idProducto'] == $arreglo[$i]['idProducto'] ) {
             unset($arreglo[$i]);
-            $arreglo = array_values($arreglo);
             $sesion->setColeccionItems($arreglo);
         }
     }
+    $arreglo = array_values($arreglo);
 
 include_once '../estructura/footer.php';
 ?>

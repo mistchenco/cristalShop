@@ -3,7 +3,7 @@ include_once '../../configuracion.php';
 //  include_once '../estructura/cabeceraSegura.php';
     $sesion = new session();
     $datos = data_submitted();
-    print_r($datos);
+    // print_r($datos);
     $arreglo = $sesion->agregarColeccionItems($datos);
     print_r($arreglo);
     if( $arreglo != null){

@@ -8,8 +8,8 @@ if (!$sesion->activa()) {
     include_once '../estructura/cabeceraSegura.php';
 }
 
-$listaCarrito=$sesion->getCarrito();
- print_r($listaCarrito);
+$listaCarrito = $sesion->getCarrito();
+// print_r($listaCarrito);
 ?>
 <div class="container mt-5">
   <h1>Panel de administracion de Productos</h1>
@@ -25,12 +25,11 @@ $listaCarrito=$sesion->getCarrito();
       </tr>
     </thead>
     <?php
-    if (count($listaCarrito) > 0) {
-
+    if ($listaCarrito == null) {
+      echo '<h3> No se encontraron registros </h3>';
+    } else{
       foreach ($listaCarrito as $carrito) {
-          
-
-
+            print_r($carrito);
             echo '<tr><td class="text-center" style="width:200px;">' . $carrito['idProducto'] . '</td>';
             echo '<td class="text-center" style="width:200px;">' . $carrito['productoNombre']. '</td>';
             echo '<td class="text-center" style="width:200px;">' . $carrito['productoDetalle']. '</td>';
@@ -43,10 +42,8 @@ $listaCarrito=$sesion->getCarrito();
             <button class=' btn btn-dark' type='submit'>
             <i class='fas fa-trash-alt'></i></i></button></td></form></tr>";
         }
-    
-    } else {
 
-      echo '<h3> No se encontraron registros </h3>';
+      
     }
 
     ?>
