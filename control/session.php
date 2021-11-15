@@ -88,27 +88,29 @@ class session{
             }else{
                 $carrito = $this->getCarrito();
                 array_values($carrito);
+                $bandera= false;
                 for ($i=0; $i < count($carrito); $i++) { 
                     //Si el objeto que se quiere cargar en el carrito ya se encuentra
                     //solamente se le suma la nueva cantidad y se setea ese objeto en el carrito
                     if ($carrito[$i]['idProducto'] == $param['idProducto'] ) {
+                        $bandera = true;
                         $carrito[$i]['cantidadCompra'] = $carrito[$i]['cantidadCompra'] + $param['compraItemCantidad'];
                         $_SESSION['coleccionItems'][$i] = $carrito[$i];
                         $this->setColeccionItems($_SESSION['coleccionItems']); 
-                    }else{
-                        //Sino pusheamos el nuevo objeto al carrito
-                        if ($carrito[$i]['idProducto'] !== $param['idProducto'] ) {
-                            $datosCompra=[ 
-                                'idProducto' => $objProducto->getIdProducto(), 
-                                'productoNombre' => $objProducto->getProductoNombre(), 
-                                'productoDetalle' => $objProducto->getProductoDetalle(), 
-                                'productoPrecio' => $objProducto->getProductoPrecio(), 
-                                'cantidadCompra' => $param['compraItemCantidad'] 
-                            ]; 
-                            $_SESSION['coleccionItems'][] = $datosCompra; 
-                            $this->setColeccionItems($_SESSION['coleccionItems']); 
-                        }
                     }
+                }
+                if ($bandera == false){
+               
+                        $datosCompra=[ 
+                            'idProducto' => $objProducto->getIdProducto(), 
+                            'productoNombre' => $objProducto->getProductoNombre(), 
+                            'productoDetalle' => $objProducto->getProductoDetalle(), 
+                            'productoPrecio' => $objProducto->getProductoPrecio(), 
+                            'cantidadCompra' => $param['compraItemCantidad'] 
+                        ]; 
+                        $_SESSION['coleccionItems'][] = $datosCompra; 
+                        $this->setColeccionItems($_SESSION['coleccionItems']); 
+                    
                 }
             }
         }else{
