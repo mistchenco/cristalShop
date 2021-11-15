@@ -7,7 +7,7 @@ class session{
     public function __construct()
     {
         session_start();
-        
+        // $_SESSION['coleccionItems'] = [];
     }
 
     /**
@@ -62,29 +62,68 @@ class session{
         }
         return $activa;
     }
-    public function obtenerCarrito(){
+    public function getCarrito(){
         return $_SESSION['coleccionItems'];
     }
-    public function getColeccionItems($param){
+
+
+
+
+    public function agregarColeccionItems($param){
         $abmProducto=new abmProducto();
-        // print_r($param['idProducto']);
         $listaProductos=$abmProducto->buscar($param);
         if(count($listaProductos)>0){
             $objProducto=$listaProductos[0];
-            print_r($objProducto);
-            $datosCompra=[
-                'idProducto'=>$objProducto->getIdProducto(),
-                'productoNombre'=>$objProducto->getProductoNombre(),
-                'productoDetalle'=>$objProducto->getProductoDetalle(),
-                'productoPrecio'=>$objProducto->getProductoPrecio(),
-                'cantidadCompra'=>$param['compraItemCantidad']
-            ];
-            // print_r($objProducto);
-          $_SESSION['coleccionItems'][]=$datosCompra;
-            $this->setColeccionItems($_SESSION['coleccionItems']);
+            $carrito = $this->getCarrito();
+            if ($carrito == null ) {
+                $datosCompra=[
+                    'idProducto'=>$objProducto->getIdProducto(),
+                    'productoNombre'=>$objProducto->getProductoNombre(),
+                    'productoDetalle'=>$objProducto->getProductoDetalle(),
+                    'productoPrecio'=>$objProducto->getProductoPrecio(),
+                    'cantidadCompra'=>$param['compraItemCantidad']
+                ];
+                $_SESSION['coleccionItems'][] = $datosCompra;
+                $this->setColeccionItems($_SESSION['coleccionItems']);
+            }else{
+                $i = 0;
+                $bandera = false; 
+                while ($i <= count($carrito) || $bandera == true ) {
+                    if ($carrito[$i]['idProducto'] == $param['idProducto']) {
+                        echo "en el if de session";
+                        $carritoCantidadCompra = $carrito[$i]['cantidadCompra'];
+                        $cantidadNueva = $param['compraItemCantidad'];
+                        $suma = $carritoCantidadCompra + $cantidadNueva;
+                        $carrito[$i]['cantidadCompra'] = $suma;
+                        $this->setColeccionItems($carrito);
+                        $bandera = true; 
+                    }else{ 
+                        $datosCompra=[
+                                'idProducto'=>$objProducto->getIdProducto(),
+                                'productoNombre'=>$objProducto->getProductoNombre(),
+                                'productoDetalle'=>$objProducto->getProductoDetalle(),
+                                'productoPrecio'=>$objProducto->getProductoPrecio(),
+                                'cantidadCompra'=>$param['compraItemCantidad']
+                            ];
+                            $carrito = $datosCompra;
+                            // print_r($objProducto);
+                            $_SESSION['coleccionItems'][] = $datosCompra;
+                            $this->setColeccionItems($_SESSION['coleccionItems']);
+                        
+                        $this->setColeccionItems($_SESSION['coleccionItems']);
+                    }
+                    $i++;
+                }
+            
+            return $_SESSION['coleccionItems'];
         }
-        return $_SESSION['coleccionItems'];
+        }
     }
+
+
+
+
+
     /**
      * Devuelve el usuario logeado
      */
@@ -149,10 +188,7 @@ class session{
      *
      * @return  self
      */ 
-    public function setColeccionItems($coleccionItems)
-    {
-        $this->coleccionItems = $coleccionItems;
-
-        return $this;
+    public function setColeccionItems($coleccionItems){
+        $_SESSION['coleccionItems'] = $coleccionItems;
     }
 }

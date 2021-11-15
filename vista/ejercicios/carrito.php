@@ -8,7 +8,7 @@ if (!$sesion->activa()) {
     include_once '../estructura/cabeceraSegura.php';
 }
 
-$listaCarrito=$sesion->obtenerCarrito();
+$listaCarrito=$sesion->getCarrito();
  print_r($listaCarrito);
 ?>
 <div class="container mt-5">
@@ -21,7 +21,7 @@ $listaCarrito=$sesion->obtenerCarrito();
         <th scope="col" class="text-center"> Descripcion</th>
         <th scope="col" class="text-center">Precio</th>
         <th scope="col" class="text-center">Cantidad a comprar</th>
-    
+        <th scope="col" class="text-center">Borrar</th>
       </tr>
     </thead>
     <?php
@@ -37,15 +37,11 @@ $listaCarrito=$sesion->obtenerCarrito();
             echo '<td class="text-center" style="width:200px;">' . $carrito['productoPrecio'] . '</td>';
             echo '<td class="text-center" style="width:200px;">' . $carrito['cantidadCompra']. '</td>';
             '</tr>';
-
-          
-        // echo "</br> carritoooooooo";
-        // print_r($carrito);
-        //   foreach($carrito as $car){
-        //       echo "</br> caaaaaaaaaaaaaaaaaaaaaaaaaaaaaaar";
-        //       print_r($car);
-        //  $idProducto=$carrito->getIdProducto();
-        
+            echo "<form action='../accion/accionBorrarProductoCarrito.php' method='post'>
+            <td class='text-center'>
+            <input name='idProducto' id='idProducto' type='hidden' value='{$carrito['idProducto']}'>
+            <button class=' btn btn-dark' type='submit'>
+            <i class='fas fa-trash-alt'></i></i></button></td></form></tr>";
         }
     
     } else {

@@ -1,6 +1,7 @@
 <?php
 
 $sesion = new session();
+
 include_once '../../configuracion.php';
 if (!$sesion->activa()) {
     header('location:../ejercicios/login.php');
@@ -63,7 +64,7 @@ if (!$sesion->activa()) {
                 <li><a class="dropdown-item" href="">Eliminar Productos</a></li>
                 </ul> -->
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <a class="nav-link dropdown-toggle" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                       Productos
                     </a>
                     <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
@@ -73,6 +74,7 @@ if (!$sesion->activa()) {
                     
                     </ul>
                 </li>
+                <li class="nav-item"><a class="nav-link" href="../ejercicios/carrito.php">Carrito</a></li>
                 <li class="nav-item"><a class="nav-link" href="../ejercicios/listarUsuarios.php">Usuarios</a></li>
                 <li class="nav-item"><a class="nav-link" href="../ejercicios/editarMenu.php">Menu</a></li>
             </ul>
