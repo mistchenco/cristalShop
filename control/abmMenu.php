@@ -99,10 +99,12 @@ class AbmMenu{
      * @return boolean
      */
     public function modificacion($param){
-       
+       echo "modificacion abm";
+       print_r($param);
         $resp = false;
         if ($this->seteadosCamposClaves($param)){
             $elObjtMenu = $this->cargarObjeto($param);
+            
             if($elObjtMenu!=null and $elObjtMenu->modificar()){
                 $resp = true;
             }
