@@ -29,7 +29,7 @@ $listaCarrito = $sesion->getCarrito();
       echo '<h3> No se encontraron registros </h3>';
     } else{
       foreach ($listaCarrito as $carrito) {
-            print_r($carrito);
+            // print_r($carrito);
             echo '<tr><td class="text-center" style="width:200px;">' . $carrito['idProducto'] . '</td>';
             echo '<td class="text-center" style="width:200px;">' . $carrito['productoNombre']. '</td>';
             echo '<td class="text-center" style="width:200px;">' . $carrito['productoDetalle']. '</td>';

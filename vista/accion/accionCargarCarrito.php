@@ -6,7 +6,7 @@ include_once '../../configuracion.php';
     // print_r($datos);
     $arreglo = $sesion->agregarColeccionItems($datos);
     print_r($arreglo);
-    if( $arreglo != null){
+    if( !isset($arreglo)){
         header("Location: ../ejercicios/carrito.php");
     }else{
         echo 'error en accion cargar carrito';
