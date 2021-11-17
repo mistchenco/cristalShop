@@ -7,7 +7,9 @@ if (!$sesion->activa()) {
     header('location:../ejercicios/login.php');
 }else{
     $objUsuario = $sesion->getObjUsuario();
-    
+    $menu = new AbmMenu();
+    $arregloMenu = $menu->buscar("");
+
 }
 
 ?>
@@ -71,7 +73,15 @@ if (!$sesion->activa()) {
                     <li><a class="dropdown-item" href="../ejercicios/mostrarProductos.php">Ver nuestros Productos</a></li>
                     <li><a class="dropdown-item" href="../ejercicios/crearProducto.php">Cargar Productos</a></li>
                     <li><a class="dropdown-item" href="../ejercicios/listarProductos.php">Administrar Productos</a></li>
-                    
+                    <?php
+                        for ($i=0; $i < (count($arregloMenu)); $i++) { 
+                    ?>
+                        <li>
+                            <a class="dropdown-item" href="<?php echo $arregloMenu[$i]->getMedescripcion();?>"><?php echo $arregloMenu[$i]->getMenombre();?></a>
+                        </li>
+                    <?php
+                        }
+                    ?>
                     </ul>
                 </li>
                 <li class="nav-item"><a class="nav-link" href="../ejercicios/carrito.php">Carrito</a></li>

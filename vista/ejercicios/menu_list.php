@@ -78,14 +78,14 @@ $combo .='</select>';
             function newMenu(){
                 $('#dlg').dialog('open').dialog('center').dialog('setTitle','Nuevo Menu');
                 $('#fm').form('clear');
-                url = 'accion/alta_menu.php';
+                url = '../accion/alta_menu.php';
             }
             function editMenu(){
                 var row = $('#dg').datagrid('getSelected');
                 if (row){
                     $('#dlg').dialog('open').dialog('center').dialog('setTitle','Editar Menu');
                     $('#fm').form('load',row);
-                    url = 'accion/edit_menu.php?accion=mod&idmenu='+row.idmenu;
+                    url = '../accion/edit_menu.php?accion=mod&idmenu='+row.idmenu;
                 }
             }
             function saveMenu(){
@@ -117,7 +117,7 @@ $combo .='</select>';
                 if (row){
                     $.messager.confirm('Confirm','Seguro que desea eliminar el menu?', function(r){
                         if (r){
-                            $.post('accion/eliminar_menu.php?idmenu='+row.idmenu,{idmenu:row.id},
+                            $.post('../accion/eliminar_menu.php?idmenu='+row.idmenu,{idmenu:row.id},
                                function(result){
                                	 alert("Volvio Serviodr");   
                                  if (result.respuesta){

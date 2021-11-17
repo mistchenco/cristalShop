@@ -1,6 +1,5 @@
 <?php 
-include_once "../../configuracion.php";
-include_once "../estructura/cabeceraSegura.php";
+include_once "../../../configuracion.php";
 $data = data_submitted();
 $respuesta = false;
 if (isset($data['menombre'])){
