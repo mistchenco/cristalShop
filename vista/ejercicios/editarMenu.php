@@ -74,7 +74,7 @@ $combo .='</select>';
                 }
             }
             function saveMenu(){
-            	alert(url);
+            	//alert(url);
                 $('#fm').form('submit',{
                     url: url,
                     onSubmit: function(){

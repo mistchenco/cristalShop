@@ -26,11 +26,11 @@ $combo .='</select>';
 <script type="text/javascript" src="../js/jquery-easyui-1.6.6/jquery.easyui.min.js"></script>
 </head>
 <body>
-<h2>ABM - Menu</h2>
+<h2>ABM - MEnu</h2>
 <p>Seleccione la acci&oacute;n que desea realizar.</p>
 
 <table id="dg" title="Administrador de item menu" class="easyui-datagrid" style="width:700px;height:250px"
-    url="accion/listar_menu.php" toolbar="#toolbar" pagination="true"rownumbers="true" fitColumns="true" singleSelect="true">
+    url="../accion/listar_menu.php" toolbar="#toolbar" pagination="true"rownumbers="true" fitColumns="true" singleSelect="true">
             <thead>
             <tr>
             <th field="idmenu" width="50">ID</th>
@@ -98,7 +98,7 @@ $combo .='</select>';
                     success: function(result){
                         var result = eval('('+result+')');
 
-                        alert("Volvio Servidor");   
+                        alert("Volvio Serviodr");   
                         if (!result.respuesta){
                             $.messager.show({
                                 title: 'Error',
