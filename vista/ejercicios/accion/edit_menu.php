@@ -1,7 +1,7 @@
 <?php
 include_once "../../../configuracion.php";
 $data = data_submitted();
-
+print_r($data);
 $respuesta = false;
 if (isset($data['idmenu'])){
     $objC = new AbmMenu();
@@ -13,9 +13,11 @@ if (isset($data['idmenu'])){
         
     }else $respuesta =true;
     
+}else{
+    $sms_error = "falta la clave del menu";
 }
 $retorno['respuesta'] = $respuesta;
-if (isset($mensaje)){
+if (isset($sms_error)){
     
     $retorno['errorMsg']=$mensaje;
     

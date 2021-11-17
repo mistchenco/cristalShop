@@ -180,6 +180,7 @@ class Menu {
     }
     
     public function modificar(){
+        echo "hola modificar";
         $resp = false;
         $base=new BaseDatos();
         $sql="UPDATE menu SET menombre='".$this->getMenombre()."',medescripcion='".$this->getMedescripcion()."'";
@@ -192,7 +193,7 @@ class Menu {
          else
               $sql.=" ,medeshabilitado=null";
         $sql.= " WHERE idmenu = ".$this->getIdmenu();
-        // echo $sql;
+         echo $sql;
         if ($base->Iniciar()) {
             if ($base->Ejecutar($sql)) {
                 $resp = true;
