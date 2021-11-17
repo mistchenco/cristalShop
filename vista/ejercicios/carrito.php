@@ -1,4 +1,7 @@
 <?php
+//primero crear la compra recorremos el 
+//arreglo carrito por cada posicion creo una compraitem 
+//y armo la coleccion correspondiente a compra y se inicializa el estado de la compra
 include_once '../../configuracion.php';
 $sesion = new session();
 $datos = data_submitted();
@@ -47,5 +50,16 @@ $listaCarrito = $sesion->getCarrito();
     }
 
     ?>
-</div>
-</table>
+    </table>
+    <div class="d-flex justify-items-right">
+    <form action="../accion/accionCrearCompra.php" method="post">
+     
+    <button class="btn btn-dark" type="submit"  value='<?php $listaCarrito ?>'>Comprar</button>
+    </form>
+    </div>
+  </div>
+
+
+<?php
+include_once '../estructura/footer.php';
+?>

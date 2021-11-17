@@ -9,7 +9,7 @@ if (isset($data['idmenu'])){
     
     if (!$respuesta){
 
-        $sms_error = " La accion  MODIFICACION No pudo concretarse";
+        $mensaje = " La accion  MODIFICACION No pudo concretarse";
         
     }else $respuesta =true;
     
@@ -17,7 +17,7 @@ if (isset($data['idmenu'])){
 $retorno['respuesta'] = $respuesta;
 if (isset($mensaje)){
     
-    $retorno['errorMsg']=$sms_error;
+    $retorno['errorMsg']=$mensaje;
     
 }
 echo json_encode($retorno);

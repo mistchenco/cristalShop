@@ -17,7 +17,8 @@ class abmCompraItem
             $idCompra=$objCompra->getIdCompra();
             echo $idCompra;
             $obj = new compraItem();
-            $obj->setear(['idCompraItem'=>$param['idCompraItem'],'objProducto'=> $objProducto,'idCompra'=> $idCompra, 'compraItemCantidad'=>$param['compraItemCantidad']]);
+            //sacamos de setear 'idCompraItem'=>$param['idCompraItem'],
+            $obj->setear(['objProducto'=> $objProducto,'idCompra'=> $idCompra, 'compraItemCantidad'=>$param['compraItemCantidad']]);
         }
        
         return $obj;

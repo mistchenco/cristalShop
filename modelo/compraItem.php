@@ -4,6 +4,7 @@ class compraItem
     private $idCompraItem;
     private $objProducto;
     private $idCompra;
+    //objCompra
     private $compraItemCantidad;
     private $mensajeOperacion; 
 

@@ -20,7 +20,7 @@ class compra
         $this->setIdCompra($datos['idCompra']);
         $this->setCompraFecha($datos['compraFecha']);
         $this->setObjUsuario($datos['objUsuario']);
-        $this->setColeccionItems($datos['coleccionItems']);
+        // $this->setColeccionItems($datos['coleccionItems']);
     }
 
     //METODOS GETTERS
@@ -41,9 +41,9 @@ class compra
     }
     public function getColeccionItems()
     {
-        $idCompra=getIdCompra();
-        $objCompraItem= new compraItem();
-        $coleccionCompraItems=$objCompraItem->listar($idCompra);
+        // $idCompra=getIdCompra();
+        // $objCompraItem= new compraItem();
+        // $coleccionCompraItems=$objCompraItem->listar($idCompra);
         
         return $this->coleccionItems;
     }
@@ -138,14 +138,14 @@ class compra
     {
         $base = new BaseDatos();
         $resp = false;
-        $idCompra=$this->getIdCompra();
+       
         $compraFecha=$this->getCompraFecha();
         $usuario=$this->getObjUsuario();
         $idUsuario=$usuario->getIdUsuario();
         
         
-        $sql = "INSERT INTO compra(idCompra,compraFecha,idUsuario)
-            VALUES ('$idCompra','$compraFecha', '$idUsuario')";
+        $sql = "INSERT INTO compra(compraFecha,idUsuario)
+            VALUES ('$compraFecha', '$idUsuario')";
 
         if ($base->Iniciar()) {
             if ($elid = $base->Ejecutar($sql)) {
