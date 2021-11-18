@@ -12,7 +12,7 @@ if (!$sesion->activa()) {
     $roles = $sesion->getColeccionRol();
     $i = 0;
     $bandera = false;
-    do {
+    do { //hacer un foreach o consultar si realmente es un objeto
         $idRol = $roles[$i]->getIdRol();
         echo 'ID ROL DE CABECERA SEGURA' . $idRol;
         $rolActivo = $sesion->setRolActivo($idRol);
