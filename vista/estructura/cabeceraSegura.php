@@ -109,11 +109,13 @@ if (!$sesion->activa()) {
                         $select = $select  . "<option>{$rol->getIdRol()}{$rol->getRolDescripcion()}</option>";
                     }
                     echo "<div class='col-md-2'>
+                    <form action = '../accion/accionseleccionarol.php' method='post'>
                     <label for='inputState' class='form-label text-light'>Rol</label>
-                        <select id='inputState' class='form-select btn-sm'>
+                        <select onclick=id='inputState' class='form-select btn-sm'>
                         <option selected >{$objRolActivo->getRolDescripcion()}</option>
                             $select
                         </select>
+                    </form>
                     </div>"
                 ?>
         <a href="../accion/cerrarSesion.php" class="nav-item btn btn-danger"> <i class="fas fa-sign-in-alt"></i>Log Out </a>
