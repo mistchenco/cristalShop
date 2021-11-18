@@ -104,7 +104,8 @@ class AbmMenu{
         $resp = false;
         if ($this->seteadosCamposClaves($param)){
             $elObjtMenu = $this->cargarObjeto($param);
-            
+            echo "+++++++++++++SETEO++++++++++++";
+            print_r($elObjtMenu);
             if($elObjtMenu!=null and $elObjtMenu->modificar()){
                 $resp = true;
             }

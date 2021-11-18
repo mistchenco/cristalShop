@@ -2,14 +2,7 @@
 <?php 
 include_once "../../configuracion.php";
 $objControl = new AbmMenu();
-$List_Menu = $objControl->buscar(null);
-$combo = '<select class="easyui-combobox"  id="idpadre"  name="idpadre" label="Submenu de?:" labelPosition="top" style="width:90%;">
-<option></option>';
-foreach ($List_Menu as $objMenu){
-    $combo .='<option value="'.$objMenu->getIdmenu().'">'.$objMenu->getMenombre().':'.$objMenu->getMedescripcion().'</option>';
-}
 
-$combo .='</select>';
 ?>
 
 
@@ -35,7 +28,7 @@ $combo .='</select>';
             <tr>
             <th field="idmenu" width="50">ID</th>
             <th field="menombre" width="50">Nombre</th>
-            <th field="medescripcion" width="50">Descripci&oacute;n</th>
+            <th field="medescripcion" width="50">Link de menu</th>
             <th field="idpadre" width="50">Submenu De:</th>
              <th field="medeshabilitado" width="50">Deshabilitado</th>
             </tr>
@@ -60,6 +53,14 @@ $combo .='</select>';
             </div>
             <div style="margin-bottom:10px">
             <?php 
+                $List_Menu = $objControl->buscar(null);
+                $combo = '<select class="easyui-combobox"  id="idpadre"  name="idpadre" label="Submenu de?:" labelPosition="top" style="width:90%;">
+                <option></option>';
+                foreach ($List_Menu as $objMenu){
+                    $combo .='<option value="'.$objMenu->getIdmenu().'">'.$objMenu->getMenombre().':'.$objMenu->getMedescripcion().'</option>';
+                }
+                
+                $combo .='</select>';
                 echo $combo;
             ?>
              

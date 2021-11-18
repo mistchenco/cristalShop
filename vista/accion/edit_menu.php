@@ -1,6 +1,7 @@
 <?php
 include_once "../../configuracion.php";
 $data = data_submitted();
+echo "llega edit_menu.php";
 print_r($data);
 $respuesta = false;
 if (isset($data['idmenu'])){
