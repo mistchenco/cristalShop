@@ -160,6 +160,7 @@ class usuario
         $usPass = $this->getUsPass();
         $usMail = $this->getUsMail();
         $usDesabilitado = $this->getUsDesabilitado();
+        // echo $usDesabilitado;
         //Preguntar si ponemos el id del usuario
         $sql = "INSERT INTO usuario(usNombre, usPass, usMail, usDesabilitado)
                 VALUES ('$usNombre', '$usPass', '$usMail', '$usDesabilitado')";
