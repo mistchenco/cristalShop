@@ -17,17 +17,27 @@
         $mensaje="El usuario no se ha podido crear." . $mail;
         header("Location: ../ejercicios/crearUsuario.php?Message=" . urlencode($mensaje));
     }else{
+        echo "<br>";
+        echo "<br>";
+        echo "<br>";
+        echo "<br>";
+        echo "<br>";
         $datosUsuario = [
+            "idUsuario"=>'',
             "usNombre" => $datos['usNombre'],
             "usMail" => $datos['usMail'],
             "usPass" => md5($datos['usPass']),
-            "usDesabilitado" => "0000-00-00 00:00:00"
+            "usDesabilitado" => null
         ]; 
+        print_r($datosUsuario);
+      
         $usuario = $abmUsuario->alta($datosUsuario);
         $busqueda = [
             "usMail" => $datos['usMail']
         ];
         $objUsuario = $abmUsuario->buscar($busqueda);
+        
+        print_r($objUsuario);
         $idUsuario = $objUsuario[0]->getIdUsuario();
         $rol = new abmRol();
         $paramRol = [
