@@ -9,7 +9,16 @@ if (!$sesion->activa()) {
     $objUsuario = $sesion->getObjUsuario();
     $menu = new AbmMenu();
     $arregloMenu = $menu->buscar("");
-
+    $roles = $sesion->getColeccionRol();
+    $i = 0;
+    $bandera = false;
+    do {
+        $idRol = $roles[$i]->getIdRol();
+        echo 'ID ROL DE CABECERA SEGURA' . $idRol;
+        $rolActivo = $sesion->setRolActivo($idRol);
+        $bandera = true;
+    } while ($bandera == false);
+    $objRolActivo = $sesion->getRolActivo();
 }
 
 ?>
@@ -70,9 +79,9 @@ if (!$sesion->activa()) {
                       Productos
                     </a>
                     <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
-                    <li><a class="dropdown-item" href="../ejercicios/mostrarProductos.php">Ver nuestros Productos</a></li>
-                    <li><a class="dropdown-item" href="../ejercicios/crearProducto.php">Cargar Productos</a></li>
-                    <li><a class="dropdown-item" href="../ejercicios/listarProductos.php">Administrar Productos</a></li>
+                        <li><a class="dropdown-item" href="../ejercicios/mostrarProductos.php">Ver nuestros Productos</a></li>
+                        <li><a class="dropdown-item" href="../ejercicios/crearProducto.php">Cargar Productos</a></li>
+                        <li><a class="dropdown-item" href="../ejercicios/listarProductos.php">Administrar Productos</a></li>
                     <?php
                         for ($i=0; $i < (count($arregloMenu)); $i++) { 
                     ?>
@@ -91,6 +100,21 @@ if (!$sesion->activa()) {
         </div>
                 <?php
                     echo "<ul class='navbar-nav pull-xs-right'> <a class='nav-link'>Hola {$objUsuario->getUsNombre()}</a></ul>"
+                ?>
+                <?php
+                    // $roles = $sesion->getColeccionRol();
+                    // $rolActivo = $sesion->getRolActivo();
+                    $select = ''; 
+                    foreach ($roles as $rol) {
+                        $select = $select  . "<option>{$rol->getIdRol()}{$rol->getRolDescripcion()}</option>";
+                    }
+                    echo "<div class='col-md-2'>
+                    <label for='inputState' class='form-label text-light'>Rol</label>
+                        <select id='inputState' class='form-select btn-sm'>
+                        <option selected >{$objRolActivo->getRolDescripcion()}</option>
+                            $select
+                        </select>
+                    </div>"
                 ?>
         <a href="../accion/cerrarSesion.php" class="nav-item btn btn-danger"> <i class="fas fa-sign-in-alt"></i>Log Out </a>
         

@@ -24,12 +24,39 @@ class session{
     }
 
     /**
+     * Devuelve el rol activo del usuario logueado como arreglo
+     */
+    public function getRolActivo(){
+        $abmRol = new AbmRol();
+        $rol = $abmRol->buscar(["idRol" => $_SESSION['rolactivo']]);
+        return $rol[0];
+    }
+
+    public function setRolActivo($idrol){
+        // $ret = false;
+        $roles = $this->getColeccionRol();
+        print_r($roles);
+        // $i = 0;
+        foreach ($roles as $objRol) {
+            echo 'entro';
+            echo 'ID ROL SESSION' . $idrol;
+            echo 'ROLES ID ROL SESSION' . $objRol->getIdRol();
+            echo '<br>';
+            if($objRol->getIdRol() == $idrol){
+                $_SESSION['rolactivo'] = $idrol;
+            }
+        }
+        return $_SESSION['rolactivo'];
+    }
+
+
+    /**
      *  Valida si la sesión actual tiene usuario y psw válidos. Devuelve true o false.
      */
     public function validar($usNombre, $usPass)
     {
-        $coleccionRol=[];
-        $objUsuario='';
+        $coleccionRol = [];
+        $objUsuario = '';
         $exito = false;
         $abmUs = new abmUsuario();
         $listaUsuario = $abmUs->buscar(['usNombre' => $usNombre, 'usPass' => $usPass]);
@@ -37,7 +64,10 @@ class session{
         if (count($listaUsuario) > 0) {
             if ($listaUsuario[0]->getUsDesabilitado() == NULL || $listaUsuario[0]->getUsDesabilitado() == "0000-00-00 00:00:00") {
                 $_SESSION['idUsuario'] = $listaUsuario[0]->getIdUsuario();
-                
+                // $roles = $abmUs->roles(["idUsuario" => $list[0]['idUsuario']]);
+                // $_SESSION["rolactivo"] = $roles[0]['idRol'];
+                $_SESSION["carrito"] = array();
+                $valido = true;
                 $exito = true;
                 //invocar funcion que calcule los atributos
                 // $objUsuario = $this->buscarUsuario();
@@ -151,7 +181,7 @@ class session{
                 array_push($roles, $objRol[0]);
             }
         }
-        
+    
         return $roles;
     }
 

@@ -87,6 +87,8 @@ class abmUsuario
         return $resp;
     }
 
+    
+
     /**
      * permite buscar un objeto
      * @param array $param
