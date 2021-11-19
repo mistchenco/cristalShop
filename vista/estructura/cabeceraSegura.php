@@ -14,7 +14,7 @@ if (!$sesion->activa()) {
     print_r($listaRoles);
     $objRol = $listaRoles[0];
     $idRol = $objRol->getIdRol();
-     $rolActivo=$sesion->getRolActivo();
+    $rolActivo=$sesion->getRolActivo();
     
   
     if ($rolActivo == null) {
