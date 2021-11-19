@@ -158,7 +158,7 @@ class session{
         return $usuario;
     }
     /**
-     * Devuelve el rol del usuario logeado
+     * Devuelve el rol del usuario logeado ver cambiar el nombre y volver a probar
      */
     public function getColeccionRol(){
         $roles = array();
