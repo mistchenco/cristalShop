@@ -27,25 +27,18 @@ class session{
      * Devuelve el rol activo del usuario logueado como arreglo
      */
     public function getRolActivo(){
-        $abmRol = new AbmRol();
-        $rol = $abmRol->buscar(["idRol" => $_SESSION['rolactivo']]);
+        $abmRol = new abmRol();
+       $idRol=$_SESSION['rolactivo']->getIdRol();
+        $rol = $abmRol->buscar(["idRol" => $idRol]);
         return $rol[0];
     }
 
     public function setRolActivo($idrol){
-        // $ret = false;
-        $roles = $this->getColeccionRol();
-        print_r($roles);
-        // $i = 0;
-        foreach ($roles as $objRol) {
-            echo 'entro';
-            echo 'ID ROL SESSION' . $idrol;
-            echo 'ROLES ID ROL SESSION' . $objRol->getIdRol();
-            echo '<br>';
-            if($objRol->getIdRol() == $idrol){
-                $_SESSION['rolactivo'] = $idrol;
-            }
-        }
+       
+       
+    $_SESSION['rolactivo'] = $idrol;
+            
+        
         return $_SESSION['rolactivo'];
     }
 
@@ -60,11 +53,10 @@ class session{
         $exito = false;
         $abmUs = new abmUsuario();
         $listaUsuario = $abmUs->buscar(['usNombre' => $usNombre, 'usPass' => $usPass]);
-        print_r($listaUsuario);
+        // print_r($listaUsuario);
         if (count($listaUsuario) > 0) {
             if ($listaUsuario[0]->getUsDesabilitado() == NULL || $listaUsuario[0]->getUsDesabilitado() == "0000-00-00 00:00:00") {
                 $_SESSION['idUsuario'] = $listaUsuario[0]->getIdUsuario();
-                // $roles = $abmUs->roles(["idUsuario" => $list[0]['idUsuario']]);
                 // $_SESSION["rolactivo"] = $roles[0]['idRol'];
                 $_SESSION["carrito"] = array();
                 $valido = true;
@@ -168,8 +160,7 @@ class session{
     /**
      * Devuelve el rol del usuario logeado
      */
-    public function getColeccionRol()
-    {
+    public function getColeccionRol(){
         $roles = array();
         $abmUR = new abmUsuarioRol();
         $abmR = new abmRol();

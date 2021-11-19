@@ -5,20 +5,22 @@ $sesion = new session();
 include_once '../../configuracion.php';
 if (!$sesion->activa()) {
     header('location:../ejercicios/login.php');
-}else{
+} else {
     $objUsuario = $sesion->getObjUsuario();
     $menu = new AbmMenu();
     $arregloMenu = $menu->buscar("");
-    $roles = $sesion->getColeccionRol();
-    $i = 0;
-    $bandera = false;
-    do { //hacer un foreach o consultar si realmente es un objeto
-        $idRol = $roles[$i]->getIdRol();
-        echo 'ID ROL DE CABECERA SEGURA' . $idRol;
+
+    $listaRoles = $sesion->getColeccionRol();
+    $objRol = $listaRoles[0];
+    $idRol = $objRol->getIdRol();
+    $rolActivo=$sesion->getRolActivo();
+    
+  
+    if ($sesion->getRolActivo() == null) {
         $rolActivo = $sesion->setRolActivo($idRol);
-        $bandera = true;
-    } while ($bandera == false);
-    $objRolActivo = $sesion->getRolActivo();
+      
+    }
+   
 }
 
 ?>
@@ -40,7 +42,7 @@ if (!$sesion->activa()) {
     <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700" rel="stylesheet" type="text/css" />
     <!-- Core theme CSS (includes Bootstrap)-->
     <link href="../css/styles.css" rel="stylesheet" />
-    
+
     <link rel="stylesheet" type="text/css" href="../js/jquery-easyui-1.6.6/themes/default/easyui.css">
     <link rel="stylesheet" type="text/css" href="../js/jquery-easyui-1.6.6/themes/icon.css">
     <link rel="stylesheet" type="text/css" href="../js/jquery-easyui-1.6.6/themes/color.css">
@@ -76,48 +78,60 @@ if (!$sesion->activa()) {
                 </ul> -->
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                      Productos
+                        Productos
                     </a>
                     <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
                         <li><a class="dropdown-item" href="../ejercicios/mostrarProductos.php">Ver nuestros Productos</a></li>
                         <li><a class="dropdown-item" href="../ejercicios/crearProducto.php">Cargar Productos</a></li>
                         <li><a class="dropdown-item" href="../ejercicios/listarProductos.php">Administrar Productos</a></li>
-                    <?php
-                        for ($i=0; $i < (count($arregloMenu)); $i++) { 
-                    ?>
-                        <li>
-                            <a class="dropdown-item" href="<?php echo $arregloMenu[$i]->getMedescripcion();?>"><?php echo $arregloMenu[$i]->getMenombre();?></a>
-                        </li>
-                    <?php
+                        <?php
+                        for ($i = 0; $i < (count($arregloMenu)); $i++) {
+                        ?>
+                            <li>
+                                <a class="dropdown-item" href="<?php echo $arregloMenu[$i]->getMedescripcion(); ?>"><?php echo $arregloMenu[$i]->getMenombre(); ?></a>
+                            </li>
+                        <?php
                         }
-                    ?>
+                        ?>
                     </ul>
                 </li>
                 <li class="nav-item"><a class="nav-link" href="../ejercicios/carrito.php">Carrito</a></li>
                 <li class="nav-item"><a class="nav-link" href="../ejercicios/listarUsuarios.php">Usuarios</a></li>
                 <li class="nav-item"><a class="nav-link" href="../ejercicios/editarMenu.php">Menu</a></li>
-            </ul>
-        </div>
-                <?php
-                    echo "<ul class='navbar-nav pull-xs-right'> <a class='nav-link'>Hola {$objUsuario->getUsNombre()}</a></ul>"
-                ?>
-                <?php
-                    // $roles = $sesion->getColeccionRol();
-                    // $rolActivo = $sesion->getRolActivo();
-                    $select = ''; 
-                    foreach ($roles as $rol) {
-                        $select = $select  . "<option>{$rol->getIdRol()}{$rol->getRolDescripcion()}</option>";
-                    }
-                    echo "<div class='col-md-2'>
-                    <label for='inputState' class='form-label text-light'>Rol</label>
-                        <select id='inputState' class='form-select btn-sm'>
-                        <option selected >{$objRolActivo->getRolDescripcion()}</option>
-                            $select
-                        </select>
-                    </div>"
-                ?>
-        <a href="../accion/cerrarSesion.php" class="nav-item btn btn-danger"> <i class="fas fa-sign-in-alt"></i>Log Out </a>
+
         
+        <?php
+        echo "<li class='navbar-nav pull-xl-right'> <a class='nav-link'>Usuario: {$objUsuario->getUsNombre()} <br> Rol: {$sesion->getRolActivo()->getRolDescripcion()}</a></li>";
+        // echo "<li class='navbar-nav pull-xl-right'> <a class='nav-link'></a></li>";
+        ?>
+        <!-- cortamos linea 103 lo anterior -->
+
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <i class=" fas fa-user-cog"></i>Cambiar Rol
+            </a>
+            <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
+        
+               <?php
+               $listaRoles = $sesion->getColeccionRol();
+               $span="";
+               foreach($listaRoles as $rol){
+                $idRol=$rol->getIdRol();
+                $span = "<li class='dropdown-item'>{$rol->getRolDescripcion()}<span class='fas fa-users'></span></li>";
+                echo "<a class='nav-link' href='../accion/accionseleccionarRol.php?idRol=$idRol'>{$span}</a>";  
+            }
+
+               ?> 
+           </ul>
+        
+        </li>
+
+        
+        
+    </div>
+    </ul>
+        </ul>
+        <a href="../accion/cerrarSesion.php" class="nav-item btn btn-danger"> <i class="fas fa-sign-in-alt"></i>Log Out </a>
     </div>
 </nav>
 
