@@ -64,7 +64,7 @@ class session{
                 $_SESSION['idUsuario'] = $listaUsuario[0]->getIdUsuario();
                 // $objRol= new abmRol;
                 // $listaRoles = $objRol->buscar("");
-                // $_SESSION['rolactivo']=array();
+                 $_SESSION['rolactivo']=array();
                 // $_SESSION["rolactivo"] = $listaRoles[0]['idRol'];
                 $_SESSION["carrito"] = array();
                 
