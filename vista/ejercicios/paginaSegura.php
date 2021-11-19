@@ -11,7 +11,7 @@ if (!$sesion->activa()) {
     
     include_once '../estructura/cabeceraSegura.php';
 }
-
+echo "</br></br></br></br></br></br>";
 echo "<h4>Usted esta Logueado como: {$objUsuario->getUsNombre()} con el Rol: {$sesion->getRolActivo()->getRolDescripcion()}</h4>";
 
 

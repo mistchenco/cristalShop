@@ -9,8 +9,11 @@ if ($sesion->activa()) {
 }
 ?>
 <link rel="stylesheet" href="../css/stylesProducto.css">
-<div class="container mt-2">
+
+<div class="container mt-5">
+    
     <section class="py-2">
+    <h4 class="mt-5" style='text-align: center';>Adquiri nuestros productos</h4>
         <div class="container px-4 px-lg-5 mt-5">
             <div class="row gx-4 gx-lg-5 m-3 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
                 <?php
@@ -42,16 +45,19 @@ if ($sesion->activa()) {
                             <p class="card-text">
                                 <?php
                                 echo "<p>Precio $ {$colObjProductos[$i]->getProductoPrecio()}</p>";
+                                if($sesion->activa()){
                                 echo "<p>Stock: {$colObjProductos[$i]->getProductoStock()}</p>";
                                 ?>
                             </p>
-                            <?php
-                           echo "<form action='../accion/accionCargarCarrito.php' method='post'>
+                            <?php //verificar que el rol tambien sea el rol que corresponde
+                            
+                                echo "<form action='../accion/accionCargarCarrito.php' method='post'>
                            <span>Cantidad: </span>
                            <input type='number' id='compraItemCantidad' name='compraItemCantidad' min='1' max='{$colObjProductos[$i]->getProductoStock()}'>
                            <input name='idProducto' id='idProducto' type='hidden' value='{$colObjProductos[$i]->getIdProducto()}'>
                            <button class=' btn btn-warning'  type='submit'>Añadir al carrito </buttom>
                            </form>";
+                            }
                            ?>
                         </div>
                     </div>
