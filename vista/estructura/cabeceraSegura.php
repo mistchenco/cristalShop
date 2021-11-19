@@ -10,15 +10,18 @@ if (!$sesion->activa()) {
     $menu = new AbmMenu();
     $arregloMenu = $menu->buscar("");
 
-    $listaRoles = $sesion->getColeccionRol();
-    $objRol = $listaRoles[0];
-    $idRol = $objRol->getIdRol();
-    $rolActivo=$sesion->getRolActivo();
     
+    $rolActivo=$sesion->getRolActivo();
   
-    if ($sesion->getRolActivo() == null) {
-        $rolActivo = $sesion->setRolActivo($idRol);
-      
+  
+    if ($rolActivo==null) {
+       echo "entro al if";
+       $listaRoles = $sesion->getColeccionRol();
+       
+         $objRol = $listaRoles[0];
+         print_r($objRol);
+        
+         $sesion->setRolActivo($objRol);
     }
    
 }
@@ -101,8 +104,8 @@ if (!$sesion->activa()) {
 
         
         <?php
-        echo "<li class='navbar-nav pull-xl-right'> <a class='nav-link'>Usuario: {$objUsuario->getUsNombre()} <br> Rol: {$sesion->getRolActivo()->getRolDescripcion()}</a></li>";
-        // echo "<li class='navbar-nav pull-xl-right'> <a class='nav-link'></a></li>";
+        echo "<li class='navbar-nav pull-xl-right'> <a class='nav-link'>Usuario: {$objUsuario->getUsNombre()}</br>{$sesion->getRolActivo()->getRolDescripcion()} </a></li>";
+        // echo "<li class='navbar-nav pull-xl-right'> <a class='nav-link'>Rol: </a></li>";
         ?>
         <!-- cortamos linea 103 lo anterior -->
 
@@ -119,7 +122,7 @@ if (!$sesion->activa()) {
                 $idRol=$rol->getIdRol();
                 $span = "<li class='dropdown-item'>{$rol->getRolDescripcion()}<span class='fas fa-users'></span></li>";
                 echo "<a class='nav-link' href='../accion/accionseleccionarRol.php?idRol=$idRol'>{$span}</a>";  
-            }
+                }
 
                ?> 
            </ul>

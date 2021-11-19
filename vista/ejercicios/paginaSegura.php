@@ -3,6 +3,7 @@ include_once '../../configuracion.php';
 $sesion = new session();
 $datos = data_submitted();
 $objUsuario = $sesion->getObjUsuario();
+$objRolActivo = $sesion->getRolActivo();
 if (!$sesion->activa()) {
     echo "no hay sesion activa";
     header('Location: login.php');
@@ -11,7 +12,7 @@ if (!$sesion->activa()) {
     include_once '../estructura/cabeceraSegura.php';
 }
 
-echo "<h4>Usted esta Logueado como: {$objUsuario->getUsNombre()}</h4>";
+echo "<h4>Usted esta Logueado como: {$objUsuario->getUsNombre()} con el Rol: {$sesion->getRolActivo()->getRolDescripcion()}</h4>";
 
 
 
