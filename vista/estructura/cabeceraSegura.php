@@ -11,12 +11,13 @@ if (!$sesion->activa()) {
     $arregloMenu = $menu->buscar("");
 
     $listaRoles = $sesion->getColeccionRol();
+    print_r($listaRoles);
     $objRol = $listaRoles[0];
     $idRol = $objRol->getIdRol();
-    $rolActivo=$sesion->getRolActivo();
+     $rolActivo=$sesion->getRolActivo();
     
   
-    if ($sesion->getRolActivo() == null) {
+    if ($rolActivo == null) {
         $rolActivo = $sesion->setRolActivo($idRol);
       
     }
@@ -98,7 +99,6 @@ if (!$sesion->activa()) {
                 <li class="nav-item"><a class="nav-link" href="../ejercicios/carrito.php">Carrito</a></li>
                 <li class="nav-item"><a class="nav-link" href="../ejercicios/listarUsuarios.php">Usuarios</a></li>
                 <li class="nav-item"><a class="nav-link" href="../ejercicios/editarMenu.php">Menu</a></li>
-<<<<<<< HEAD
 
         
         <?php
@@ -112,31 +112,6 @@ if (!$sesion->activa()) {
                 <i class=" fas fa-user-cog"></i>Cambiar Rol
             </a>
             <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
-=======
-            </ul>
-        </div>
-                <?php
-                    echo "<ul class='navbar-nav pull-xs-right'> <a class='nav-link'>Hola {$objUsuario->getUsNombre()}</a></ul>"
-                ?>
-                <?php
-                    // $roles = $sesion->getColeccionRol();
-                    // $rolActivo = $sesion->getRolActivo();
-                    $select = ''; 
-                    foreach ($roles as $rol) {
-                        $select = $select  . "<option>{$rol->getIdRol()}{$rol->getRolDescripcion()}</option>";
-                    }
-                    echo "<div class='col-md-2'>
-                    <form action = '../accion/accionseleccionarol.php' method='post'>
-                    <label for='inputState' class='form-label text-light'>Rol</label>
-                        <select onclick=id='inputState' class='form-select btn-sm'>
-                        <option selected >{$objRolActivo->getRolDescripcion()}</option>
-                            $select
-                        </select>
-                    </form>
-                    </div>"
-                ?>
-        <a href="../accion/cerrarSesion.php" class="nav-item btn btn-danger"> <i class="fas fa-sign-in-alt"></i>Log Out </a>
->>>>>>> a73e317770928022c2efc7be0463a966d4045399
         
                <?php
                $listaRoles = $sesion->getColeccionRol();

@@ -29,6 +29,7 @@ class session{
     public function getRolActivo(){
         $abmRol = new abmRol();
        $idRol=$_SESSION['rolactivo']->getIdRol();
+       print_r($idRol);
         $rol = $abmRol->buscar(["idRol" => $idRol]);
         return $rol[0];
     }
@@ -59,6 +60,7 @@ class session{
                 $_SESSION['idUsuario'] = $listaUsuario[0]->getIdUsuario();
                 // $_SESSION["rolactivo"] = $roles[0]['idRol'];
                 $_SESSION["carrito"] = array();
+                $_SESSION['rolactivo']=array();
                 $valido = true;
                 $exito = true;
                 //invocar funcion que calcule los atributos
