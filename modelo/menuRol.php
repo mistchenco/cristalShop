@@ -68,7 +68,7 @@ class menuRol
         $objRol = $this->getObjRol();
         $idRol = $objRol->getIdRol();
         $sql = "SELECT * FROM menurol 
-                WHERE idMenu = '$idMenu' AND idRol = '$idRol'";
+                WHERE idmenu = '$idMenu' AND idRol = '$idRol'";
 
         if ($base->Iniciar()) {
             $res = $base->Ejecutar($sql);
@@ -137,7 +137,7 @@ class menuRol
         $idMenu = $objMenu->getIdMenu();
         $objRol = $this->getObjRol();
         $idRol = $objRol->getIdRol();
-        $sql = "INSERT INTO menurol(idMenu, idRol) VALUES ('$idMenu', '$idRol')";
+        $sql = "INSERT INTO menurol(idmenu, idRol) VALUES ('$idMenu', '$idRol')";
 
         if ($base->Iniciar()) {
             if ($elid = $base->Ejecutar($sql)) {
@@ -161,7 +161,7 @@ class menuRol
         $idMenu = $objMenu->getIdMenu();
         $objRol = $this->getObjRol();
         $idRol = $objRol->getIdRol();
-        $sql = "UPDATE menurol SET idMenu = '$idMenu', idRol = '$idRol' WHERE idMenu = '$idMenu' AND idRol = '$idRol'";
+        $sql = "UPDATE menurol SET idmenu = '$idMenu', idRol = '$idRol' WHERE idmenu = '$idMenu' AND idRol = '$idRol'";
         if ($base->Iniciar()) {
             if ($base->Ejecutar($sql)) {
                 $resp =  true;
@@ -183,7 +183,7 @@ class menuRol
         $objRol = $this->getObjRol();
         $idRol = $objRol->getIdRol();
         if ($base->Iniciar()) {
-            $sql = "DELETE FROM menurol WHERE idMenu = '$idMenu' AND idRol = '$idRol'";
+            $sql = "DELETE FROM menurol WHERE idmenu = '$idMenu' AND idRol = '$idRol'";
             if ($base->Ejecutar($sql)) {
                 $resp =  true;
             } else {

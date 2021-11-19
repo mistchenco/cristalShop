@@ -101,6 +101,7 @@ if (!$sesion->activa()) {
                 <li class="nav-item"><a class="nav-link" href="../ejercicios/carrito.php">Carrito</a></li>
                 <li class="nav-item"><a class="nav-link" href="../ejercicios/listarUsuarios.php">Usuarios</a></li>
                 <li class="nav-item"><a class="nav-link" href="../ejercicios/editarMenu.php">Menu</a></li>
+                
 
         
         <?php
