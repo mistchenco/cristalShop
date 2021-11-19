@@ -7,7 +7,6 @@ class session{
     public function __construct()
     {
         session_start();
-        // $_SESSION['coleccionItems'] = [];
     }
 
     /**
@@ -27,8 +26,13 @@ class session{
      * Devuelve el rol activo del usuario logueado como arreglo
      */
     public function getRolActivo(){
+        return $_SESSION['rolactivo'];
+    }
+
+    public function buscarRolActivo(){
+        echo "entra a rol activo";
         $abmRol = new abmRol();
-       $idRol=$_SESSION['rolactivo']->getIdRol();
+        $idRol=$_SESSION['rolactivo']->getIdRol();
        print_r($idRol);
         $rol = $abmRol->buscar(["idRol" => $idRol]);
         return $rol[0];
@@ -58,9 +62,12 @@ class session{
         if (count($listaUsuario) > 0) {
             if ($listaUsuario[0]->getUsDesabilitado() == NULL || $listaUsuario[0]->getUsDesabilitado() == "0000-00-00 00:00:00") {
                 $_SESSION['idUsuario'] = $listaUsuario[0]->getIdUsuario();
-                // $_SESSION["rolactivo"] = $roles[0]['idRol'];
+                // $objRol= new abmRol;
+                // $listaRoles = $objRol->buscar("");
+                // $_SESSION['rolactivo']=array();
+                // $_SESSION["rolactivo"] = $listaRoles[0]['idRol'];
                 $_SESSION["carrito"] = array();
-                $_SESSION['rolactivo']=array();
+                
                 $valido = true;
                 $exito = true;
                 //invocar funcion que calcule los atributos
