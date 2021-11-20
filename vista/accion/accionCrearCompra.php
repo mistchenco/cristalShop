@@ -6,10 +6,10 @@ $objUsuario = $sesion->getObjUsuario();
 $datos=data_submitted();
 $listaCarrito = $sesion->getCarrito();
 $objabmCompraItem=new abmCompra();
-print_r($datos);
+// print_r($datos);
 $llenarCarrito=$objabmCompraItem->agregarCompra($listaCarrito, $objUsuario);
 if($llenarCarrito){
-    echo "dios me libre";
+   $sesion->setColeccionItems($coleccionItems=[]);
 }else{
     echo "aguante satanas";
 }

@@ -105,13 +105,15 @@ class compraEstado{
         return $resp;
     }
 
-    public function listar($parametro = ""){
+    public static function listar($parametro = ""){
         $arreglo = array();
         $base = new BaseDatos();
         $sql = "SELECT * FROM compraestado";
+      
         if ($parametro != "") {
-            $sql .= 'WHERE ' . $parametro;
+            $sql .= ' WHERE ' . $parametro;
         }
+        echo $sql;
         $res = $base->Ejecutar($sql);
         if ($res > -1) {
             if ($res > 0) {

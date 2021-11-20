@@ -20,6 +20,23 @@ class abmCompra
         $objCompra->setear($datosCompra);
         $objCompra->insertar();
         $idCompra = $objCompra->getIdCompra();
+
+        $abmCompraEstadoTipo=new abmCompraEstadoTipo();
+        $datos['idCompraEstadoTipo']=1;
+        $listaCompraEstadoTipo=$abmCompraEstadoTipo->buscar($datos);
+        $objCompraEstadoTipo=$listaCompraEstadoTipo[0];
+        $idCompraEstadoTipo=$objCompraEstadoTipo->getIdCompraEstadoTipo();
+        $abmCompraEstado=new abmCompraEstado();
+        echo "DATOS COMPRA ITEM";
+        $datosCompraEstado=['idCompraEstado'=>'',
+        'idCompra'=>$idCompra,
+        'idCompraEstadoTipo'=>$idCompraEstadoTipo,
+        'compraEstadoFechaInicial'=>date("Y-m-d H:i:s"),
+        'compraEstadoFechaFinal'=>'0000-00-00 00:00:00'];
+        print_r($datosCompraEstado);
+        $abmCompraEstado->alta($datosCompraEstado);
+        
+        
         foreach ($arregloProductos as $producto) {
             $nuevoStock['productoStock'] = 0;
             $cantidadAdescontar = 0;
@@ -36,8 +53,7 @@ class abmCompra
             if ($objCompraItem->alta($datosCompraItem)) {
 
                 $objabmProducto = new abmProducto();
-               
-                
+            
                 $listaProductos = $objabmProducto->buscar($datosCompraItem);
                 $objProducto = $listaProductos[0];
                 
@@ -68,7 +84,7 @@ class abmCompra
     public function cargarObjeto($param)
     {
         $obj = null;
-        print_r($param);
+       
         if (
             array_key_exists('idCompra', $param) and
             array_key_exists('compraFecha', $param) and
