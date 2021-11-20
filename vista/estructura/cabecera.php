@@ -30,7 +30,7 @@ include_once '../../configuracion.php';
                     <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
                         <li class="nav-item"><a class="nav-link" href="#page-top">Inicio</a></li>
                         <li class="nav-item"><a class="nav-link" href="#proximosEventos">Proximos Eventos</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#productos">Productos</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../ejercicios/mostrarProductos.php">Productos</a></li>
                         <li class="nav-item"><a class="nav-link" href="#quienesSomos">¿Quienes Somos?</a></li>
                         <li class="nav-item"><a class="nav-link" href="#contact">Contacto</a></li>
                         <a href="../ejercicios/crearUsuario.php" class="nav-item btn btn-info" ><i class="fas fa-user-plus"></i> Crear Cuenta</a>
