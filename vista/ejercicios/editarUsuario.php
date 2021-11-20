@@ -13,7 +13,7 @@ if ($sesion->activa()) {
 }
 
 $descripcion = "";
-print_r($datos);
+// print_r($datos);
 $datos = data_submitted();
 $abmUsuario = new abmUsuario();
 $listaUsuario = $abmUsuario->buscar($datos);
