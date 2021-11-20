@@ -1,13 +1,13 @@
 <?php
 include_once '../../configuracion.php';
 include_once '../estructura/cabeceraSegura.php';
-$abmCompraEstado=new abmCompraEstado();
-$listaCompras=$abmCompraEstado->buscar(null);
-$abmCompraEstadoTipo=new abmCompraEstadoTipo();
+$abmCompraEstado = new abmCompraEstado();
+$listaCompras = $abmCompraEstado->buscar(null);
+$abmCompraEstadoTipo = new abmCompraEstadoTipo();
 
 ?>
 <div class="container mt-5">
-  <h1>Panel de administracion de Compras</h1>
+  <h1 style="margin-top: 150px;" >Panel de administracion de Compras</h1>
   <table class="table table-bordered ">
     <thead>
       <tr>
@@ -23,41 +23,32 @@ $abmCompraEstadoTipo=new abmCompraEstadoTipo();
     <?php
     if (count($listaCompras) > 0) {
         $estadosDisponibles = $abmCompraEstadoTipo->buscar(null);
-        
-       foreach ($estadosDisponibles as $estados) {
-        
-        $descripcion=$estados->getCompraEstadoTipoDescripcion();
-    $span=$span.'<buttom  name="compraEstadoTipo" value='.$descripcion.' >'.$descripcion.'</buttom>';
-    
-    }
-      foreach ($listaCompras as $objCompraEstado) {
-        echo '<form action="editarEstadoCompra.php" method="post">';
-        $span='';
-       $objCompra=$objCompraEstado->getObjCompra();
-       $idCompra=$objCompra->getIdCompra();
-       $objCompraEstadoTipo =$objCompraEstado->getObjCompraEstadoTipo();
-       $descripcion=$objCompraEstadoTipo->getCompraEstadoTipoDescripcion();
-        
-        $idCompraEstado=$objCompraEstado->getIdCompraEstado();
-     
-        
-        echo '<tr><td class="text-center" style="width:200px;">' . $idCompraEstado . '</td>';
-        echo '<td class="text-center" style="width:200px;">' . $idCompra . '</td>';
-        echo '<td class="badge bg-success text-center" style="width:200px;">'.
-         $span.' </td>';
-        echo '<td class="text-center" style="width:200px;">' . $objCompraEstado->getCompraEstadoFechaInicial(). '</td>';
-        echo '<td class="text-center" style="width:200px;">' . $objCompraEstado->getCompraEstadoFechaFinal(). '</td>';
-        
-        echo "
-        <td class='text-center'>
-        <input name='idCompraEstado' id='idCompraEstado' type='hidden' value='$idCompraEstado'>
-        <button class='btn btn-dark' type='submit'><i class='fas fa-edit'></i>
-        </button></td></form>
-        </tr>";
+      
+        foreach ($listaCompras as $objCompraEstado) {
+          echo '<form action="editarEstadoCompra.php" method="post">';
+          $span = '';
+          //Datos de compra
+          $objCompra = $objCompraEstado->getObjCompra();
+          $idCompra = $objCompra->getIdCompra();
+          //Datos de compra estado tipo
+          $objCompraEstadoTipo = $objCompraEstado->getObjCompraEstadoTipo();
+          $descripcion = $objCompraEstadoTipo->getCompraEstadoTipoDescripcion();
+          //datos compra estado
+          $idCompraEstado = $objCompraEstado->getIdCompraEstado();
+
+          echo '<tr><td class="text-center" style="width:200px;">' . $idCompraEstado . '</td>';
+          echo '<td class="text-center" style="width:200px;">' . $idCompra . '</td>';
+          echo '<td class="text-center" style="width:200px;">' . $descripcion . '</td>';
+          echo '<td class="text-center" style="width:200px;">' . $objCompraEstado->getCompraEstadoFechaInicial(). '</td>';
+          echo '<td class="text-center" style="width:200px;">' . $objCompraEstado->getCompraEstadoFechaFinal(). '</td>';
+          
+          echo "
+          <td class='text-center'>
+          <input name='idCompraEstado' id='idCompraEstado' type='hidden' value='$idCompraEstado'>
+          <button class='btn btn-dark' type='submit'><i class='fas fa-edit'></i></button></td></form>
+          </tr>";
         
       }
-     
-  
       if (isset($_GET['Message'])) {
         print '<script type="text/javascript">alert("' . $_GET['Message'] . '");</script>';
       }

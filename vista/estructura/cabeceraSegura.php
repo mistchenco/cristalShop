@@ -87,6 +87,7 @@ if (!$sesion->activa()) {
                         <li><a class="dropdown-item" href="../ejercicios/mostrarProductos.php">Ver nuestros Productos</a></li>
                         <li><a class="dropdown-item" href="../ejercicios/crearProducto.php">Cargar Productos</a></li>
                         <li><a class="dropdown-item" href="../ejercicios/listarProductos.php">Administrar Productos</a></li>
+                        <li><a class="dropdown-item" href="../ejercicios/administrarCompras.php">Administrar Compras</a></li>
                         <?php
                         for ($i = 0; $i < (count($arregloMenu)); $i++) {
                         ?>
