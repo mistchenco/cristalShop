@@ -27,7 +27,7 @@
             "usNombre" => $datos['usNombre'],
             "usMail" => $datos['usMail'],
             "usPass" => md5($datos['usPass']),
-            "usDesabilitado" => null
+            "usDesabilitado" => '0000-00-00 00:00:00'
         ]; 
         print_r($datosUsuario);
       
