@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.1.0
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 12-11-2021 a las 20:02:58
--- Versión del servidor: 8.0.25
--- Versión de PHP: 8.0.7
+-- Tiempo de generación: 20-11-2021 a las 18:48:31
+-- Versión del servidor: 10.4.19-MariaDB
+-- Versión de PHP: 8.0.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -28,10 +28,19 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `compra` (
-  `idCompra` bigint NOT NULL,
-  `compraFecha` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `idUsuario` bigint NOT NULL
+  `idCompra` bigint(20) NOT NULL,
+  `compraFecha` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `idUsuario` bigint(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `compra`
+--
+
+INSERT INTO `compra` (`idCompra`, `compraFecha`, `idUsuario`) VALUES
+(1, '2021-11-17 00:47:08', 1),
+(2, '2021-11-17 00:47:15', 1),
+(3, '2021-11-17 00:47:42', 1);
 
 -- --------------------------------------------------------
 
@@ -40,10 +49,10 @@ CREATE TABLE `compra` (
 --
 
 CREATE TABLE `compraestado` (
-  `idCompraEstado` bigint UNSIGNED NOT NULL,
-  `idCompra` bigint NOT NULL,
-  `idCompraEstadoTipo` int NOT NULL,
-  `compraEstadoFechaInicial` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `idCompraEstado` bigint(20) UNSIGNED NOT NULL,
+  `idCompra` bigint(11) NOT NULL,
+  `idCompraEstadoTipo` int(11) NOT NULL,
+  `compraEstadoFechaInicial` timestamp NOT NULL DEFAULT current_timestamp(),
   `compraEstadoFechaFinal` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -54,7 +63,7 @@ CREATE TABLE `compraestado` (
 --
 
 CREATE TABLE `compraestadotipo` (
-  `idCompraEstadoTipo` int NOT NULL,
+  `idCompraEstadoTipo` int(11) NOT NULL,
   `compraEstadoTipoDescripcion` varchar(50) NOT NULL,
   `compraEstadoTipoDetalle` varchar(256) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -76,10 +85,10 @@ INSERT INTO `compraestadotipo` (`idCompraEstadoTipo`, `compraEstadoTipoDescripci
 --
 
 CREATE TABLE `compraitem` (
-  `idCompraItem` bigint UNSIGNED NOT NULL,
-  `idproducto` bigint NOT NULL,
-  `idcompra` bigint NOT NULL,
-  `compraItemCantidad` int NOT NULL
+  `idCompraItem` bigint(20) UNSIGNED NOT NULL,
+  `idProducto` bigint(20) NOT NULL,
+  `idCompra` bigint(20) NOT NULL,
+  `compraItemCantidad` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -89,23 +98,25 @@ CREATE TABLE `compraitem` (
 --
 
 CREATE TABLE `menu` (
-  `idMenu` bigint NOT NULL,
-  `menuNombre` varchar(50) NOT NULL COMMENT 'Nombre del item del menu',
-  `menuDescripcion` varchar(124) NOT NULL COMMENT 'Descripcion mas detallada del item del menu',
-  `idPadre` bigint DEFAULT NULL COMMENT 'Referencia al id del menu que es subitem',
-  `menuDeshabilitado` timestamp NULL DEFAULT CURRENT_TIMESTAMP COMMENT 'Fecha en la que el menu fue deshabilitado por ultima vez'
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `idmenu` int(11) NOT NULL,
+  `menombre` varchar(50) DEFAULT NULL,
+  `medescripcion` varchar(50) DEFAULT NULL,
+  `idpadre` int(11) DEFAULT NULL,
+  `medeshabilitado` timestamp NULL DEFAULT NULL ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `menu`
 --
 
-INSERT INTO `menu` (`idMenu`, `menuNombre`, `menuDescripcion`, `idPadre`, `menuDeshabilitado`) VALUES
-(7, 'nuevo', 'kkkkk', NULL, NULL),
-(8, 'nuevo', 'kkkkk', NULL, NULL),
-(9, 'nuevo', 'kkkkk', 7, NULL),
-(10, 'nuevo', 'kkkkk', NULL, NULL),
-(11, 'nuevo', 'kkkkk', NULL, NULL);
+INSERT INTO `menu` (`idmenu`, `menombre`, `medescripcion`, `idpadre`, `medeshabilitado`) VALUES
+(1, 'Administrador', '#', NULL, NULL),
+(2, 'Deposito', '#', NULL, NULL),
+(3, 'Cliente', '#', NULL, NULL),
+(11, 'Administrar Productos', '../ejercicios/listarProductos.php', 2, NULL),
+(15, 'prueba', 'testing', 2, NULL),
+(16, 'agreagar menu', 'eeeeeeeee', 2, NULL),
+(17, 'usuarios', '../ejercicios/listarUsuarios.php', 1, NULL);
 
 -- --------------------------------------------------------
 
@@ -114,9 +125,20 @@ INSERT INTO `menu` (`idMenu`, `menuNombre`, `menuDescripcion`, `idPadre`, `menuD
 --
 
 CREATE TABLE `menurol` (
-  `idMenu` bigint NOT NULL,
-  `idRol` bigint NOT NULL
+  `idmenu` int(11) NOT NULL,
+  `idRol` bigint(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `menurol`
+--
+
+INSERT INTO `menurol` (`idmenu`, `idRol`) VALUES
+(1, 1),
+(2, 2),
+(3, 3),
+(11, 2),
+(17, 1);
 
 -- --------------------------------------------------------
 
@@ -125,12 +147,21 @@ CREATE TABLE `menurol` (
 --
 
 CREATE TABLE `producto` (
-  `idProducto` bigint NOT NULL,
-  `productoNombre` int NOT NULL,
+  `idProducto` bigint(20) NOT NULL,
+  `productoNombre` varchar(200) NOT NULL,
   `productoDetalle` varchar(512) NOT NULL,
-  `productoStock` int NOT NULL,
+  `productoStock` int(11) NOT NULL,
   `productoPrecio` float NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `producto`
+--
+
+INSERT INTO `producto` (`idProducto`, `productoNombre`, `productoDetalle`, `productoStock`, `productoPrecio`) VALUES
+(32, 'Piedrita', 'piedra chiquita', 3, 150),
+(33, 'amatista', 'Piedara negra de color hermoso', 10, 100),
+(34, 'procuto 1', 'eoiemjoim', 10, 1000);
 
 -- --------------------------------------------------------
 
@@ -139,7 +170,7 @@ CREATE TABLE `producto` (
 --
 
 CREATE TABLE `rol` (
-  `idRol` bigint NOT NULL,
+  `idRol` bigint(20) NOT NULL,
   `rolDescripcion` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -159,9 +190,9 @@ INSERT INTO `rol` (`idRol`, `rolDescripcion`) VALUES
 --
 
 CREATE TABLE `usuario` (
-  `idUsuario` bigint NOT NULL,
+  `idUsuario` bigint(20) NOT NULL,
   `usNombre` varchar(50) NOT NULL,
-  `usPass` varchar(80) NOT NULL,
+  `usPass` varchar(250) NOT NULL,
   `usMail` varchar(50) NOT NULL,
   `usDesabilitado` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -171,9 +202,9 @@ CREATE TABLE `usuario` (
 --
 
 INSERT INTO `usuario` (`idUsuario`, `usNombre`, `usPass`, `usMail`, `usDesabilitado`) VALUES
-(1, 'Orange1', '83bedf6e0a77e44f294aa903064e59b3', 'eluneyjsalvaro@gmail.com', '0000-00-00 00:00:00'),
-(14, 'robertito', '055dcd8c1cc7a101a07cde1b62fdb50a', 'roberto@gmail.com', '0000-00-00 00:00:00'),
-(15, 'Salvador', '055dcd8c1cc7a101a07cde1b62fdb50a', 'salvadorDahli@hotmail.com', '2021-11-07 14:38:38');
+(1, 'jota', 'd396d55189db35d2cddc82ba7742b129', 'jjulian.mora@est.fi.uncoma.edu.ar', NULL),
+(3, 'Cliente', 'd396d55189db35d2cddc82ba7742b129', 'cliente@cliente.com.ar', NULL),
+(5, 'Deposito', 'd396d55189db35d2cddc82ba7742b129', 'desposito@clistalshop.com.ar', NULL);
 
 -- --------------------------------------------------------
 
@@ -182,8 +213,8 @@ INSERT INTO `usuario` (`idUsuario`, `usNombre`, `usPass`, `usMail`, `usDesabilit
 --
 
 CREATE TABLE `usuariorol` (
-  `idUsuario` bigint NOT NULL,
-  `idRol` bigint NOT NULL
+  `idUsuario` bigint(20) NOT NULL,
+  `idRol` bigint(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -192,9 +223,9 @@ CREATE TABLE `usuariorol` (
 
 INSERT INTO `usuariorol` (`idUsuario`, `idRol`) VALUES
 (1, 1),
-(1, 3),
-(14, 3),
-(15, 3);
+(1, 2),
+(3, 3),
+(5, 2);
 
 --
 -- Índices para tablas volcadas
@@ -229,23 +260,22 @@ ALTER TABLE `compraestadotipo`
 ALTER TABLE `compraitem`
   ADD PRIMARY KEY (`idCompraItem`),
   ADD UNIQUE KEY `idCompraItem` (`idCompraItem`) USING BTREE,
-  ADD KEY `fkcompraitem_1` (`idcompra`),
-  ADD KEY `fkcompraitem_2` (`idproducto`);
+  ADD KEY `fkcompraitem_2` (`idProducto`),
+  ADD KEY `fkcompraitem_1` (`idCompra`) USING BTREE;
 
 --
 -- Indices de la tabla `menu`
 --
 ALTER TABLE `menu`
-  ADD PRIMARY KEY (`idMenu`),
-  ADD UNIQUE KEY `idMenu` (`idMenu`) USING BTREE,
-  ADD KEY `fkmenu_1` (`idPadre`) USING BTREE;
+  ADD PRIMARY KEY (`idmenu`);
 
 --
 -- Indices de la tabla `menurol`
 --
 ALTER TABLE `menurol`
-  ADD PRIMARY KEY (`idMenu`,`idRol`),
-  ADD KEY `fkmenurol_2` (`idRol`) USING BTREE;
+  ADD PRIMARY KEY (`idmenu`,`idRol`),
+  ADD KEY `idmenu` (`idmenu`) USING BTREE,
+  ADD KEY `idRol` (`idRol`) USING BTREE;
 
 --
 -- Indices de la tabla `producto`
@@ -284,43 +314,43 @@ ALTER TABLE `usuariorol`
 -- AUTO_INCREMENT de la tabla `compra`
 --
 ALTER TABLE `compra`
-  MODIFY `idCompra` bigint NOT NULL AUTO_INCREMENT;
+  MODIFY `idCompra` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `compraestado`
 --
 ALTER TABLE `compraestado`
-  MODIFY `idCompraEstado` bigint UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `idCompraEstado` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `compraitem`
 --
 ALTER TABLE `compraitem`
-  MODIFY `idCompraItem` bigint UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `idCompraItem` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `menu`
 --
 ALTER TABLE `menu`
-  MODIFY `idMenu` bigint NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `idmenu` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT de la tabla `producto`
 --
 ALTER TABLE `producto`
-  MODIFY `idProducto` bigint NOT NULL AUTO_INCREMENT;
+  MODIFY `idProducto` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
 
 --
 -- AUTO_INCREMENT de la tabla `rol`
 --
 ALTER TABLE `rol`
-  MODIFY `idRol` bigint NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `idRol` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `idUsuario` bigint NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `idUsuario` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- Restricciones para tablas volcadas
@@ -347,17 +377,11 @@ ALTER TABLE `compraitem`
   ADD CONSTRAINT `fkcompraitem_2` FOREIGN KEY (`idproducto`) REFERENCES `producto` (`idProducto`) ON UPDATE CASCADE;
 
 --
--- Filtros para la tabla `menu`
---
-ALTER TABLE `menu`
-  ADD CONSTRAINT `fkmenu_1` FOREIGN KEY (`idPadre`) REFERENCES `menu` (`idMenu`) ON UPDATE CASCADE;
-
---
 -- Filtros para la tabla `menurol`
 --
 ALTER TABLE `menurol`
-  ADD CONSTRAINT `fkmenurol_1` FOREIGN KEY (`idMenu`) REFERENCES `menu` (`idMenu`) ON UPDATE CASCADE,
-  ADD CONSTRAINT `fkmenurol_2` FOREIGN KEY (`idRol`) REFERENCES `rol` (`idRol`) ON UPDATE CASCADE;
+  ADD CONSTRAINT `fkmovimiento_2` FOREIGN KEY (`idRol`) REFERENCES `rol` (`idRol`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `menurol_ibfk_1` FOREIGN KEY (`idmenu`) REFERENCES `menu` (`idmenu`) ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `usuariorol`
