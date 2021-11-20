@@ -14,6 +14,13 @@ if ($sesion->activa()) {
     
     <section class="py-2">
     <h4 class="mt-5" style='text-align: center';>Adquiri nuestros productos</h4>
+    <h5  style='text-align: center'>   
+        <?php
+            if (!$sesion->activa()) {
+                echo "Para realizar Compras debe ingresar como usuario o registrase";
+            }
+        ?>
+    </h5>
         <div class="container px-4 px-lg-5 mt-5">
             <div class="row gx-4 gx-lg-5 m-3 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
                 <?php

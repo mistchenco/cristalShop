@@ -13,7 +13,7 @@
             <div class="container">
                 <div class="masthead-subheading">Bienvenido a Piedras, Cristales y Cactus</div>
                
-                <a class="btn btn-primary btn-xl text-uppercase" href="#services">CONOCE NUESTROS PRODUCTOS</a>
+                <a class="btn btn-primary btn-xl text-uppercase" href="../ejercicios/mostrarProductos.php">CONOCE NUESTROS PRODUCTOS</a>
             </div>
 </header>
    

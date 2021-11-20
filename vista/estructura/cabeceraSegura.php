@@ -9,7 +9,7 @@ if (!$sesion->activa()) {
     $objUsuario = $sesion->getObjUsuario();
     $menu = new AbmMenu();
     $arregloMenu = $menu->buscar("");
-
+    
     
     $rolActivo=$sesion->getRolActivo();
   
@@ -105,7 +105,7 @@ if (!$sesion->activa()) {
 
         
         <?php
-        echo "<li class='navbar-nav pull-xl-right'> <a class='nav-link' href='../ejercicios/cambiarDatosUsuario.php' >Usuario: {$objUsuario->getUsNombre()}</br>{$sesion->getRolActivo()->getRolDescripcion()} </a></li>";
+        echo "<li class='navbar-nav pull-xl-right'> <a class='nav-link'>Usuario: {$objUsuario->getUsNombre()}</br>{$sesion->getRolActivo()->getRolDescripcion()} </a></li>";
         // echo "<li class='navbar-nav pull-xl-right'> <a class='nav-link'>Rol: </a></li>";
         ?>
         <!-- cortamos linea 103 lo anterior -->
