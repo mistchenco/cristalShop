@@ -68,9 +68,9 @@ if (!$sesion->activa()) {
                         Navegacion
                     </a>
                     <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
-                        <li><a class="dropdown-item" href="#proximosEventos">Proximos Eventos</a></li>
-                        <li><a class="dropdown-item" href="#quienesSomos">¿Quienes Somos?</a></li>
-                        <li><a class="dropdown-item" href="#contact">Contacto</a></li>
+                        <li><a class="dropdown-item" href="../home/index.php#proximoseventos">Proximos Eventos</a></li>
+                        <li><a class="dropdown-item" href="../home/index.php#quienesSomos">¿Quienes Somos?</a></li>
+                        <li><a class="dropdown-item" href="../home/index.php#contact">Contacto</a></li>
                     </ul>
                 </li>
                 <!-- <li class="nav-item"><a class="nav-link" href="../ejercicios/crearProducto.php">Crear Productos</a></li>
