@@ -73,33 +73,57 @@ if (!$sesion->activa()) {
                         <li><a class="dropdown-item" href="../home/index.php#contact">Contacto</a></li>
                     </ul>
                 </li>
-              
+                <! –– Menu Dinamico ––> 
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Productos
+                        <! –– Busco el Padre Segun el Rol ––>
+                        <?php
+                            foreach ($arregloMenu as $menu) {
+                                $objMenupadre= $menu->getObjMenu();
+                                $idMenu =$menu->getIdmenu();
+                                $idRolActual = $rolActivo->getIdRol();
+                                if (($objMenupadre== null) && ($idMenu == $idRolActual)) {
+                                    echo $menu->getMenombre(); ?>
+                                </a>
+                                <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
+                        
+                                    <?php
+                                    for ($i=0; $i < (count($arregloMenu)); $i++) { 
+                                        $objPadre =  $arregloMenu[$i]->getObjMenu();
+                                        if ($objPadre!=null) {
+                                            $idPadre = $objPadre->getIdmenu();
+                                            
+                                            if (($idPadre == $idRolActual)) {?>
+                                        <li>
+                                            <a class="dropdown-item" href="<?php echo $arregloMenu[$i]->getMedescripcion(); ?>"><?php echo $arregloMenu[$i]->getMenombre(); ?></a>
+                                        </li>
+                                        <?php
+                                            }
+                                        }
+                                        
+                                    }
+                                }
+                            }
+                        ?>
+                    </ul>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Menu Estico
                     </a>
                     <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
+                        
+                        <li><a class="dropdown-item"><a class="nav-link" href="../ejercicios/carrito.php">Carrito</a></li>
+                        <li><a class="dropdown-item"><a class="nav-link" href="../ejercicios/administrarCompras.php">Administrar Compras</a></li>
+                        <li><a class="dropdown-item"><a class="nav-link" href="../ejercicios/comprasUsuario.php">Mis Compras</a></li>
+                        <li><a class="dropdown-item"><a class="nav-link" href="../ejercicios/listarUsuarios.php">Usuarios</a></li>
+                        <li><a class="dropdown-item"><a class="nav-link" href="../ejercicios/editarMenu.php">Menu</a></li>
                         <li><a class="dropdown-item" href="../ejercicios/mostrarProductos.php">Ver nuestros Productos</a></li>
                         <li><a class="dropdown-item" href="../ejercicios/crearProducto.php">Cargar Productos</a></li>
                         <li><a class="dropdown-item" href="../ejercicios/listarProductos.php">Administrar Productos</a></li>
                         <li><a class="dropdown-item" href="../ejercicios/administrarCompras.php">Administrar Compras</a></li>
-                        <?php
-                        for ($i = 0; $i < (count($arregloMenu)); $i++) {
-                        ?>
-                            <li>
-                                <a class="dropdown-item" href="<?php echo $arregloMenu[$i]->getMedescripcion(); ?>"><?php echo $arregloMenu[$i]->getMenombre(); ?></a>
-                            </li>
-                        <?php
-                        }
-                        ?>
                     </ul>
                 </li>
-                <li class="nav-item"><a class="nav-link" href="../ejercicios/carrito.php">Carrito</a></li>
-                <li class="nav-item"><a class="nav-link" href="../ejercicios/administrarCompras.php">Administrar Compras</a></li>
-                <li class="nav-item"><a class="nav-link" href="../ejercicios/comprasUsuario.php">Mis Compras</a></li>
-                <li class="nav-item"><a class="nav-link" href="../ejercicios/listarUsuarios.php">Usuarios</a></li>
-                <li class="nav-item"><a class="nav-link" href="../ejercicios/editarMenu.php">Menu</a></li>
-                
 
         
         
