@@ -18,6 +18,7 @@ class abmCompraEstado
 
             // Agregarle los otros objetos
             $obj = new compraEstado();
+            
             $obj->setear(['idCompraEstado'=>$param['idCompraEstado'],'objCompra'=> $objCompra, 
             'objCompraEstadoTipo'=>$objCompraEstadoTipo, 
             'compraEstadoFechaInicial'=>$param['compraEstadoFechaInicial'], 

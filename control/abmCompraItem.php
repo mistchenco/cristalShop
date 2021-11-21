@@ -95,8 +95,8 @@ class abmCompraItem
             if (isset($param['compraItemCantidad']))
                 $where .= " and compraItemCantidad = '" . $param['compraItemCantidad'] . "'";
         }
-        echo ' WHERE DE ABM COMPRA ITEM';
-        echo $where;
+        // echo ' WHERE DE ABM COMPRA ITEM';
+        // echo $where;
         $arreglo = compraItem::listar($where);
         return $arreglo;
     }

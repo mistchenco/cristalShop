@@ -2,7 +2,7 @@
 include_once '../../configuracion.php';
 // include_once '../estructura/cabeceraSegura.php';
 $datos = data_submitted();
-print_r($datos);
+// print_r($datos);
 $abmCompraEstado = new abmCompraEstado();
 $abmProducto = new abmProducto();
 
@@ -10,8 +10,8 @@ $abmProducto = new abmProducto();
 $listaCompraEstado = $abmCompraEstado->buscar($datos);
 $objCompraEstado = $listaCompraEstado[0];
 
-echo 'OBJ COMPRA ESTADO';
-print_r($objCompraEstado);
+// echo 'OBJ COMPRA ESTADO';
+// print_r($objCompraEstado);
 
 //Obj Compra 
 $objCompra = $objCompraEstado->getObjCompra();

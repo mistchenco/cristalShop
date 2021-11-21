@@ -30,10 +30,10 @@ class session{
     }
 
     public function buscarRolActivo(){
-        echo "entra a rol activo";
+        // echo "entra a rol activo";
         $abmRol = new abmRol();
         $idRol=$_SESSION['rolactivo']->getIdRol();
-       print_r($idRol);
+     
         $rol = $abmRol->buscar(["idRol" => $idRol]);
         return $rol[0];
     }
@@ -66,7 +66,7 @@ class session{
                 // $listaRoles = $objRol->buscar("");
                  $_SESSION['rolactivo'] = array();
                 // $_SESSION["rolactivo"] = $listaRoles[0]['idRol'];
-                $_SESSION["coleccionItems"] = array();
+                $_SESSION['coleccionItems'] = array();
                 
                 $valido = true;
                 $exito = true;

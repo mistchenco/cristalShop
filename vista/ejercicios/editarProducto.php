@@ -8,7 +8,7 @@ if ($sesion->activa()) {
 }
 $listaProductos=[];
 $datos = data_submitted();
-print_r($datos);
+// print_r($datos);
 $abmProducto = new abmProducto();
 $listaProductos = $abmProducto->buscar($datos);
 $objProducto = $listaProductos[0];
