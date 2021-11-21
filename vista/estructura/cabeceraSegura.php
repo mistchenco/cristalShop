@@ -12,14 +12,14 @@ if (!$sesion->activa()) {
     
     
     $rolActivo=$sesion->getRolActivo();
-  
+   
   
     if ($rolActivo==null) {
-       echo "entro al if";
+    //    echo "entro al if";
        $listaRoles = $sesion->getColeccionRol();
        
          $objRol = $listaRoles[0];
-         print_r($objRol);
+        //  print_r($objRol);
         
          $sesion->setRolActivo($objRol);
     }
@@ -153,12 +153,30 @@ if (!$sesion->activa()) {
         echo "<li class='navbar-nav pull-xl-right'> <a class='nav-link' href='../ejercicios/cambiarDatosUsuario.php' >Usuario: {$objUsuario->getUsNombre()}</br>{$sesion->getRolActivo()->getRolDescripcion()} </a></li>";
         // echo "<li class='navbar-nav pull-xl-right'> <a class='nav-link'>Rol: </a></li>";
         ?>
-        
+       
     </div>
+    
     </ul>
         </ul>
-        <a href="../accion/cerrarSesion.php" class="nav-item btn btn-danger"> <i class="fas fa-sign-in-alt"></i>Log Out </a>
+        <div class="px-5">
+        <button  type="button" class="btn btn-secondary position-relative mr-3">
+       
+       <a href="../ejercicios/carrito.php"><i class="fas fa-shopping-cart mr-3"></i></a>
+  <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+ 
+  <?php
+  if(count($sesion->getCarrito())==0){
+      echo "0";
+  }else{
+  echo count($sesion->getCarrito());
+  } ?>
+   
+  </span>
+</button>
+
+        <a href="../accion/cerrarSesion.php" class="ml-5 nav-item btn btn-danger"> <i class="fas fa-sign-in-alt"></i>Log Out </a>
     </div>
+    <div>
 </nav>
 
 <body id="page-top">

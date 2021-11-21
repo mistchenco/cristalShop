@@ -17,8 +17,8 @@ class abmCompraEstado
             $objCompraEstadoTipo->cargar();
 
             // Agregarle los otros objetos
-            $obj = new CompraEstado();
-            $obj->setear(['idCompraEstado'=>'','objCompra'=> $objCompra, 
+            $obj = new compraEstado();
+            $obj->setear(['idCompraEstado'=>$param['idCompraEstado'],'objCompra'=> $objCompra, 
             'objCompraEstadoTipo'=>$objCompraEstadoTipo, 
             'compraEstadoFechaInicial'=>$param['compraEstadoFechaInicial'], 
             'compraEstadoFechaFinal'=>$param['compraEstadoFechaFinal']]);
@@ -41,7 +41,7 @@ class abmCompraEstado
     {
         $resp = false;
 
-        if (isset($param['idcompraestado'])) {
+        if (isset($param['idCompraEstado'])) {
             $resp = true;
         }
 

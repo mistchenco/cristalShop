@@ -181,6 +181,7 @@ class compraEstado{
                 SET idCompra = '$objCompra' , idCompraEstadoTipo = '$objCompraEstadoTipo' , 
                     compraEstadoFechaInicial = '$compraEstadoFechaInicial' , compraEstadoFechaFinal = '$compraEstadoFechaFinal' 
                 WHERE idCompraEstado = '$idCompraEstado'";
+        echo $sql;
         if ($base->Iniciar()) {
             if ($base->Ejecutar($sql)) {
                 $resp = true;
