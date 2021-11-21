@@ -20,7 +20,7 @@ class compra
         $this->setIdCompra($datos['idCompra']);
         $this->setCompraFecha($datos['compraFecha']);
         $this->setObjUsuario($datos['objUsuario']);
-        // $this->setColeccionItems($datos['coleccionItems']);
+        $this->setColeccionItems($datos['coleccionItems']);
     }
 
     //METODOS GETTERS
@@ -41,9 +41,7 @@ class compra
     }
     public function getColeccionItems()
     {
-        // $idCompra=getIdCompra();
-        // $objCompraItem= new compraItem();
-        // $coleccionCompraItems=$objCompraItem->listar($idCompra);
+        
         
         return $this->coleccionItems;
     }
@@ -86,10 +84,20 @@ class compra
                     $usuario = new usuario();
                     $usuario->setIdUsuario($row["idUsuario"]);
                     $usuario->cargar();
-                    $idCompra=$this->setIdCompra($row['idCompra']);
-                    $coleccionItems=$this->getColeccionItems();
-                    
-                    $this->setear(['idCompra'=>$row['idCompra'],'compraFecha'=>$row['compraFecha'],'objUsuario' => $usuario]);
+                    $idCompra = $this->setIdCompra($row['idCompra']);
+                    $compraItem = new compraItem();
+
+                    $datosCompra = [
+                        'idCompra' => $row['idCompra']
+                    ];
+                    $objCompraItem = new abmCompraItem();
+                    $coleccionCompraItems = $objCompraItem->buscar($datosCompra);
+                    $this->setColeccionItems($coleccionCompraItems);
+                    $coleccionItems = $this->getColeccionItems();
+
+                    echo 'COLECCION ITEMS DE COMPRA';
+                    print_r($coleccionItems);
+                    $this->setear(['idCompra'=>$row['idCompra'],'compraFecha'=>$row['compraFecha'],'objUsuario' => $usuario , 'coleccionItems' => $coleccionItems]);
                 }
             }
         } else {
@@ -109,7 +117,6 @@ class compra
         if ($parametro != "") {
             $sql = $sql . ' WHERE ' . $parametro;
         }
-        // echo $sql;
         $res = $base->Ejecutar($sql);
 
         if ($res > -1) {
@@ -120,9 +127,20 @@ class compra
                     $usuario = new usuario();
                     $usuario->setIdUsuario($row["idUsuario"]);
                     $usuario->cargar();
-                    $obj->setear(['idCompra'=>$row['idCompra'],'compraFecha'=>$row['compraFecha'],'objUsuario' => $usuario]);
 
+                    // $idCompra = $row['idCompra'];
+                    $datosCompra = [
+                        'idCompra' => $row['idCompra']
+                    ];
+                    $objCompraItem = new abmCompraItem();
+                    $coleccionCompraItems = $objCompraItem->buscar($datosCompra);
 
+                    $datos = ['idCompra' => $row['idCompra'],
+                    'compraFecha' => $row['compraFecha'],
+                    'objUsuario' => $usuario, 
+                    'coleccionItems' => $coleccionCompraItems];
+                    
+                    $obj->setear($datos);
                     array_push($arreglo, $obj);
                 }
             }

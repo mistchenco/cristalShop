@@ -1,5 +1,6 @@
 <?php
 include_once '../../configuracion.php';
+// $sesion = new session();
  include_once '../estructura/cabeceraSegura.php';
 
 $objUsuario=$sesion->getObjUsuario();
@@ -9,6 +10,9 @@ $datos=['idUsuario'=>$idUsuario];
 
 //Buscamos las compras del usuario Logueado
 $listaCompras=$abmCompra->buscar($datos);
+
+// print_r($listaCompras);
+
 
 if (isset($_GET['Message'])) {
   print '<script type="text/javascript">alert("' . $_GET['Message'] . '");</script>';

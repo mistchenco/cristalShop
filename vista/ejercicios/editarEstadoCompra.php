@@ -2,6 +2,7 @@
 include_once '../../configuracion.php';
 // include_once '../estructura/cabeceraSegura.php';
 $datos = data_submitted();
+print_r($datos);
 $abmCompraEstado = new abmCompraEstado();
 $abmProducto = new abmProducto();
 
@@ -9,13 +10,23 @@ $abmProducto = new abmProducto();
 $listaCompraEstado = $abmCompraEstado->buscar($datos);
 $objCompraEstado = $listaCompraEstado[0];
 
+echo 'OBJ COMPRA ESTADO';
+print_r($objCompraEstado);
+
 //Obj Compra 
 $objCompra = $objCompraEstado->getObjCompra();
+
+// print_r($objCompra);
 
 //Obj compra estado tipo
 $objCompraEstadoTipo = $objCompraEstado->getObjCompraEstadoTipo();
 
 //Obj Compra item
+$listaColeccionItems = $objCompra->getColeccionItems();
+
+
+echo 'coleccion items';
+// print_r($listaColeccionItems);
 $busquedaCompraItem = [
     "idCompra" => $objCompra->getIdCompra()
 ];
@@ -23,20 +34,11 @@ $abmCompraItem = new abmCompraItem();
 $listaCompraItem = $abmCompraItem->buscar($busquedaCompraItem);
 
 //producto
-$coleccionProductos = [];
-foreach ($listaCompraItem as $producto) {
-    $idProducto = $producto->getObjProducto();
-    $busqueda = [
-        'idProducto' => $idProducto
-    ];
-    $nuevoProducto = $abmProducto->buscar($busqueda);
-    array_push($coleccionProductos, $nuevoProducto[0]);
-}
 
-print_r($coleccionProductos);
-
-
-
-
+// print_r($coleccionProductos);
 
 ?>
+
+<form action="" method="get">
+
+</form>

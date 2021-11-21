@@ -2,12 +2,15 @@
 
 class abmCompra
 {
-    public function agregarCompra($param, $objUsuario)
+    public function altaCompra($param, $objUsuario)
     {
         //falta instancia de compra estado! y sumar el total de la compra!!
         $respuesta = false;
         $objCompra = null;
         $arregloProductos = $param;
+
+        // echo 'ESTE HAY QUE PASAR A COLECCION ITEMS';
+        // print_r($arregloProductos);
 
         $arregloCompraItem = array();
         $objCompra = new compra();
@@ -27,13 +30,13 @@ class abmCompra
         $objCompraEstadoTipo=$listaCompraEstadoTipo[0];
         $idCompraEstadoTipo=$objCompraEstadoTipo->getIdCompraEstadoTipo();
         $abmCompraEstado=new abmCompraEstado();
-        echo "DATOS COMPRA ITEM";
+        // echo "DATOS COMPRA ITEM";
         $datosCompraEstado=['idCompraEstado'=>'',
         'idCompra'=>$idCompra,
         'idCompraEstadoTipo'=>$idCompraEstadoTipo,
         'compraEstadoFechaInicial'=>date("Y-m-d H:i:s"),
         'compraEstadoFechaFinal'=>'0000-00-00 00:00:00'];
-        print_r($datosCompraEstado);
+        // print_r($datosCompraEstado);
         $abmCompraEstado->alta($datosCompraEstado);
         
         
@@ -41,7 +44,7 @@ class abmCompra
             $nuevoStock['productoStock'] = 0;
             $cantidadAdescontar = 0;
             $cantidadActual = 0;
-            $objCompraItem = new abmCompraItem();
+            $abmCompraItem = new abmCompraItem();
          
             $datosCompraItem = [
                 'idCompraItem' => '',
@@ -50,13 +53,16 @@ class abmCompra
                 'compraItemCantidad' => $producto['cantidadCompra']
             ];
 
-            if ($objCompraItem->alta($datosCompraItem)) {
+            if ($abmCompraItem->alta($datosCompraItem)) {
 
                 $objabmProducto = new abmProducto();
             
                 $listaProductos = $objabmProducto->buscar($datosCompraItem);
                 $objProducto = $listaProductos[0];
                 
+                // echo 'ABM COMPRA OBJ PRODUCTO  ';
+                // print_r($objProducto);
+
                 $nombreProducto = $objProducto->getProductoNombre();
                 $productoDetalle = $objProducto->getProductoDetalle();
                 $productoPrecio = $objProducto->getProductoPrecio();
@@ -72,8 +78,20 @@ class abmCompra
                     'productoDetalle' => $productoDetalle,
                     'productoStock' => $nuevoStock['productoStock']
                 ];
-               
+
                 $objabmProducto->modificacion($datosProducto);
+                
+                $datosNuevaCompraItem = [
+                    'idProducto' => $producto['idProducto'],
+                    'idCompra' => $idCompra,
+                    'compraItemCantidad' => $producto['cantidadCompra']
+                ];
+
+                $objCompraItem = $abmCompraItem->buscar($datosNuevaCompraItem);
+
+                // echo 'ESTE ES EL OBJ COMPRA ITEM DE ABM COMPRA';
+                // print_r($objCompraItem);
+
                 array_push($arregloCompraItem, $objCompraItem);
                 $respuesta = true;
             }
@@ -119,7 +137,7 @@ class abmCompra
      */
     public function alta($param)
     {
-        print_r($param);
+        // print_r($param);
         $resp = false;
         $elObjtTabla = $this->cargarObjeto($param);
         if ($elObjtTabla != null and $elObjtTabla->insertar()) {

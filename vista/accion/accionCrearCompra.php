@@ -7,10 +7,10 @@ $datos=data_submitted();
 $listaCarrito = $sesion->getCarrito();
 $objabmCompraItem=new abmCompra();
 // print_r($datos);
-$llenarCarrito=$objabmCompraItem->agregarCompra($listaCarrito, $objUsuario);
+$llenarCarrito=$objabmCompraItem->altaCompra($listaCarrito, $objUsuario);
 if($llenarCarrito){
-   $sesion->setColeccionItems($coleccionItems=[]);
-   header("Location: ../ejercicios/comprasUsuario.php");
+   $sesion->setColeccionItems($coleccionItems = []);
+//    header("Location: ../ejercicios/comprasUsuario.php");
 }else{
     echo "aguante satanas";
 }

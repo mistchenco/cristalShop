@@ -4,8 +4,8 @@ class abmCompraItem
     private function cargarObjeto($param)
     {
         $obj = null;
-        print_r($param);
-        echo"cargarObjeto";
+        // print_r($param);
+        // echo"cargarObjeto";
         if (array_key_exists('idCompraItem', $param) && array_key_exists('idProducto', $param) && array_key_exists('idCompra', $param) && array_key_exists('compraItemCantidad', $param)) {
             $objProducto = new producto();
             $objProducto->setIdProducto($param['idProducto']);
@@ -15,7 +15,7 @@ class abmCompraItem
             $objCompra->setIdCompra($param['idCompra']);
             $objCompra->cargar();
             $idCompra=$objCompra->getIdCompra();
-            echo $idCompra;
+            // echo $idCompra;
             $obj = new compraItem();
             //sacamos de setear 'idCompraItem'=>$param['idCompraItem'],
             $obj->setear(['objProducto'=> $objProducto,'idCompra'=> $idCompra, 'compraItemCantidad'=>$param['compraItemCantidad']]);
@@ -87,15 +87,17 @@ class abmCompraItem
         $where = " true ";
         if ($param <> NULL) {
             if (isset($param['idCompraItem']))
-                $where .= " and idCompraItem =" . $param['idCompraItem'];
+                $where .= " and idCompraItem = '" . $param['idCompraItem'] . "'";
             if (isset($param['idProducto']))
-                $where .= " and idProducto =" . $param['idProducto'];
+                $where .= " and idProducto = '" . $param['idProducto'] . "'";
             if (isset($param['idCompra']))
-                $where .= " and idCompra ='" . $param['idCompra'] . "'";
+                $where .= " and idCompra = '" . $param['idCompra'] . "'";
             if (isset($param['compraItemCantidad']))
-                $where .= " and compraItemCantidad ='" . $param['compraItemCantidad'] . "'";
+                $where .= " and compraItemCantidad = '" . $param['compraItemCantidad'] . "'";
         }
-        $arreglo = CompraItem::listar($where);
+        echo ' WHERE DE ABM COMPRA ITEM';
+        echo $where;
+        $arreglo = compraItem::listar($where);
         return $arreglo;
     }
 }

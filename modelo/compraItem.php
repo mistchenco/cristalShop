@@ -112,9 +112,8 @@ class compraItem
         $base = new BaseDatos();
           $sql = "SELECT * FROM compraItem ";
         if ($parametro != "") {
-            $sql = $sql . 'WHERE ' . $parametro;
+            $sql = $sql . ' WHERE ' . $parametro;
         }
-
         $res = $base->Ejecutar($sql);
 
         if ($res > -1) {
@@ -125,7 +124,8 @@ class compraItem
                     $producto = new producto();
                     $producto->setIdProducto($row["idProducto"]);
                     $producto->cargar();
-                    $obj->setear(['idCompraItem'=>$row['idCompraItem'],'objProducto'=>$row['idProducto'],'idCompra' => $row['idCompra'], 'compraItemCantidad'=>$row['compraItemCantidad']]);
+                    //CAMBIAMOS  $row["idProducto"] POR $producto en linea 129
+                    $obj->setear(['idCompraItem'=>$row['idCompraItem'],'objProducto'=>$producto,'idCompra' => $row['idCompra'], 'compraItemCantidad'=>$row['compraItemCantidad']]);
                     array_push($arreglo, $obj);
                 }
             }

@@ -165,10 +165,10 @@ if (!$sesion->activa()) {
   <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
  
   <?php
-  if(count($sesion->getCarrito())==0){
-      echo "0";
+  if( $sesion->getCarrito() == null){
+        echo "0";
   }else{
-  echo count($sesion->getCarrito());
+        echo count($sesion->getCarrito());
   } ?>
    
   </span>
