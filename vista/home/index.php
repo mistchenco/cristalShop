@@ -9,7 +9,7 @@
         include_once '../estructura/cabecera.php'; 
     }
 ?>
-<header class="masthead">
+<header class="masthead" style="margin-top: 65px;" >
             <div class="container">
                 <div class="masthead-subheading">Bienvenido a Piedras, Cristales y Cactus</div>
                

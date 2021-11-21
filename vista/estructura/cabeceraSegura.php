@@ -73,12 +73,7 @@ if (!$sesion->activa()) {
                         <li><a class="dropdown-item" href="../home/index.php#contact">Contacto</a></li>
                     </ul>
                 </li>
-                <!-- <li class="nav-item"><a class="nav-link" href="../ejercicios/crearProducto.php">Crear Productos</a></li>
-                <ul class="nav-item"><a class="nav-link" href="../ejercicios/mostrarProductos.php">Productos</a>
-                <li><a class="dropdown-item" href="../ejercicios/crearProducto.php">Cargar Productos</a></li>
-                <li><a class="dropdown-item" href="">Modificar Productos</a></li>
-                <li><a class="dropdown-item" href="">Eliminar Productos</a></li>
-                </ul> -->
+              
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         Productos
@@ -107,10 +102,7 @@ if (!$sesion->activa()) {
                 
 
         
-        <?php
-        echo "<li class='navbar-nav pull-xl-right'> <a class='nav-link' href='../ejercicios/cambiarDatosUsuario.php' >Usuario: {$objUsuario->getUsNombre()}</br>{$sesion->getRolActivo()->getRolDescripcion()} </a></li>";
-        // echo "<li class='navbar-nav pull-xl-right'> <a class='nav-link'>Rol: </a></li>";
-        ?>
+        
         <!-- cortamos linea 103 lo anterior -->
 
         <li class="nav-item dropdown">
@@ -133,7 +125,10 @@ if (!$sesion->activa()) {
         
         </li>
 
-        
+        <?php
+        echo "<li class='navbar-nav pull-xl-right'> <a class='nav-link' href='../ejercicios/cambiarDatosUsuario.php' >Usuario: {$objUsuario->getUsNombre()}</br>{$sesion->getRolActivo()->getRolDescripcion()} </a></li>";
+        // echo "<li class='navbar-nav pull-xl-right'> <a class='nav-link'>Rol: </a></li>";
+        ?>
         
     </div>
     </ul>

@@ -11,10 +11,11 @@ foreach ($List_Menu as $objMenu){
 
 $combo .='</select>';
 ?>
+<div class="container" style="margin-top: 150px;">
 <h2>ABM - MEnu</h2>
 <p>Seleccione la acci&oacute;n que desea realizar.</p>
 
-<table id="dg" title="Administrador de item menu" class="easyui-datagrid" style="width:700px;height:250px"
+<table id="dg" title="Administrador de item menu" class="easyui-datagrid" style="width:700px;height:250px; margin: top 125px;"
     url="../accion/listar_menu.php" toolbar="#toolbar" pagination="true"rownumbers="true" fitColumns="true" singleSelect="true">
             <thead>
             <tr>
@@ -61,6 +62,7 @@ $combo .='</select>';
             <input class="easyui-checkbox" name="medeshabilitado" value="medeshabilitado" label="Des-Habilitar:">
         </div>
             </form>
+            </div>
             </div>
             <div id="dlg-buttons">
             <a href="javascript:void(0)" class="easyui-linkbutton c6" iconCls="icon-ok" onclick="saveMenu()" style="width:90px">Aceptar</a>

@@ -10,7 +10,7 @@ if ($sesion->activa()) {
 
 ?>
 
-<div class="container mt-5">
+<div class="container" style="margin-top: 100px;">
     <div class="card card-info">
         <form class="" action='../accion/accionCrearProducto.php' novalidate  id="formularioCrearProducto" name="formularioCrearProducto" method="POST" enctype="multipart/form-data">
             <div class="mb-3">

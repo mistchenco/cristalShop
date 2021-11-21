@@ -1,14 +1,15 @@
 <?php
 include_once '../../configuracion.php';
  include_once '../estructura/cabeceraSegura.php';
-$sesion=new session();
+
 $objUsuario=$sesion->getObjUsuario();
 $idUsuario=$objUsuario->getIdUsuario();
 $abmCompra=new abmCompra();
 $datos=['idUsuario'=>$idUsuario];
 // print_r($datos);
+//Buscamos las compras del usuario Logueado
 $listaCompras=$abmCompra->buscar($datos);
-// print_r($listaCompras);
+
 
 ?>
 <div class="container" style="margin-top: 100px;">
@@ -28,12 +29,14 @@ $listaCompras=$abmCompra->buscar($datos);
 
 
 <?php
+//Por cada Compra Buscamos en compra estado sus compras
 foreach($listaCompras as $objCompra){
 $idCompra=$objCompra->getIdCompra();
 $datos=['idCompra'=>$idCompra];
 $abmCompraEstado=new abmCompraEstado();
 $listaComprasEstado=$abmCompraEstado->buscar($datos);
 
+//mostramos el id de la tabla compra, el estado y la fecha de inicio de la compra
 foreach($listaComprasEstado as $objCompraEstado){
     $idCompraEstado=$objCompraEstado->getIdCompraEstado();
     $listaCompraEstadoTipo=$objCompraEstado->getObjCompraEstadoTipo();

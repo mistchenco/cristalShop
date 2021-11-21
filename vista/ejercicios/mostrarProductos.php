@@ -53,18 +53,22 @@ if ($sesion->activa()) {
                                 <?php
                                 echo "<p>Precio $ {$colObjProductos[$i]->getProductoPrecio()}</p>";
                                 if($sesion->activa()){
+                                    if($colObjProductos[$i]->getProductoStock()>0){
                                 echo "<p>Stock: {$colObjProductos[$i]->getProductoStock()}</p>";
                                 ?>
                             </p>
                             <?php //verificar que el rol tambien sea el rol que corresponde
-                            
+                  
                                 echo "<form action='../accion/accionCargarCarrito.php' method='post'>
                            <span>Cantidad: </span>
                            <input type='number' id='compraItemCantidad' name='compraItemCantidad' min='1' max='{$colObjProductos[$i]->getProductoStock()}'>
                            <input name='idProducto' id='idProducto' type='hidden' value='{$colObjProductos[$i]->getIdProducto()}'>
                            <button class=' btn btn-warning'  type='submit'>Añadir al carrito </buttom>
                            </form>";
+                            }else{
+                                echo "<p> sin stock</p>";
                             }
+                        }
                            ?>
                         </div>
                     </div>
