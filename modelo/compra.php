@@ -107,9 +107,9 @@ class compra
 
         $sql = "SELECT * FROM compra ";
         if ($parametro != "") {
-            $sql = $sql . 'WHERE ' . $parametro;
+            $sql = $sql . ' WHERE ' . $parametro;
         }
-
+        // echo $sql;
         $res = $base->Ejecutar($sql);
 
         if ($res > -1) {

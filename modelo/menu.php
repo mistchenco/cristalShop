@@ -230,7 +230,7 @@ class Menu {
         $sql="SELECT * FROM menu ";
      //   echo $sql;
         if ($parametro!="") {
-            $sql.='WHERE '.$parametro;
+            $sql.=' WHERE '.$parametro;
         }
         $res = $base->Ejecutar($sql);
         if($res>-1){

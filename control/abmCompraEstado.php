@@ -156,15 +156,15 @@ class abmCompraEstado
 
         if ($param <> NULL) {
             if (isset($param['idCompraEstado']))
-                $where .= " and idCompraEstado =" . $param['idCompraEstado'];
+                $where .= " and idCompraEstado =" ."'". $param['idCompraEstado']."'";
             if (isset($param['idCompra']))
-                $where .= " and idCompra =" . $param['idCompra'];
+                $where .= " and idCompra =" ."'". $param['idCompra']."'";
             if (isset($param['idCompraEstadoTipo']))
-                $where .= " and idCompraEstadoTipo ='" . $param['idCompraEstadoTipo'] . "'";
+                $where .= " and idCompraEstadoTipo ='" ."'". $param['idCompraEstadoTipo'] . "'";
             if (isset($param['compraEstadoFechaInicial']))
-                $where .= " and compraEstadoFechaInicial ='" . $param['compraEstadoFechaInicial'] . "'";
+                $where .= " and compraEstadoFechaInicial ='" ."'". $param['compraEstadoFechaInicial'] . "'";
             if (isset($param['compraEstadoFechaFinal']))
-                $where .= " and compraEstadoFechaFinal ='" . $param['compraEstadoFechaFinal'] . "'";
+                $where .= " and compraEstadoFechaFinal ='" ."'". $param['compraEstadoFechaFinal'] . "'";
         }
         $arreglo = compraEstado::listar($where);
 

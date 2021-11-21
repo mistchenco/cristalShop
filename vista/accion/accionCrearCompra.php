@@ -10,6 +10,7 @@ $objabmCompraItem=new abmCompra();
 $llenarCarrito=$objabmCompraItem->agregarCompra($listaCarrito, $objUsuario);
 if($llenarCarrito){
    $sesion->setColeccionItems($coleccionItems=[]);
+   header("Location: ../ejercicios/comprasUsuario.php");
 }else{
     echo "aguante satanas";
 }

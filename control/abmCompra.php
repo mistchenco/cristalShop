@@ -177,7 +177,7 @@ class abmCompra
             if (isset($param['compraFecha']))
                 $where .= ' and compraFecha =' . $param['compraFecha'] . "'";
             if (isset($param['idUsuario']))
-                $where .= ' and idUsuario =' . $param['idUsuario'] . "'";
+                $where .= ' and idUsuario =' ."'". $param['idUsuario'] . "'";
         }
         $arreglo = compra::listar($where);
         return $arreglo;
