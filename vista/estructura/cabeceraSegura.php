@@ -1,27 +1,26 @@
 <?php
 
 $sesion = new session();
-
 include_once '../../configuracion.php';
+//Verificacion si tiene la sesion activa en caso negativo reenviamos al loguin
 if (!$sesion->activa()) {
     header('location:../ejercicios/login.php');
+    
 } else {
+    // treaemos el usuario de la sesion, la lista de menu y el rolActivo de la sesion
     $objUsuario = $sesion->getObjUsuario();
     $menu = new AbmMenu();
     $arregloMenu = $menu->buscar("");
     
-    
+    // asignamos el rolActivo de la sesion
     $rolActivo=$sesion->getRolActivo();
-   
-  
+     // consultamos si el rol no esta activo buscamos el primero y lo asignamos
     if ($rolActivo==null) {
-    //    echo "entro al if";
-       $listaRoles = $sesion->getColeccionRol();
-       
-         $objRol = $listaRoles[0];
-        //  print_r($objRol);
-        
+        $listaRoles = $sesion->getColeccionRol();
+        print_r($listaRoles);
+         $objRol = $listaRoles[0];   
          $sesion->setRolActivo($objRol);
+         $rolActivo=$sesion->getRolActivo();
     }
    
 }
