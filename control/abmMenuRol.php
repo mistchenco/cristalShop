@@ -4,9 +4,13 @@ class abmMenuRol{
    
     public function cargarObjeto($param){
         $obj = null;
-        if (array_key_exists('idRol', $param) and array_key_exists('rolDescripcion', $param)){
-            $obj = new rol();
-            $obj->setear($param['idRol'], $param['rolDescripcion']);
+        if (array_key_exists('idRol', $param) and array_key_exists('idMenu', $param)){
+            $obj = new menuRol();
+            $objRol = new abmRol();
+            $objMenu = new abmMenu();
+            $objRol = $objRol ->buscar($param);
+            $objMenu = $objMenu->buscar($param);
+            $obj->setear($objRol, $objMenu);
         }
         return $obj;
     }
@@ -46,10 +50,10 @@ class abmMenuRol{
         $resp = false;
         if ($this->seteadosCamposClaves($param)) {
             $elObjtTabla = $this->cargarObjeto($param);
-            $abmUsuariorol = new abmUsuarioRol();
-            $arregloRoles = $abmUsuariorol->buscar($param);
+            $abmMenuRol = new abmMenuRol();
+            $arregloRoles = $abmMenuRol->buscar($param);
             foreach ($arregloRoles as $objRol) {
-                $abmUsuariorol->baja($param);
+                $abmMenuRol->baja($param);
             }
 
             if ($elObjtTabla != null and $elObjtTabla->eliminar()) {
@@ -90,10 +94,10 @@ class abmMenuRol{
         if ($param <> NULL) {
             if (isset($param['idRol']))
                 $where .= ' and idRol = ' ."'". $param['idRol']."'";
-            if (isset($param['rolDescripcion']))
-                $where .= ' and rolDescripcion =' . $param['rolDescripcion'] . "'";
+            if (isset($param['idmenu']))
+                $where .= ' and idmenu =' . $param['idmenu'] . "'";
         }
-        $arreglo = rol::listar($where);
+        $arreglo = menuRol::listar($where);
         return $arreglo;
     }
 }

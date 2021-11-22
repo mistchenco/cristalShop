@@ -22,7 +22,28 @@ if (!$sesion->activa()) {
          $sesion->setRolActivo($objRol);
          $rolActivo=$sesion->getRolActivo();
     }
-   
+   echo "</br>";
+   echo "</br>";
+   echo "</br>";
+   echo "</br>";
+   echo "</br>";
+   $ruta = $_SERVER['SCRIPT_FILENAME'];
+    $menurol = new abmMenuRol();
+    $datosMR = ['idRol'=> $rolActivo->getIdRol()];
+    $coleccionMenuRol = $menurol->buscar($datosMR);
+    foreach ($coleccionMenuRol as $objMenurol ) {
+        $stringMenu = substr($objMenurol->getObjMenu()->getMedescripcion(),3);
+        if(str_contains($ruta, $stringMenu)){
+            echo "tiene permiso Won";
+           
+        }else{
+            echo "no tiene permisos chango";
+        }
+        echo $ruta;
+        echo "</br>";
+        echo $stringMenu;
+        echo "</br>";
+    }
 }
 
 ?>

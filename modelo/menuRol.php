@@ -91,7 +91,7 @@ class menuRol
         return $resp;
     }
 
-    public function listar($condicion = "")
+    public static function  listar($condicion = "")
     {
 
         $arregloUsuarioRol = array();
@@ -110,7 +110,7 @@ class menuRol
                     $objMenuRol = new menuRol();
 
                     $objMenu = new menu();
-                    $objMenu->setIdMenu($row['idMenu']);
+                    $objMenu->setIdMenu($row['idmenu']);
                     $objMenu->cargar();
 
                     $objRol = new rol();
