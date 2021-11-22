@@ -7,6 +7,7 @@ if ($sesion->activa()) {
 } else {
     include_once '../estructura/cabecera.php';
 }
+
 ?>
 <link rel="stylesheet" href="../css/stylesProducto.css">
 
@@ -52,7 +53,7 @@ if ($sesion->activa()) {
                             <p class="card-text">
                                 <?php
                                 echo "<p>Precio $ {$colObjProductos[$i]->getProductoPrecio()}</p>";
-                                if($sesion->activa()){
+                                if($sesion->activa() && $tienePermiso){
                                     if($colObjProductos[$i]->getProductoStock()>0){
                                 echo "<p>Stock: {$colObjProductos[$i]->getProductoStock()}</p>";
                                 ?>

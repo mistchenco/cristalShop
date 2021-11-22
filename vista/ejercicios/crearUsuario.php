@@ -9,6 +9,7 @@ if ($sesion->activa()) {
 if (isset($_GET['Message'])) {
     print '<script type="text/javascript">alert("' . $_GET['Message'] . '");</script>';
 }
+
 ?>
 
 
@@ -33,24 +34,24 @@ if (isset($_GET['Message'])) {
                             </div>
                             <!-- Validacion -->
                             <div class="invalid-feedback">
-                                </div>
                             </div>
-                            <!-- PASSWORD DEL USUARIO -->
-                            <div class="row mb-3 form-group">
-                                <div class="input-group mb-2 m-auto">
-                                    <span class="input-group-text" id="iconPassword" style="background-color: #fff; border-right: none">
-                                        <i class="fas fa-lock"></i>
-                                    </span>
-                                    <input type="password" class="form-control" name="usPass" id="usPass" placeholder="Contraseña" aria-label="Password" aria-describedby="iconPassword" style="border-left: none" />
-                                    <div class="valid-feedback">Esta correcto!</div>
-                                    <div class="invalid-feedback">Este campo no puede estar vacio!</div>
-                                </div>
-                                <!-- Validacion -->
-                                <div class="invalid-feedback">
-                                </div>
+                        </div>
+                        <!-- PASSWORD DEL USUARIO -->
+                        <div class="row mb-3 form-group">
+                            <div class="input-group mb-2 m-auto">
+                                <span class="input-group-text" id="iconPassword" style="background-color: #fff; border-right: none">
+                                    <i class="fas fa-lock"></i>
+                                </span>
+                                <input type="password" class="form-control" name="usPass" id="usPass" placeholder="Contraseña" aria-label="Password" aria-describedby="iconPassword" style="border-left: none" />
+                                <div class="valid-feedback">Esta correcto!</div>
+                                <div class="invalid-feedback">Este campo no puede estar vacio!</div>
                             </div>
-                            <!-- MAIL DEL USUARIO -->
-                            <div class="row mb-3 form-group">
+                            <!-- Validacion -->
+                            <div class="invalid-feedback">
+                            </div>
+                        </div>
+                        <!-- MAIL DEL USUARIO -->
+                        <div class="row mb-3 form-group">
                             <div class="input-group mb-2 m-auto">
                                 <span class="input-group-text" id="icon" style="background-color: #fff; border-right: none">
                                     <i class="fas fa-user-alt"></i>
@@ -74,7 +75,7 @@ if (isset($_GET['Message'])) {
 
 </div>
 
-<script src="../js/validacionCrearUsuario.js" ></script>
+<script src="../js/validacionCrearUsuario.js"></script>
 
 <?php
 include_once '../estructura/footer.php';
