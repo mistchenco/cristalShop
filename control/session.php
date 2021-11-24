@@ -1,4 +1,5 @@
 <?php
+    error_reporting(0);
 class session{
     private $objUsuario;
     private $coleccionRol;

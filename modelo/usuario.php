@@ -50,54 +50,31 @@ class usuario
     {
         $this->usDesabilitado = $usDesabilitado;
     }
-
     public function setMensajeOperacion($mensajeOperacion)
     {
         $this->mensajeOperacion = $mensajeOperacion;
     }
-
-
     // Metodos Getters
     public function getIdUsuario()
     {
         return $this->idUsuario;
     }
-
-
-
-
     public function getUsNombre()
     {
         return $this->usNombre;
     }
-
-
-
-
     public function getUsPass()
     {
         return $this->usPass;
     }
-
-
-
-
     public function getUsMail()
     {
         return $this->usMail;
     }
-
-
-
-
     public function getUsDesabilitado()
     {
         return $this->usDesabilitado;
     }
-
-
-
-
     public function getMensajeOperacion()
     {
         return $this->mensajeOperacion;
@@ -192,6 +169,7 @@ class usuario
         $sql = "UPDATE usuario 
                 SET usNombre = '$usNombre', usPass = '$usPass', usMail = '$usMail', usDesabilitado = '$usDesabilitado' 
                 WHERE idUsuario = '$idUsuario'";
+                echo $sql;
         if ($base->Iniciar()) {
             if ($base->Ejecutar($sql)) {
                 $resp =  true;

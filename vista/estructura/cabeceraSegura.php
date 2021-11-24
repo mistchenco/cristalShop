@@ -2,6 +2,7 @@
 
 $sesion = new session();
 include_once '../../configuracion.php';
+error_reporting(0); 
 //Verificacion si tiene la sesion activa en caso negativo reenviamos al loguin
 if (!$sesion->activa()) {
     header('location:../ejercicios/login.php');
@@ -118,28 +119,13 @@ if (!$sesion->activa()) {
                     ?>
                         </ul>
                     </li>
-                    <!-- <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            Menu Estico
-                        </a>
-                        <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
-
-                            <li><a class="dropdown-item"><a class="nav-link" href="../ejercicios/carrito.php">Carrito</a></li>
-                            <li><a class="dropdown-item"><a class="nav-link" href="../ejercicios/administrarCompras.php">Administrar Compras</a></li>
-                            <li><a class="dropdown-item"><a class="nav-link" href="../ejercicios/comprasUsuario.php">Mis Compras</a></li>
-                            <li><a class="dropdown-item"><a class="nav-link" href="../ejercicios/listarUsuarios.php">Usuarios</a></li>
-                            <li><a class="dropdown-item"><a class="nav-link" href="../ejercicios/editarMenu.php">Menu</a></li>
-                            <li><a class="dropdown-item" href="../ejercicios/mostrarProductos.php">Ver nuestros Productos</a></li>
-                            <li><a class="dropdown-item" href="../ejercicios/crearProducto.php">Cargar Productos</a></li>
-                            <li><a class="dropdown-item" href="../ejercicios/listarProductos.php">Administrar Productos</a></li>
-                            <li><a class="dropdown-item" href="../ejercicios/administrarCompras.php">Administrar Compras</a></li>
-                        </ul>
-                    </li> -->
-
-
 
                     <!-- cortamos linea 103 lo anterior -->
-
+                    <?php 
+                        $listaRoles = $sesion->getColeccionRol();
+                        if (count($listaRoles) > 1) {
+                    
+                    ?>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             <i class=" fas fa-user-cog"></i>Cambiar Rol
@@ -147,7 +133,6 @@ if (!$sesion->activa()) {
                         <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
 
                             <?php
-                            $listaRoles = $sesion->getColeccionRol();
                             $span = "";
                             foreach ($listaRoles as $rol) {
                                 $idRol = $rol->getIdRol();
@@ -161,6 +146,7 @@ if (!$sesion->activa()) {
                     </li>
 
                     <?php
+                        }
                     echo "<li class='navbar-nav pull-xl-right'> <a class='nav-link' href='../ejercicios/cambiarDatosUsuario.php' >Usuario: {$objUsuario->getUsNombre()}</br>{$sesion->getRolActivo()->getRolDescripcion()} </a></li>";
                     // echo "<li class='navbar-nav pull-xl-right'> <a class='nav-link'>Rol: </a></li>";
                     ?>

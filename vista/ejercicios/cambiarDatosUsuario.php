@@ -2,6 +2,9 @@
 include_once '../../configuracion.php';
 include_once '../estructura/cabeceraSegura.php';
 
+if (isset($_GET['Message'])) {
+    print '<script type="text/javascript">alert("' . $_GET['Message'] . '");</script>';
+}
 ?>
 
 <div class="container p-5 mt-5">

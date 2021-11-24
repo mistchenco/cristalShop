@@ -18,24 +18,28 @@ $objUsuarioBase = $abmUsuario->buscar($paramMail);
 //termino redirigiendo nuevamente a pagina segura o muestro mensaje. 
 if (md5($datos['usPass']) ==  $objUsuario->getUsPass()) {
     if ($datos['usMail'] == $objUsuario->getUsMail() || count($objUsuarioBase) == 0) {
+        echo 'ENTRE EN EL IF';
+        print_r($objUsuario);
         $datosModificacion = [
             'idUsuario' => $objUsuario->getIdUsuario(),
             'usNombre' => $objUsuario->getUsNombre(),
             'usPass' => md5($datos['usPassNuevo']),
             'usMail' => $datos['usMail'],
-            'usDesabilitado' => $objUsuario->getUsDesabilitado()
+            'usDesabilitado' => '0000-00-00 00:00:00'
         ];
-        $abmUsuario->modificacion($datosModificacion);
+        if($abmUsuario->modificacion($datosModificacion)){
+            echo 'se dio papa';
+        }
         $sesion->setObjUsuario($datosModificacion);
         $mensaje = "El usuario se modifico con exito";
         header("Location: ../ejercicios/paginaSegura.php?Message=" . urlencode($mensaje));
     }else{
-        $mensaje = "El producto NO se ha modificado. Revise los datos ingresados";
-        header("Location: cambiarDatosUsuario.php?Message=" . urlencode($mensaje));
+        $mensaje = "El Usuario NO se ha modificado. Revise los datos ingresados";
+        header("Location: ../ejercicios/cambiarDatosUsuario.php?Message=" . urlencode($mensaje));
     }
 }else{
     $mensaje = "La contraseña antigua no es valida. Por favor, vuelva a ingresar sus datos nuevamente";
-    header("Location: cambiarDatosUsuario.php?Message=" . urlencode($mensaje));
+    header("Location: ../ejercicios/cambiarDatosUsuario.php?Message=" . urlencode($mensaje));
 }
 
 

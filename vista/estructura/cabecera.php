@@ -1,6 +1,6 @@
 <?php
 include_once '../../configuracion.php';
-
+error_reporting(0);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -30,7 +30,7 @@ include_once '../../configuracion.php';
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
                         <li class="nav-item"><a class="nav-link" href="../home/index.php#page-top">Inicio</a></li>
-                        <li class="nav-item"><a class="nav-link" href="../home/index.php#">Proximos Eventos</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../home/index.php#proximosEventos">Proximos Eventos</a></li>
                         <li class="nav-item"><a class="nav-link" href="../ejercicios/mostrarProductos.php">Productos</a></li>
                         <li class="nav-item"><a class="nav-link" href="../home/index.php#quienesSomos">¿Quienes Somos?</a></li>
                         <li class="nav-item"><a class="nav-link" href="../home/index.php#contact">Contacto</a></li>

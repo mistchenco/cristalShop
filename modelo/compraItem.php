@@ -136,20 +136,15 @@ class compraItem
         return $arreglo;
     }
 
-    public function insertar()
-    {
+    public function insertar(){
         $base = new BaseDatos();
         $resp = false;
-        // $idCompraItem=$this->getIdCompraItem();
         $idCompra=$this->getIdCompra();
         $objProducto=$this->getObjProducto();
         $idProducto=$objProducto->getIdProducto();
         $compraItemCantidad=$this->getCompraItemCantidad();
-        
-        
         $sql = "INSERT INTO compraItem(idProducto,idCompra,compraItemCantidad)
             VALUES ('$idProducto', '$idCompra','$compraItemCantidad')";
-
         if ($base->Iniciar()) {
             if ($elid = $base->Ejecutar($sql)) {
                 $this->setIdCompra($elid);
@@ -160,7 +155,6 @@ class compraItem
         } else {
             $this->setMensajeOperacion("Usuario->insertar: " . $base->getError());
         }
-
         return $resp;
     }
 

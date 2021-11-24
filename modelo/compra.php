@@ -95,8 +95,6 @@ class compra
                     $this->setColeccionItems($coleccionCompraItems);
                     $coleccionItems = $this->getColeccionItems();
 
-                    // echo 'COLECCION ITEMS DE COMPRA';
-                    // print_r($coleccionItems);
                     $this->setear(['idCompra'=>$row['idCompra'],'compraFecha'=>$row['compraFecha'],'objUsuario' => $usuario , 'coleccionItems' => $coleccionItems]);
                 }
             }
