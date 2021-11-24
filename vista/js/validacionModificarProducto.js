@@ -1,17 +1,20 @@
 let d = document, 
-    form = d.getElementById('formularioCrearProducto'), 
+    form = d.getElementById('editarProducto'), 
     submitButton = d.getElementById('submitButton'),
     inputNombre = d.getElementById('productoNombre'),
     inputDetalle = d.getElementById('productoDetalle'),
     inputStock = d.getElementById('productoStock'),
     inputPrecio = d.getElementById('productoPrecio'),
-    invalido = d.getElementById('invalido')
+    invalido = d.getElementById('validaciones')
 
 
-form.addEventListener('submit', e => {
+console.log(inputPrecio)
+console.log(inputStock)
+
+
+submitButton.addEventListener('click', e => {
     e.preventDefault()
     invalido.innerHTML = ''
-    invalido.classList.remove('alert')
     let b1 = false, 
         b2 = false,
         b3 = false,
@@ -21,9 +24,6 @@ form.addEventListener('submit', e => {
         e3 = '',
         e4 = ''
     
-    console.log('buenass')
-    numeroNegativo(inputNombre)
-
     if (cadenaVacia(inputNombre)) {
         if (!tipoNumero(inputNombre)) {
             if (longitudCadena(inputNombre)) {
@@ -58,6 +58,7 @@ form.addEventListener('submit', e => {
                 if (!numeroNegativo(inputStock)) {
                     b3 = true
                 }else{
+                    console.log('soy un numero negativo en stock')
                     e3 = '-Stock no puede ser un numero negativo o cero-'
                     b3 = false
                 }
