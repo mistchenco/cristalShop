@@ -2,17 +2,20 @@
 include_once '../../configuracion.php';
 $sesion = new session();
 $objUsuario = $sesion->getObjUsuario();
-
+$objRol=$sesion->getRolActivo();
+$idRol=$objRol->getIdRol();
 $datos = data_submitted();
 $arrayRoles = array();
 
 if ($sesion->activa()) {
    include_once '../estructura/cabeceraSegura.php';
 }
-if ($tienePermiso == false) {
+
+if ($idRol != 1) {
    echo "</br></br></br></br></br></br>";
    echo "<h4 class='alert alert-danger'>Usted no tiene Permisos para esta seccion</h4>";
-} else {
+} else{
+   
    $descripcion = "";
    // print_r($datos);
    $datos = data_submitted();

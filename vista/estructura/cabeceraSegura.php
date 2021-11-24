@@ -118,7 +118,7 @@ if (!$sesion->activa()) {
                     ?>
                         </ul>
                     </li>
-                    <li class="nav-item dropdown">
+                    <!-- <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Menu Estico
                         </a>
@@ -134,7 +134,7 @@ if (!$sesion->activa()) {
                             <li><a class="dropdown-item" href="../ejercicios/listarProductos.php">Administrar Productos</a></li>
                             <li><a class="dropdown-item" href="../ejercicios/administrarCompras.php">Administrar Compras</a></li>
                         </ul>
-                    </li>
+                    </li> -->
 
 
 

@@ -7,7 +7,9 @@ if ($sesion->activa()) {
 } else {
     include_once '../estructura/cabecera.php';
 }
-
+if (isset($_GET['Message'])) {
+    print '<script type="text/javascript">alert("' . $_GET['Message'] . '");</script>';
+  }
 ?>
 <link rel="stylesheet" href="../css/stylesProducto.css">
 
@@ -35,11 +37,11 @@ if ($sesion->activa()) {
                     $arregloArchivos = $abmProducto->obtenerArchivos(md5($colObjProductos[$i]->getIdProducto()));
 
                 ?>
-                    <div class="card " style="width: 18rem;">
+                    <div class="card m-3 class='text-center'" style="width: 18rem; border:3px solid">
                         <?php
                         echo "<img src='$arregloArchivos' style='max-width: 400px; widht:400px; '  class='img-fluid' alt='productos'>";
                         ?>
-                        <div class="card-body">
+                        <div class="card-body class='text-center'">
                             <h5 class="card-title">
                                 <?php
                                 echo "<h2>{$colObjProductos[$i]->getProductoNombre()}</h2>";
@@ -60,11 +62,11 @@ if ($sesion->activa()) {
                             </p>
                             <?php //verificar que el rol tambien sea el rol que corresponde
                   
-                                echo "<form action='../accion/accionCargarCarrito.php' method='post'>
+                                echo "<form action='../accion/accionCargarCarrito.php' method='post' class='text-center'>
                            <span>Cantidad: </span>
                            <input type='number' id='compraItemCantidad' name='compraItemCantidad' min='1' max='{$colObjProductos[$i]->getProductoStock()}'>
                            <input name='idProducto' id='idProducto' type='hidden' value='{$colObjProductos[$i]->getIdProducto()}'>
-                           <button class=' btn btn-warning'  type='submit'>Añadir al carrito </buttom>
+                           <button class=' btn btn-warning mt-3'  type='submit'>Añadir al carrito </buttom>
                            </form>";
                             }else{
                                 echo "<p> sin stock</p>";
