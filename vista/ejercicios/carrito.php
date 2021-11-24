@@ -11,6 +11,9 @@ if (!$sesion->activa()) {
 } else {
   include_once '../estructura/cabeceraSegura.php';
 }
+if (isset($_GET['Message'])) {
+  print '<script type="text/javascript">alert("' . $_GET['Message'] . '");</script>';
+}
 if ($tienePermiso == false) {
   echo "</br></br></br></br></br></br>";
   echo "<h4 class='alert alert-danger'>Usted no tiene Permisos para esta seccion</h4>";
@@ -52,15 +55,22 @@ if ($tienePermiso == false) {
             <button class=' btn btn-dark' type='submit'>
             <i class='fas fa-trash-alt'></i></i></button></td></form></tr>";
         }
-        echo "<tr>
-        <td class='text-center' style='width:200px;'>Total</td>
+        echo"
+        <tr>
+          <th scope='col' class='text-center'></th>
+          <th scope='col' class='text-center'></th>
+          <th scope='col' class='text-center'></th>
+          <th scope='col' class='text-center'>Suma Total de su compra</th>
+          <th scope='col' class='text-center'></th>
+          <th scope='col' class='text-center'>Accion</th>";
+        echo "<br><tr>
+        <td class='text-center' style='width:200px;'></td>
         <td  class='text-center' style='width:200px;'></td>
         <td  class='text-center' style='width:200px;'></td>
         <td  class='text-center' style='width:200px;'>$ {$suma}</td>
         <td  class='text-center' style='width:200px;'></td>
-        <td><form action='../accion/accionCrearCompra.php' method='post'>
-     
-        <button class='btn btn-dark' type='submit'  value='<?php $listaCarrito ?>'>Comprar</button></td>
+        <td class='text-center' ><form action='../accion/accionCrearCompra.php' method='post'>
+        <button class='btn btn-dark mx-auto' style='margin-left:50px' type='submit'  value='<?php $listaCarrito ?>'>Comprar</button></td>
         </form>
         </tr>";
       } ?>

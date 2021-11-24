@@ -1,5 +1,6 @@
-<footer class="footer py-4">
-            <div class="container">
+
+<footer class="footer mt-auto py-5 bg-light" >
+            <div class="container" >
                 <div class="row align-items-center">
                     <div class="col-lg-4 text-lg-start">Copyright &copy; Los 3 mosqueteros</div>
                     <div class="col-lg-4 my-3 my-lg-0">

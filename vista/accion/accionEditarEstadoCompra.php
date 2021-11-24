@@ -2,13 +2,13 @@
 include_once '../../configuracion.php';
 
 $datos = data_submitted();
-echo 'DATOS DE ESTADO COMPRA';
-print_r($datos);
+// echo 'DATOS DE ESTADO COMPRA';
+// print_r($datos);
 $abmCompraEstado = new abmCompraEstado();
 $listaCompraEstado = $abmCompraEstado->buscar(['idCompraEstado' => $datos['idCompraEstado'] ]);
 $objCompraEstado = $listaCompraEstado[0];
-echo 'LISTA COMPRA ESTADO DE COMPRA';
-print_r($listaCompraEstado);
+// echo 'LISTA COMPRA ESTADO DE COMPRA';
+// print_r($listaCompraEstado);
 
 
 
@@ -28,9 +28,12 @@ $datosNuevos = [
 ]; 
 
 if($abmCompraEstado->modificacion($datosNuevos)){
-    echo 'MODIFICADO CON EXITO';
+  
+    $mensaje = "Estado de la compra modificado con exito!";
+    header("Location: ../ejercicios/editarEstadoCompra.php?Message=" . urlencode($mensaje));
 }else{
-    echo 'NO SE MODIFICO NADA';
+    $mensaje = "El estado de la compra no se modifico, contacte al administrador!";
+    header("Location: ../ejercicios/editarEstadoCompra.php?Message=" . urlencode($mensaje));
 }
 
 

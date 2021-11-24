@@ -1,6 +1,9 @@
 <?php
 include_once '../../configuracion.php';
 include_once '../estructura/cabeceraSegura.php';
+if (isset($_GET['Message'])) {
+    print '<script type="text/javascript">alert("' . $_GET['Message'] . '");</script>';
+  }
 $datos = data_submitted();
 // print_r($datos);
 $abmCompraEstado = new abmCompraEstado();
@@ -60,6 +63,7 @@ $idCompraEstadoTipo = $objCompraEstado->getObjCompraEstadoTipo()->getIdCompraEst
 </div>
 
 <div class="container mt-5" >
+    <h4>Administrar los Estados de la Compra</h4>
     <form action="../accion/accionEditarEstadoCompra.php" method="get">
         
         <div class="form-check form-check-inline">
@@ -96,5 +100,10 @@ $idCompraEstadoTipo = $objCompraEstado->getObjCompraEstadoTipo()->getIdCompraEst
         <input style='visibility: hidden;' type="text" name="idCompraEstado" value="<?php echo $idCompraEstado ?>" >
         <input style='visibility: hidden;' type="text" name="idCompra" value="<?php echo $objCompra->getIdCompra() ?>" >
         <input type="submit" class="btn btn-success">
+        <a href="../ejercicios/administrarCompras.php" class="btn btn-warning" style="margin-left: 400px;">Volver</a> 
     </form>
+  
 </div>
+<?php
+include_once '../estructura/footer.php';
+?>

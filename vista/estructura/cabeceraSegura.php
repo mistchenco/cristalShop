@@ -16,7 +16,7 @@ if (!$sesion->activa()) {
     // consultamos si el rol no esta activo buscamos el primero y lo asignamos
     if ($rolActivo == null) {
         $listaRoles = $sesion->getColeccionRol();
-        print_r($listaRoles);
+        // print_r($listaRoles);
         $objRol = $listaRoles[0];
         $sesion->setRolActivo($objRol);
         $rolActivo = $sesion->getRolActivo();
@@ -170,6 +170,10 @@ if (!$sesion->activa()) {
         </ul>
         </ul>
         <div class="px-5">
+            <?php
+             $idRol=$rolActivo->getIdRol();
+            if($idRol==3){
+            ?>
             <button type="button" class="btn btn-secondary position-relative mr-3">
 
                 <a href="../ejercicios/carrito.php"><i class="fas fa-shopping-cart mr-3"></i></a>
@@ -184,10 +188,15 @@ if (!$sesion->activa()) {
 
                 </span>
             </button>
-
+            <?php
+            }
+            
+            ?>
             <a href="../accion/cerrarSesion.php" class="ml-5 nav-item btn btn-danger"> <i class="fas fa-sign-in-alt"></i>Log Out </a>
         </div>
-        <div>
+    </div>
+        
+                
 </nav>
 
 <body id="page-top">

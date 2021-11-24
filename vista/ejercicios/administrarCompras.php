@@ -41,7 +41,7 @@ if ($tienePermiso == false) {
 
           echo '<tr><td class="text-center" style="width:200px;">' . $idCompraEstado . '</td>';
           echo '<td class="text-center" style="width:200px;">' . $idCompra . '</td>';
-          echo '<td class="text-center" style="width:200px;">' . $descripcion . '</td>';
+          echo '<td class=" mt-3 badge rounded-pill bg-success d-flex justify-content-center align-items-center">' . $descripcion . '</td>';
           echo '<td class="text-center" style="width:200px;">' . $objCompraEstado->getCompraEstadoFechaInicial() . '</td>';
           echo '<td class="text-center" style="width:200px;">' . $objCompraEstado->getCompraEstadoFechaFinal() . '</td>';
 
