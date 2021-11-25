@@ -11,6 +11,9 @@ if (!$sesion->activa()) {
     
     include_once '../estructura/cabeceraSegura.php';
 }
+if (isset($_GET['Message'])) {
+    print '<script type="text/javascript">alert("' . $_GET['Message'] . '");</script>';
+}
 echo "</br></br></br></br></br></br>";
 
   echo "<h4 class='alert alert-success'>Bienvenido:  {$objUsuario->getUsNombre()} <br>

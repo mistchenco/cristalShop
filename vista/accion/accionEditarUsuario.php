@@ -1,11 +1,12 @@
 <?php
+include_once '../../configuracion.php';
 include_once '../estructura/cabecera.php';
-include_once '../../utiles/PHPMailer/enviaMail.php';
+
 $datos = data_submitted();
-print_r($datos);
+
 $arregloRoles=array();
 $abmUsuario = new abmUsuario();
-$enviarMail=new enviarMail();
+
 $usuario=['idUsuario' => $datos['idUsuario']];
 $listaUsuario = $abmUsuario->buscar($usuario);
 $objUsuario = $listaUsuario[0];
@@ -39,8 +40,6 @@ if($modificoUsuario || isset($datos['roles'])){
     }
 }
 if($modificoUsuario || $respRol){
-    
-    // $mail=$enviarMail->newEmail("","",$datos['usMail'],$datos['usNombre'],"MODIFICACION USUARIO","Sus Datos Fueron modificados correctamente");
     $mensaje = "El usuario se modifico con exito, Revise su casilla";
     header("Location: ../ejercicios/listarUsuarios.php?Message=" . urlencode($mensaje));
 }else{

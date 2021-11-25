@@ -28,7 +28,7 @@ if ($tienePermiso == false) {
         $estadosDisponibles = $abmCompraEstadoTipo->buscar(null);
 
         foreach ($listaCompras as $objCompraEstado) {
-          echo '<form action="editarEstadoCompra.php" method="post">';
+           echo '<form action="editarEstadoCompra.php" method="post">';
           $span = '';
           //Datos de compra
           $objCompra = $objCompraEstado->getObjCompra();
@@ -44,7 +44,7 @@ if ($tienePermiso == false) {
           echo '<td class=" mt-3 badge rounded-pill bg-success d-flex justify-content-center align-items-center">' . $descripcion . '</td>';
           echo '<td class="text-center" style="width:200px;">' . $objCompraEstado->getCompraEstadoFechaInicial() . '</td>';
           echo '<td class="text-center" style="width:200px;">' . $objCompraEstado->getCompraEstadoFechaFinal() . '</td>';
-
+          if($descripcion =="aceptada" || $descripcion=="iniciada"){
           echo "
           <td class='text-center'>
           <input name='idCompraEstado' id='idCompraEstado' type='hidden' value='$idCompraEstado'>
@@ -54,6 +54,7 @@ if ($tienePermiso == false) {
         if (isset($_GET['Message'])) {
           print '<script type="text/javascript">alert("' . $_GET['Message'] . '");</script>';
         }
+      }
       } else {
         echo '<h3> No se encontraron registros </h3>';
       } ?>

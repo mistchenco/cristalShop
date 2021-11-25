@@ -10,6 +10,7 @@ if ($idRol !=2) {
    echo "</br></br></br></br></br></br>";
    echo "<h4 class='alert alert-danger'>Usted no tiene Permisos para esta seccion</h4>";
 } else {
+   echo "</br></br></br></br></br></br>";
    $listaProductos = [];
    $datos = data_submitted();
    // print_r($datos);

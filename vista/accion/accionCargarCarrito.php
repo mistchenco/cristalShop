@@ -5,7 +5,7 @@ include_once '../../configuracion.php';
     $datos = data_submitted();
     // print_r($datos);
     $arreglo = $sesion->agregarColeccionItems($datos);
-    print_r($arreglo);
+    // print_r($arreglo);
     if( !isset($arreglo)){
         header("Location: ../ejercicios/carrito.php");
     }else{

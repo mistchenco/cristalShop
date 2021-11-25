@@ -15,7 +15,7 @@ if ($idRol != 1) {
    echo "</br></br></br></br></br></br>";
    echo "<h4 class='alert alert-danger'>Usted no tiene Permisos para esta seccion</h4>";
 } else{
-   
+   echo "</br></br></br></br></br></br>";
    $descripcion = "";
    // print_r($datos);
    $datos = data_submitted();
