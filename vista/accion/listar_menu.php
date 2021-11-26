@@ -4,6 +4,8 @@ $data = data_submitted();
 $objControl = new AbmMenu();
 $list = $objControl->buscar($data);
 $arreglo_salida =  array();
+$abmMenuRol = new abmMenuRol;
+$listaMenuRol = $abmMenuRol->buscar(null);
 foreach ($list as $elem ){
     
     $nuevoElem['idmenu'] = $elem->getIdMenu();
@@ -14,7 +16,16 @@ foreach ($list as $elem ){
         $nuevoElem["idpadre"]=$elem->getObjMenu()->getMeNombre();
     }
     $nuevoElem["medeshabilitado"]=$elem->getMedeshabilitado();
-   
+    $descripcion = "";
+          foreach ($listaMenuRol as $menuRol) {
+            $idMenuEnRol= $menuRol->getObjMenu()->getIdmenu();
+            if($idMenuEnRol == $elem->getIdMenu()){
+              $objRol = $menuRol->getObjRol();
+              $descripcion = $descripcion .$objRol-> getRolDescripcion(). '</br>';
+            }
+          }
+
+    $nuevoElem["rol"]=$descripcion;
     array_push($arreglo_salida,$nuevoElem);
 }
 //verEstructura($arreglo_salida);

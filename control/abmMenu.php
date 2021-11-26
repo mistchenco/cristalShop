@@ -99,12 +99,12 @@ class AbmMenu{
      * @return boolean
      */
     public function modificacion($param){
-       echo "modificacion abm";
+       
     //    print_r($param);
         $resp = false;
         if ($this->seteadosCamposClaves($param)){
             $elObjtMenu = $this->cargarObjeto($param);
-            echo "+++++++++++++SETEO++++++++++++";
+            
             // print_r($elObjtMenu);
             if($elObjtMenu!=null and $elObjtMenu->modificar()){
                 $resp = true;
@@ -120,12 +120,19 @@ class AbmMenu{
      */
     public function buscar($param){
         $where = " true ";
-        /*if ($param<>NULL){
-            if  (isset($param['id']))
-                $where.=" and id =".$param['id'];
-            if  (isset($param['descrip']))
-                 $where.=" and descrip ='".$param['descrip']."'";
-        }*/
+        if ($param<>NULL){
+            if  (isset($param['idmenu']))
+                $where.=" and idmenu =".$param['idmenu'];
+            if  (isset($param['menombre']))
+                 $where.=" and menombre ='".$param['menombre']."'";
+            if  (isset($param['medescripcion']))
+            $where.=" and medescripcion ='".$param['medescripcion']."'";
+            if  (isset($param['idpadre']))
+            $where.=" and idpadre ='".$param['idpadre']."'";
+            if  (isset($param['medeshabilitado']))
+            $where.=" and medeshabilitado ='".$param['medeshabilitado']."'";
+        }
+        
         $arreglo = Menu::listar($where);  
         return $arreglo;
             

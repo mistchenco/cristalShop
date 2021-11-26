@@ -2,7 +2,7 @@
 
 $sesion = new session();
 include_once '../../configuracion.php';
-error_reporting(0); 
+error_reporting(0);
 //Verificacion si tiene la sesion activa en caso negativo reenviamos al loguin
 if (!$sesion->activa()) {
     header('location:../ejercicios/login.php');
@@ -31,7 +31,7 @@ if (!$sesion->activa()) {
     $tienePermiso = false;
     foreach ($coleccionMenuRolActivo as $objMenurol) {
         $stringMenu = $objMenurol->getObjMenu()->getMedescripcion();
-     
+
         $StrMenu = substr($stringMenu, 3);
         if (str_contains($ruta, $StrMenu)) {
             $tienePermiso = true;
@@ -95,58 +95,63 @@ if (!$sesion->activa()) {
                                     $objMenupadre = $menu->getObjMenu();
                                     $idMenu = $menu->getIdmenu();
                                     $idRolActual = $rolActivo->getIdRol();
-                                    if (($objMenupadre == null) && ($idMenu == $idRolActual)) {
+                                    $deshabilitado = $menu->getMedeshabilitado();
+    
+                                    if (($objMenupadre == null) && ($idMenu == $idRolActual) && ($deshabilitado==null) ) {
                                         echo $menu->getMenombre(); ?>
-                        </a>
-                        <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
+                                     </a>
+                                    <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
 
-                            <?php
+                                        <?php
+                                        //recorro el arrelgo de menu 
                                         for ($i = 0; $i < (count($arregloMenu)); $i++) {
                                             $objPadre =  $arregloMenu[$i]->getObjMenu();
+                                            // verifico que sea hijo si el padre es distinto de nul
                                             if ($objPadre != null) {
                                                 $idPadre = $objPadre->getIdmenu();
-
-                                                if (($idPadre == $idRolActual)) { ?>
-                                        <li>
-                                            <a class="dropdown-item" href="<?php echo $arregloMenu[$i]->getMedescripcion(); ?>"><?php echo $arregloMenu[$i]->getMenombre(); ?></a>
-                                        </li>
-                    <?php
+                                                $deshabilitado = $arregloMenu[$i]->getMedeshabilitado();
+                                                //verifico que el padre sea igual al rol actual y que no este deshabilitado y ahi imprimo
+                                                if (($idPadre == $idRolActual) && ($deshabilitado==null)) { ?>
+                                                <li>
+                                                    <a class="dropdown-item" href="<?php echo $arregloMenu[$i]->getMedescripcion(); ?>"><?php echo $arregloMenu[$i]->getMenombre(); ?></a>
+                                                </li>
+                                                <?php
                                                 }
                                             }
                                         }
                                     }
                                 }
-                    ?>
+                                ?>
                         </ul>
                     </li>
 
                     <!-- cortamos linea 103 lo anterior -->
-                    <?php 
-                        $listaRoles = $sesion->getColeccionRol();
-                        if (count($listaRoles) > 1) {
-                    
+                    <?php
+                    $listaRoles = $sesion->getColeccionRol();
+                    if (count($listaRoles) > 1) {
+
                     ?>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            <i class=" fas fa-user-cog"></i>Cambiar Rol
-                        </a>
-                        <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class=" fas fa-user-cog"></i>Cambiar Rol
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
 
-                            <?php
-                            $span = "";
-                            foreach ($listaRoles as $rol) {
-                                $idRol = $rol->getIdRol();
-                                $span = "<li class='dropdown-item'>{$rol->getRolDescripcion()}<span class='fas fa-users'></span></li>";
-                                echo "<a class='nav-link' href='../accion/accionseleccionarRol.php?idRol=$idRol'>{$span}</a>";
-                            }
+                                <?php
+                                $span = "";
+                                foreach ($listaRoles as $rol) {
+                                    $idRol = $rol->getIdRol();
+                                    $span = "<li class='dropdown-item'>{$rol->getRolDescripcion()}<span class='fas fa-users'></span></li>";
+                                    echo "<a class='nav-link' href='../accion/accionseleccionarRol.php?idRol=$idRol'>{$span}</a>";
+                                }
 
-                            ?>
-                        </ul>
+                                ?>
+                            </ul>
 
-                    </li>
+                        </li>
 
                     <?php
-                        }
+                    }
                     echo "<li class='navbar-nav pull-xl-right'> <a class='nav-link' href='../ejercicios/cambiarDatosUsuario.php' >Usuario: {$objUsuario->getUsNombre()}</br>{$sesion->getRolActivo()->getRolDescripcion()} </a></li>";
                     // echo "<li class='navbar-nav pull-xl-right'> <a class='nav-link'>Rol: </a></li>";
                     ?>
@@ -157,32 +162,32 @@ if (!$sesion->activa()) {
         </ul>
         <div class="px-5">
             <?php
-             $idRol=$rolActivo->getIdRol();
-            if($idRol==3){
+            $idRol = $rolActivo->getIdRol();
+            if ($idRol == 3) {
             ?>
-            <button type="button" class="btn btn-secondary position-relative mr-3">
+                <button type="button" class="btn btn-secondary position-relative mr-3">
 
-                <a href="../ejercicios/carrito.php"><i class="fas fa-shopping-cart mr-3"></i></a>
-                <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                    <a href="../ejercicios/carrito.php"><i class="fas fa-shopping-cart mr-3"></i></a>
+                    <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
 
-                    <?php
-                    if ($sesion->getCarrito() == null) {
-                        echo "0";
-                    } else {
-                        echo count($sesion->getCarrito());
-                    } ?>
+                        <?php
+                        if ($sesion->getCarrito() == null) {
+                            echo "0";
+                        } else {
+                            echo count($sesion->getCarrito());
+                        } ?>
 
-                </span>
-            </button>
+                    </span>
+                </button>
             <?php
             }
-            
+
             ?>
             <a href="../accion/cerrarSesion.php" class="ml-5 nav-item btn btn-danger"> <i class="fas fa-sign-in-alt"></i>Log Out </a>
         </div>
     </div>
-        
-                
+
+
 </nav>
 
 <body id="page-top">

@@ -9,14 +9,14 @@ foreach ($List_Menu as $objMenu) {
     $combo .= '<option value="' . $objMenu->getIdmenu() . '">' . $objMenu->getMenombre() . ':' . $objMenu->getMedescripcion() . '</option>';
 }
 
-$combo .= '</select>';
+
 if ($tienePermiso == false) {
     echo "</br></br></br></br></br></br>";
     echo "<h4 class='alert alert-danger'>Usted no tiene Permisos para esta seccion</h4>";
 } else {
 ?>
     <div class="container" style="margin-top: 150px;">
-        <h2>ABM - MEnu</h2>
+        <h2>Gestion de Menu</h2>
         <p>Seleccione la acci&oacute;n que desea realizar.</p>
 
         <table id="dg" title="Administrador de item menu" class="easyui-datagrid" style="width:700px;height:250px; margin: top 125px;" url="../accion/listar_menu.php" toolbar="#toolbar" pagination="true" rownumbers="true" fitColumns="true" singleSelect="true">
@@ -26,6 +26,7 @@ if ($tienePermiso == false) {
                     <th field="menombre" width="50">Nombre</th>
                     <th field="medescripcion" width="50">Link de menu</th>
                     <th field="idpadre" width="50">Submenu De:</th>
+                    <th field="rol" width="50">Rol asingado:</th>
                     <th field="medeshabilitado" width="50">Deshabilitado</th>
                 </tr>
             </thead>
@@ -49,16 +50,23 @@ if ($tienePermiso == false) {
                 </div>
                 <div style="margin-bottom:10px">
                     <?php
-                    $List_Menu = $objControl->buscar(null);
-                    $combo = '<select class="easyui-combobox"  id="idpadre"  name="idpadre" label="Submenu de?:" labelPosition="top" style="width:90%;">
-                <option></option>';
-                    foreach ($List_Menu as $objMenu) {
-                        $combo .= '<option value="' . $objMenu->getIdmenu() . '">' . $objMenu->getMenombre() . ':' . $objMenu->getMedescripcion() . '</option>';
-                    }
+                //     $List_Menu = $objControl->buscar(null);
+                //     $combo = '<select class="easyui-combobox"  id="idpadre"  name="idpadre" label="Submenu de?:" labelPosition="top" style="width:90%;">
+                // <option></option>';
+                //     foreach ($List_Menu as $objMenu) {
+                //         $combo .= '<option value="' . $objMenu->getIdmenu() . '">' . $objMenu->getMenombre() . ':' . $objMenu->getMedescripcion() . '</option>';
+                //     }
 
                     $combo .= '</select>';
                     echo $combo; ?>
 
+                </div>
+                <div style="margin-bottom:10px">
+                <?php
+                $comboRol .= '</select>';
+                echo $comboRol; 
+                ?>
+                    <!-- <input class="easyui-checkbox" name="rol" value="rol" label="Rol:"> -->
                 </div>
                 <div style="margin-bottom:10px">
                     <input class="easyui-checkbox" name="medeshabilitado" value="medeshabilitado" label="Des-Habilitar:">
