@@ -131,6 +131,7 @@ class session{
                         $this->setColeccionItems($_SESSION['coleccionItems']); 
                     }
                 }
+                //si no se encuentra en la coleccion lo carga en la misma
                 if ($bandera == false){
                
                         $datosCompra=[ 

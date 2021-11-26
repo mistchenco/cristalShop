@@ -11,8 +11,8 @@ if (!$sesion->activa()) {
 } else {
   include_once '../estructura/cabeceraSegura.php';
 }
+echo "</br></br></br></br></br></br>";
 
-echo "<h4>Usted esta Logueado como: {$objUsuario->getUsNombre()}</h4>";
 
 
 $abmUsuario = new abmUsuario();

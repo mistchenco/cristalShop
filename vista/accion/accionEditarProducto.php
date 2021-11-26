@@ -11,7 +11,8 @@ if($modificoProducto){
     $mensaje = "El producto se modifico con exito";
     header("Location: ../ejercicios/listarProductos.php?Message=" . urlencode($mensaje));
 }else{
-    echo "no modifico";
+    $mensaje = "Debe cambiar al menos un valor, no se modifico";
+    header("Location: ../ejercicios/listarProductos.php?Message=" . urlencode($mensaje));
 }
 
 include_once '../estructura/footer.php';
