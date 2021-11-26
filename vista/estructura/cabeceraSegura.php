@@ -12,7 +12,7 @@ if (!$sesion->activa()) {
     $menu = new AbmMenu();
     $arregloMenu = $menu->buscar("");
 
-    // asignamos el rolActivo de la sesion
+    // accedos al rolActivo de la sesion
     $rolActivo = $sesion->getRolActivo();
     // consultamos si el rol no esta activo buscamos el primero y lo asignamos
     if ($rolActivo == null) {
@@ -24,14 +24,12 @@ if (!$sesion->activa()) {
     }
     // verificamos si el usuario con el rol y la ruta y asignamos si tiene permiso
     $ruta = $_SERVER['SCRIPT_FILENAME'];
-
     $menurol = new abmMenuRol();
     $datosMR = ['idRol' => $rolActivo->getIdRol()];
     $coleccionMenuRolActivo = $menurol->buscar($datosMR);
     $tienePermiso = false;
     foreach ($coleccionMenuRolActivo as $objMenurol) {
         $stringMenu = $objMenurol->getObjMenu()->getMedescripcion();
-
         $StrMenu = substr($stringMenu, 3);
         if (str_contains($ruta, $StrMenu)) {
             $tienePermiso = true;

@@ -15,6 +15,7 @@ if ($tienePermiso == false) {
   echo "</br></br></br></br></br></br>";
   echo "<h4 class='alert alert-danger'>Usted no tiene Permisos para esta seccion</h4>";
 } else {
+  echo "</br></br></br></br></br></br>";
   $abmProducto = new abmProducto();
   $listaProductos = $abmProducto->buscar(null); ?>
   <div class="container mt-5">
