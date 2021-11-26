@@ -151,13 +151,8 @@ if (!$sesion->activa()) {
                         </li>
 
                     <?php
-<<<<<<< HEAD
-                    }
-                    echo "<li class='navbar-nav pull-xl-right'> <a class='nav-link' href='../ejercicios/cambiarDatosUsuario.php' >Usuario: {$objUsuario->getUsNombre()}</br>{$sesion->getRolActivo()->getRolDescripcion()} </a></li>";
-=======
                         }
                     echo "<li class='navbar-nav pull-xl-right'> <a class='nav-link' href='../ejercicios/cambiarDatosUsuario.php' >Usuario: {$objUsuario->getUsNombre()}</br>Rol: {$sesion->getRolActivo()->getRolDescripcion()} <br> Modificar sus datos</br> </a></li>";
->>>>>>> b1f56094b69abbca6dd1fe3dedc1221e7621abd8
                     // echo "<li class='navbar-nav pull-xl-right'> <a class='nav-link'>Rol: </a></li>";
                     ?>
 
