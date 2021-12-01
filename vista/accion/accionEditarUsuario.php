@@ -3,6 +3,7 @@
     include_once '../estructura/cabecera.php';
     $datos = data_submitted();
     $abmUsuario = new abmUsuario();
-    $abmUsuario->accionEditarUsuario($datos);
+    $mensaje = $abmUsuario->accionEditarUsuario($datos);
+    header("Location: ../ejercicios/listarUsuarios.php?Message=" . urlencode($mensaje));
     include_once '../estructura/footer.php';
 ?>

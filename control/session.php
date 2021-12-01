@@ -234,7 +234,22 @@ class session{
         }
         $arreglo = array_values($arreglo);
         $mensaje = "Producto borrado del carrito";
-        header("Location: ../ejercicios/carrito.php?Message=" . urlencode($mensaje));
+        return $mensaje; 
+    }
+
+
+    public function accionCrearCompra($datos){
+        $objUsuario = $this->getObjUsuario();
+        $listaCarrito = $this->getCarrito();
+        $objabmCompraItem = new abmCompra();
+        $llenarCarrito = $objabmCompraItem->altaCompra($listaCarrito, $objUsuario);
+        if($llenarCarrito){
+            $this->setColeccionItems($coleccionItems = []);
+            $mensaje = "Su compra fue realizada con exito, muchas gracias!";
+        }else{
+            $mensaje = "Su compra no pudo ser realizada, disculpe las molestias";
+        }
+        return $mensaje;
     }
 
 

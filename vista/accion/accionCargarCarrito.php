@@ -8,6 +8,5 @@ include_once '../../configuracion.php';
     }else{
         echo 'error en accion cargar carrito';
     }
-
 include_once '../estructura/footer.php';
 ?>

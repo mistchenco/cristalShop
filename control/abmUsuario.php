@@ -168,15 +168,13 @@ class abmUsuario
         //Genero una busqueda en el abm usuario del MAIL ingresado por formulario
         $paramMail = ['usMail' => $datos['usMail']];
         $objUsuarioBase = $this->buscar($paramMail);
-
+        $mensajeHeader = []; 
         //Primero compruebo que la password ingresada como antigua, sea igual a la de la base de
         //datos. Luego compruebo que el mail sea igual o no haya otro igual en la base para no 
         //cambiar cualquiera. Luego modifico en la base de datos y seteo la variable de sesion
         //termino redirigiendo nuevamente a pagina segura o muestro mensaje. 
     if (md5($datos['usPass']) ==  $objUsuario->getUsPass()) {
         if ($datos['usMail'] == $objUsuario->getUsMail() || count($objUsuarioBase) == 0) {
-            echo 'ENTRE EN EL IF';
-            print_r($objUsuario);
             $datosModificacion = [
                 'idUsuario' => $objUsuario->getIdUsuario(),
                 'usNombre' => $objUsuario->getUsNombre(),
@@ -188,16 +186,18 @@ class abmUsuario
                 echo 'se dio papa';
             }
             $sesion->setObjUsuario($datosModificacion);
-            $mensaje = "El usuario se modifico con exito";
-            header("Location: ../ejercicios/paginaSegura.php?Message=" . urlencode($mensaje));
+            $mensajeHeader['mensaje'] = "El usuario se modifico con exito";
+            $mensajeHeader['header'] = "../ejercicios/paginaSegura.php";
         }else{
-            $mensaje = "El Usuario NO se ha modificado. Revise los datos ingresados";
-            header("Location: ../ejercicios/cambiarDatosUsuario.php?Message=" . urlencode($mensaje));
+            $mensajeHeader['mensaje'] = "El Usuario NO se ha modificado. Revise los datos ingresados";
+            $mensajeHeader['header'] = "../ejercicios/cambiarDatosUsuario.php";
         }
     }else{
-        $mensaje = "La contraseña antigua no es valida. Por favor, vuelva a ingresar sus datos nuevamente";
-        header("Location: ../ejercicios/cambiarDatosUsuario.php?Message=" . urlencode($mensaje));
+        $mensajeHeader['mensaje'] = "La contraseña antigua no es valida. Por favor, vuelva a ingresar sus datos nuevamente";
+        $mensajeHeader['header'] = "../ejercicios/cambiarDatosUsuario.php";
     }
+
+    return $mensajeHeader;
     }
 
     public function accionEditarUsuario($datos){
@@ -238,10 +238,11 @@ class abmUsuario
         }
         if($modificoUsuario || $respRol){
             $mensaje = "El usuario se modifico con exito, Revise su casilla";
-            header("Location: ../ejercicios/listarUsuarios.php?Message=" . urlencode($mensaje));
+           
         }else{
-            echo "<h1>ERROR de modificacion,Debe cambiar al menos un valor y no debe tener campos vacios</h1>";
+            $mensaje = 'ERROR de modificacion,Debe cambiar al menos un valor y no debe tener campos vacios';
         }
+        return $mensaje;
     }
 
 
