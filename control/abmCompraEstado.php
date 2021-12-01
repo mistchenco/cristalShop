@@ -171,4 +171,29 @@ class abmCompraEstado
 
         return $arreglo;
     }
+
+    public function editarEstadoCompraCliente($datos){
+        $abmcompraEstadoTipo=new abmCompraEstadoTipo();
+        $datosCompraEstadoTipo=['idCompraEstadoTipo'=>4];
+        $listaCompraEstadoTipo=$abmcompraEstadoTipo->buscar($datosCompraEstadoTipo);
+        $objCompraEstadoTipo=$listaCompraEstadoTipo[0];
+
+        $listaCompraEstado=$this->buscar($datos);
+        $objCompraEstado=$listaCompraEstado[0];
+
+
+        $objCompra=$objCompraEstado->getObjCompra();
+        $idCompraEstado=$objCompraEstado->getIdCompraEstado();
+        $fechaInicio=$objCompraEstado->getCompraEstadoFechaInicial();
+        $idCompra=$objCompra->getIdCompra();
+
+        $idCompraEstadoTipo=$objCompraEstadoTipo->getIdCompraEstadoTipo();
+        $datosCompraEstado=['idCompraEstado'=>$idCompraEstado,
+                                'idCompra'=>$idCompra,
+                                'idCompraEstadoTipo'=>$idCompraEstadoTipo,
+                                'compraEstadoFechaInicial'=>$fechaInicio,
+                                'compraEstadoFechaFinal'=> date('Y-m-d h-m-s')
+                                ];
+        return $datosCompraEstado;
+    }
 }

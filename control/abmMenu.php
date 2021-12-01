@@ -135,11 +135,37 @@ class AbmMenu{
         
         $arreglo = Menu::listar($where);  
         return $arreglo;
-            
-            
-      
-        
+ 
     }
+    // funcion para listar los menues
+    public function listarmenu($list){
+        $arreglo_salida =  array();
+        $abmMenuRol = new abmMenuRol;
+        $listaMenuRol = $abmMenuRol->buscar(null);
+        foreach ($list as $elem ){
+            $nuevoElem['idmenu'] = $elem->getIdMenu();
+            $nuevoElem["menombre"]=$elem->getMenombre();
+            $nuevoElem["medescripcion"]=$elem->getMedescripcion();
+            $nuevoElem["idpadre"]=$elem->getObjMenu();
+            if($elem->getObjMenu()!=null){
+                $nuevoElem["idpadre"]=$elem->getObjMenu()->getMeNombre();
+            }
+            $nuevoElem["medeshabilitado"]=$elem->getMedeshabilitado();
+            $descripcion = "";
+            foreach ($listaMenuRol as $menuRol) {
+            $idMenuEnRol= $menuRol->getObjMenu()->getIdmenu();
+                if($idMenuEnRol == $elem->getIdMenu()){
+                $objRol = $menuRol->getObjRol();
+                $descripcion = $descripcion .$objRol-> getRolDescripcion(). '</br>';
+                }
+            } 
+
+            $nuevoElem["rol"]=$descripcion;
+            array_push($arreglo_salida,$nuevoElem);
    
+        }
+    return $arreglo_salida;
+    }
+    
 }
 ?>

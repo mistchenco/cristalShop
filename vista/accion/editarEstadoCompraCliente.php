@@ -6,27 +6,8 @@ $datos=data_submitted();
 // obtenemos sus objetos y los datos necesarios para realizar la modificacion
 
 $abmcompraEstado=new abmCompraEstado();
-$abmcompraEstadoTipo=new abmCompraEstadoTipo();
-$datosCompraEstadoTipo=['idCompraEstadoTipo'=>4];
-$listaCompraEstadoTipo=$abmcompraEstadoTipo->buscar($datosCompraEstadoTipo);
-$objCompraEstadoTipo=$listaCompraEstadoTipo[0];
 
-$listaCompraEstado=$abmcompraEstado->buscar($datos);
-$objCompraEstado=$listaCompraEstado[0];
-
-
-$objCompra=$objCompraEstado->getObjCompra();
-$idCompraEstado=$objCompraEstado->getIdCompraEstado();
-$fechaInicio=$objCompraEstado->getCompraEstadoFechaInicial();
-$idCompra=$objCompra->getIdCompra();
-
-$idCompraEstadoTipo=$objCompraEstadoTipo->getIdCompraEstadoTipo();
-$datosCompraEstado=['idCompraEstado'=>$idCompraEstado,
-'idCompra'=>$idCompra,
-'idCompraEstadoTipo'=>$idCompraEstadoTipo,
-'compraEstadoFechaInicial'=>$fechaInicio,
-'compraEstadoFechaFinal'=>date('Y-m-d h-m-s')
-];
+$datosCompraEstado = $abmcompraEstado->editarEstadoCompraCliente($datos);
 
 if($abmcompraEstado->modificacion($datosCompraEstado)){
     $mensaje = "Compra cancelada con exito";

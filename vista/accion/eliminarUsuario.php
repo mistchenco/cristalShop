@@ -1,9 +1,13 @@
 <?php
 include_once '../../configuracion.php';
 $datos = data_submitted();
+
 $abmUsuario = new abmUsuario();
+
 $listaUsuario = $abmUsuario->buscar($datos);
+
 $objUsuario = $listaUsuario[0];
+
 $datos['usNombre'] = $objUsuario->getUsNombre();
 $datos['usPass'] = $objUsuario->getUsPass();
 $datos['usMail'] = $objUsuario->getUsMail();
