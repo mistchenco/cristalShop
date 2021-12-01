@@ -4,9 +4,6 @@ class abmProducto
 {
     public function subirArchivo($datos)
     {
-
-
-        // print_r($datos);
         $nombreArchivoImagen = $datos . ".jpg";
         $dir = '../assets/img/imagenesProductos/';
 
@@ -159,4 +156,31 @@ class abmProducto
         $arreglo = producto::listar($where);
         return $arreglo;
     }
+
+
+    public function accionCrearProducto($datos){
+        $busquedaNombreProducto = ['productoNombre' => $datos['productoNombre']];
+        $respuesta1 = $this->buscar($busquedaNombreProducto);
+        if (count($respuesta1) > 0) {
+            echo  "El Producto no se ha podido crear porque ya existe ese nombre de producto.";
+            $mensaje = "El Producto no se ha podido crear porque ya existe ese nombre de producto.";
+            header("Location: ../ejercicios/crearProducto.php?Message=" . urlencode($mensaje));
+        }else{
+            $datos['idProducto']='';
+            $producto = $this->alta($datos);
+            $busqueda = [
+                "productoNombre" => $datos['productoNombre']
+            ];
+            $objProducto = $this->buscar($busqueda);
+            $idProductoImagen = md5($objProducto[0]->getIdProducto());
+        if($cargarImagen=$this->subirArchivo($idProductoImagen)){
+            if ($producto) {
+                $mensaje = "El producto se creó con exito";
+                header("Location: ../ejercicios/mostrarProductos.php?Message=" . urlencode($mensaje));
+            } 
+        }
+        
+    }
+    }
+
 }

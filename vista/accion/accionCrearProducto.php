@@ -1,37 +1,7 @@
 <?php
 include_once '../../configuracion.php';
-
     $datos = data_submitted();
     $abmProducto = new abmProducto();
-    $busquedaNombreProducto = ['productoNombre' => $datos['productoNombre']];
-    $respuesta1 = $abmProducto->buscar($busquedaNombreProducto);
-
-    if (count($respuesta1) > 0) {
-        echo  "El Producto no se ha podido crear porque ya existe ese nombre de producto.";
-        $mensaje = "El Producto no se ha podido crear porque ya existe ese nombre de producto.";
-        header("Location: ../ejercicios/crearProducto.php?Message=" . urlencode($mensaje));
-    }else{
-
-        $datos['idProducto']='';
-       
-        $producto = $abmProducto->alta($datos);
-       
-        $busqueda = [
-            "productoNombre" => $datos['productoNombre']
-        ];
-        $objProducto = $abmProducto->buscar($busqueda);
-        
-        $idProductoImagen = md5($objProducto[0]->getIdProducto());
-        if($cargarImagen=$abmProducto->subirArchivo($idProductoImagen)){
-            if ($producto) {
-                $mensaje = "El producto se creó con exito";
-                header("Location: ../ejercicios/mostrarProductos.php?Message=" . urlencode($mensaje));
-            } 
-        }
-        
-    }
-
-?>
-<?php
+    $abmProducto->accionCrearProducto($datos);
 include_once '../estructura/footer.php';
 ?>

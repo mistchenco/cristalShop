@@ -196,4 +196,23 @@ class abmCompraEstado
                                 ];
         return $datosCompraEstado;
     }
+
+    public function editarEstadoCompra($datos,$objCompraEstado){
+        if ($datos['idCompraEstadoTipo'] == 4 || $datos['idCompraEstadoTipo'] == 3) {
+            $fechaFinal = date('Y-m-d h:i:s', time());
+        }else{
+            $fechaFinal = '0000-00-00 00:00:00';
+        }
+        $datosNuevos = [
+            'idCompraEstado' => $datos['idCompraEstado'], 
+            'idCompra' => $datos['idCompra'],
+            'idCompraEstadoTipo' => $datos['idCompraEstadoTipo'],
+            'compraEstadoFechaInicial' => $objCompraEstado->getCompraEstadoFechaInicial(),
+            'compraEstadoFechaFinal' => $fechaFinal
+        ]; 
+        return $datosNuevos;
+    } 
+
+
+
 }

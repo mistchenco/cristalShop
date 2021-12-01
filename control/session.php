@@ -221,4 +221,21 @@ class session{
     public function setColeccionItems($coleccionItems){
         $_SESSION['coleccionItems'] = $coleccionItems;
     }
+
+
+    public function accionBorrarProductoCarrito($datos){
+        $arreglo = $this->getCarrito();
+        $arreglo = array_values($arreglo); 
+        for ($i=0; $i < count($arreglo); $i++) { 
+            if ($datos['idProducto'] == $arreglo[$i]['idProducto'] ) {
+                unset($arreglo[$i]);
+                $this->setColeccionItems($arreglo);
+            }
+        }
+        $arreglo = array_values($arreglo);
+        $mensaje = "Producto borrado del carrito";
+        header("Location: ../ejercicios/carrito.php?Message=" . urlencode($mensaje));
+    }
+
+
 }

@@ -187,5 +187,12 @@ if (!$sesion->activa()) {
 
 
 </nav>
+            <?php 
+                echo "<br>";
+                echo "<br>";
+                echo "<br>";
+                echo "<br>";
+                echo "<br>";
+            ?>
 
 <body id="page-top">

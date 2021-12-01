@@ -40,4 +40,11 @@ error_reporting(0);
                 </div>
             </div>
 </nav>
+            <?php 
+                echo "<br>";
+                echo "<br>";
+                echo "<br>";
+                echo "<br>";
+                echo "<br>";
+            ?>
 <body id="page-top">
